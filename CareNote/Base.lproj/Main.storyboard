@@ -13,7 +13,7 @@
         <!--HealthView-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CareNote" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HealthViewViewController" customModule="CareNote" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -111,6 +111,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="HealthView" id="fUO-tS-7oA"/>
+                    <connections>
+                        <outlet property="bloodSugarView" destination="r2C-ty-XeI" id="haV-Nc-Tv0"/>
+                        <outlet property="bpView" destination="Ea8-tC-f3p" id="jfE-T1-OtC"/>
+                        <outlet property="creatinineView" destination="N7F-XZ-Xuy" id="KpK-bO-NaQ"/>
+                        <outlet property="currentVitalsBackView" destination="N56-ik-iRT" id="aBM-br-Jy3"/>
+                        <outlet property="currentVitalsButton" destination="ytc-8V-1vM" id="oG3-UN-1X9"/>
+                        <outlet property="currentVitalsLabel" destination="QfU-ZW-z3G" id="7Ou-9x-xRV"/>
+                        <outlet property="egfrView" destination="Wop-sj-xTW" id="n6z-Fa-hNX"/>
+                        <outlet property="hrView" destination="k6F-tY-pB0" id="yhk-YL-hln"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -196,7 +206,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemCyanColor">
-            <color red="0.1960784314" green="0.67843137249999996" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
