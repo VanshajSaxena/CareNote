@@ -22,20 +22,24 @@ class HealthViewViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        currentVitalsBackView.backgroundColor = UIColor.white.withAlphaComponent(0.1)
-        currentVitalsBackView.layer.cornerRadius = 10
+        
+        updateUI()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func updateUI() {
+    
+    //Current Vitals UI
+        //Current Vitals Back View
+        currentVitalsBackView.backgroundColor = UIColor.white.withAlphaComponent(0.1)
+        currentVitalsBackView.layer.cornerRadius = 10
+        
+        //Sub Views
+        bpView.layer.cornerRadius = 10
+        egfrView.layer.cornerRadius = 10
+        bloodSugarView.layer.cornerRadius = 10
+        hrView.layer.cornerRadius = 10
+        creatinineView.layer.cornerRadius = 10
+        
+    //
     }
-    */
-
 }
