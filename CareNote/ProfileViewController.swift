@@ -8,6 +8,13 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
+    required init?(coder: NSCoder)
+    {
+        super.init(coder: coder)
+        super.tabBarItem.title = "HealthView"
+        super.tabBarItem.image = UIImage(systemName: "person.crop.circle")
+        super.tabBarItem.selectedImage = UIImage(systemName: "person.crop.circle.fill")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
