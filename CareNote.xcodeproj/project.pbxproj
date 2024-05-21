@@ -23,6 +23,7 @@
 		05ACBE1C2BFB2C63002C58A9 /* HealthLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05ACBE1B2BFB2C63002C58A9 /* HealthLogViewController.swift */; };
 		05ACBE202BFB2EAB002C58A9 /* ProfileStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05ACBE1F2BFB2EAB002C58A9 /* ProfileStoryboard.storyboard */; };
 		05ACBE222BFB2EBE002C58A9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05ACBE212BFB2EBE002C58A9 /* ProfileViewController.swift */; };
+		C49D15D02BFCAD6F00D0B4B3 /* HealthViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49D15CF2BFCAD6F00D0B4B3 /* HealthViewViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		05ACBE1B2BFB2C63002C58A9 /* HealthLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthLogViewController.swift; sourceTree = "<group>"; };
 		05ACBE1F2BFB2EAB002C58A9 /* ProfileStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileStoryboard.storyboard; sourceTree = "<group>"; };
 		05ACBE212BFB2EBE002C58A9 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		C49D15CF2BFCAD6F00D0B4B3 /* HealthViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthViewViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				058056132BFB2746006A897D /* SceneDelegate.swift */,
 				058056152BFB2746006A897D /* ViewController.swift */,
 				058056172BFB2746006A897D /* Main.storyboard */,
+				C49D15CF2BFCAD6F00D0B4B3 /* HealthViewViewController.swift */,
 				05ACBE1F2BFB2EAB002C58A9 /* ProfileStoryboard.storyboard */,
 				05ACBE212BFB2EBE002C58A9 /* ProfileViewController.swift */,
 				0580561A2BFB2748006A897D /* Assets.xcassets */,
@@ -171,6 +174,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C49D15D02BFCAD6F00D0B4B3 /* HealthViewViewController.swift in Sources */,
 				05ACBE222BFB2EBE002C58A9 /* ProfileViewController.swift in Sources */,
 				056CB6C82BFB67B100D96E25 /* MedMinderTableViewController.swift in Sources */,
 				054CAF322BFDEA060041EE24 /* AddVisitTableViewController.swift in Sources */,
