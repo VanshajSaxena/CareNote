@@ -8,6 +8,13 @@
 import UIKit
 
 class HealthLogViewController: UIViewController {
+    required init?(coder: NSCoder)
+    {
+        super.init(coder: coder)
+        super.tabBarItem.title = "HealthLog"
+        super.tabBarItem.image = UIImage(systemName: "calendar.circle")
+        super.tabBarItem.selectedImage = UIImage(systemName: "calendar.circle.fill")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

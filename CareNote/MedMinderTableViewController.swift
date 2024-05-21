@@ -8,6 +8,13 @@
 import UIKit
 
 class MedMinderTableViewController: UITableViewController {
+    required init?(coder: NSCoder)
+    {
+        super.init(coder: coder)
+        super.tabBarItem.title = "Medminder"
+        super.tabBarItem.image = UIImage(systemName: "pills")
+        super.tabBarItem.selectedImage = UIImage(systemName: "pills.fill")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
