@@ -1,43 +1,75 @@
 //
-//  MedMinderTableViewController.swift
+//  EditMedicationTableViewController.swift
 //  CareNote
 //
-//  Created by Sameer-Verma on 20/05/24.
+//  Created by Sameer-Vermaon 21/05/24.
 //
 
 import UIKit
 
-class MedMinderTableViewController: UITableViewController {
-    required init?(coder: NSCoder)
-    {
-        super.init(coder: coder)
-        super.tabBarItem.title = "Medminder"
-        super.tabBarItem.image = UIImage(systemName: "pills")
-        super.tabBarItem.selectedImage = UIImage(systemName: "pills.fill")
-    }
-    
+class EditMedicationTableViewController: UITableViewController {
 
+    var medicine : [Medicine] = []
+    
+    
+    
+    @IBOutlet var MedicineNameTextField: UITextField!
+    @IBOutlet var DoseageTextField: UITextField!
+    @IBOutlet var FrequencyPopButton: UIButton!
+    
+    @IBOutlet var TimePopButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setPopUpButton()
+        setTimePopButton()
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
+    func setPopUpButton(){
+        let optionClosure = {(action : UIAction) in
+        print(action.title)}
+//      Frequency = action.title
+        FrequencyPopButton.menu = UIMenu (children : [
+        UIAction(title : "Select", state :.on, handler: optionClosure),
+        UIAction(title : "Everyday", handler: optionClosure),
+        UIAction(title : "Once A Week", handler: optionClosure),
+        UIAction(title : "Alternate Days", handler: optionClosure),
+        UIAction(title : "Custom", handler: optionClosure)])
+        FrequencyPopButton.showsMenuAsPrimaryAction = true
+        FrequencyPopButton.changesSelectionAsPrimaryAction = true
+        
+    }
+    func setTimePopButton(){
+        let optionClosure = {(action : UIAction) in
+        print(action.title)}
+        TimePopButton.menu = UIMenu (children : [
+        UIAction(title : "Select", state :.on, handler: optionClosure),
+        UIAction(title : "Before Breakfast", handler: optionClosure),
+        UIAction(title : "After Breakfast", handler: optionClosure),
+        UIAction(title : "Before Lunch", handler: optionClosure),
+        UIAction(title : "After Lunch", handler: optionClosure),
+        UIAction(title : "Before Dinner", handler: optionClosure),
+        UIAction(title : "After Dinner", handler: optionClosure)])
+        TimePopButton.showsMenuAsPrimaryAction = true
+        TimePopButton.changesSelectionAsPrimaryAction = true
+        
+    }
+    @IBAction func doneButtonTapped(_ sender: UIBarButtonItem) {
+        let name = MedicineNameTextField.text ?? ""
+        let dose = DoseageTextField.text ?? ""
+//        let frequency = FrequencyPopButton.
+        print("Done Buton tapped")
+    }
+    
     // MARK: - Table view data source
 
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 1
-//    }
-
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete implementation, return the number of rows
-//        return
-//    }
+    
+    
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
