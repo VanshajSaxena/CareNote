@@ -12,10 +12,7 @@ struct Medicine{
     var frequency : String
     
     var MedicineTime : Date
-//    var checkOutDate : Date
-    
-//    var numberOfAdult : Int
-//    var numberOfChild :  Int
+
     
     var notification : Bool
 //    var roomType : RoomType
