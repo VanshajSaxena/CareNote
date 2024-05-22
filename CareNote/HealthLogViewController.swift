@@ -22,7 +22,7 @@ class HealthLogViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        filter.datePickerMode = .
+        filter.datePickerMode = .date
         filter.addTarget(self, action: #selector(filter(_:)), for: .valueChanged)
 
         // Do any additional setup after loading the view.
