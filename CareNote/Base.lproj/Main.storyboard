@@ -646,11 +646,11 @@
             </objects>
             <point key="canvasLocation" x="62" y="448"/>
         </scene>
-        <!--HealthView-->
+        <!--Navigation Controller-->
         <scene sceneID="7KP-rF-eHr">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jCY-Sx-t3Y" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="HealthView" selectedImage="rectangle.grid.2x2" catalog="system" id="bck-Wr-45G"/>
+                    <tabBarItem key="tabBarItem" title="" id="bck-Wr-45G"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="lWm-LH-3UQ">
                         <rect key="frame" x="0.0" y="59" width="393" height="96"/>
@@ -671,7 +671,6 @@
         <image name="cross.vial" catalog="system" width="91" height="128"/>
         <image name="drop" catalog="system" width="96" height="128"/>
         <image name="heart" catalog="system" width="128" height="107"/>
-        <image name="rectangle.grid.2x2" catalog="system" width="128" height="97"/>
         <image name="square.fill" catalog="system" width="128" height="114"/>
         <image name="waveform.path.ecg" catalog="system" width="128" height="125"/>
         <systemColor name="systemBackgroundColor">
