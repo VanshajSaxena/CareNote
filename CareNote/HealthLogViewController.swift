@@ -6,8 +6,10 @@
 //
 
 import UIKit
+import VisionKit
 
-class HealthLogViewController: UIViewController {
+class HealthLogViewController: UIViewController, VNDocumentCameraViewControllerDelegate {
+    
     required init?(coder: NSCoder)
     {
         super.init(coder: coder)
@@ -17,25 +19,20 @@ class HealthLogViewController: UIViewController {
     }
 
     @IBOutlet var filter: UIDatePicker!
-    
+    var scannedImages: [Any] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         filter.datePickerMode = .date
         filter.addTarget(self, action: #selector(filter(_:)), for: .valueChanged)
-
-        // Do any additional setup after loading the view.
     }
     
     @objc func filter(_ sender: UIDatePicker) {
-        let selectedDate = sender.date
+//        let selectedDate = sender.date
         
-        let calendar = Calendar.current
-        let month = calendar.component(.month, from: selectedDate)
-        let year = calendar.component(.year, from: selectedDate)
-        
-        
+//        let calendar = Calendar.current
+//        let month = calendar.component(.month, from: selectedDate)
+//        let year = calendar.component(.year, from: selectedDate)
 //        filteredEntries = timelineEntries.filter { entry in
 //            let entryMonth = calendar.component(.month, from: entry.date)
 //            let yearMonth = calendar.component(.year, from: entry.date)
@@ -43,7 +40,36 @@ class HealthLogViewController: UIViewController {
 //        }
         
     }
+    
+    func presentDocumentScanner() {
+        let scannerViewController = VNDocumentCameraViewController()
+        scannerViewController.delegate = self
+        present(scannerViewController, animated: true)
+    }
+    
+    func documentCameraViewControllerDidCancel(_ controller: VNDocumentCameraViewController) {
+        // Handle the cancellation here
+        controller.dismiss(animated: true)
+    }
 
+    func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFailWithError error: Error) {
+        // Handle the failure here
+        print(error.localizedDescription)
+        controller.dismiss(animated: true)
+    }
+    
+    func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
+            // Handle the scanned documents here
+            for pageIndex in 0..<scan.pageCount {
+                let scannedImage = scan.imageOfPage(at: pageIndex)
+                scannedImages.append(scannedImage)
+            }
+        controller.dismiss(animated: true)
+    }
+
+    @IBAction func addButtonPressed(_ sender: Any) {
+        presentDocumentScanner()
+    }
     /*
     // MARK: - Navigation
 
