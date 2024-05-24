@@ -2,7 +2,7 @@
 //  EditMedicationTableViewController.swift
 //  CareNote
 //
-//  Created by Sameer-Vermaon 21/05/24.
+//  Created by Sameer-Verma on 21/05/24.
 //
 
 import UIKit
@@ -16,13 +16,15 @@ class EditMedicationTableViewController: UITableViewController {
     @IBOutlet var MedicineNameTextField: UITextField!
     @IBOutlet var DoseageTextField: UITextField!
     @IBOutlet var FrequencyPopButton: UIButton!
+    @IBOutlet var TimePopButton: UIButton! //used for the time pop up button
     
-    @IBOutlet var TimePopButton: UIButton!
+    @IBOutlet var reminderMePopButton: UIButton! //used for hte reminder pop up buttom
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setPopUpButton()
         setTimePopButton()
+        setReminderMePopButton()
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -57,6 +59,17 @@ class EditMedicationTableViewController: UITableViewController {
         UIAction(title : "After Dinner", handler: optionClosure)])
         TimePopButton.showsMenuAsPrimaryAction = true
         TimePopButton.changesSelectionAsPrimaryAction = true
+        
+    }
+    func setReminderMePopButton(){
+        let optionClosure = {(action : UIAction) in
+        print(action.title)}
+        reminderMePopButton.menu = UIMenu (children : [
+        UIAction(title : "Select", state :.on, handler: optionClosure),
+        UIAction(title : "Silent", handler: optionClosure),
+        UIAction(title : "Vibrate", handler: optionClosure)])
+        reminderMePopButton.showsMenuAsPrimaryAction = true
+        reminderMePopButton.changesSelectionAsPrimaryAction = true
         
     }
     @IBAction func doneButtonTapped(_ sender: UIBarButtonItem) {
