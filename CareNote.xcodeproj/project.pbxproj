@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		056CB6C82BFB67B100D96E25 /* MedMinderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056CB6C72BFB67B100D96E25 /* MedMinderTableViewController.swift */; };
+		054CAF322BFDEA060041EE24 /* AddVisitTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054CAF312BFDEA060041EE24 /* AddVisitTableViewController.swift */; };
 		056494E02BFB491800EB5DE2 /* TimeLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056494DF2BFB491800EB5DE2 /* TimeLineViewController.swift */; };
 		058056122BFB2746006A897D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058056112BFB2746006A897D /* AppDelegate.swift */; };
 		058056142BFB2746006A897D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058056132BFB2746006A897D /* SceneDelegate.swift */; };
@@ -26,6 +27,7 @@
 
 /* Begin PBXFileReference section */
 		056CB6C72BFB67B100D96E25 /* MedMinderTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedMinderTableViewController.swift; sourceTree = "<group>"; };
+		054CAF312BFDEA060041EE24 /* AddVisitTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVisitTableViewController.swift; sourceTree = "<group>"; };
 		056494DF2BFB491800EB5DE2 /* TimeLineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineViewController.swift; sourceTree = "<group>"; };
 		0580560E2BFB2746006A897D /* CareNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CareNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		058056112BFB2746006A897D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				05ACBE172BFB2B9D002C58A9 /* HealthLogStoryboard.storyboard */,
 				05ACBE1B2BFB2C63002C58A9 /* HealthLogViewController.swift */,
 				056494DF2BFB491800EB5DE2 /* TimeLineViewController.swift */,
+				054CAF312BFDEA060041EE24 /* AddVisitTableViewController.swift */,
 				05ACBE192BFB2BB1002C58A9 /* MedMinderStoryboard.storyboard */,
 				059E305C2BFCB39F006A3F52 /* EditMedicationTableViewController.swift */,
 				056CB6C72BFB67B100D96E25 /* MedMinderTableViewController.swift */,
@@ -170,6 +173,7 @@
 			files = (
 				05ACBE222BFB2EBE002C58A9 /* ProfileViewController.swift in Sources */,
 				056CB6C82BFB67B100D96E25 /* MedMinderTableViewController.swift in Sources */,
+				054CAF322BFDEA060041EE24 /* AddVisitTableViewController.swift in Sources */,
 				058056162BFB2746006A897D /* ViewController.swift in Sources */,
 				056494E02BFB491800EB5DE2 /* TimeLineViewController.swift in Sources */,
 				058056122BFB2746006A897D /* AppDelegate.swift in Sources */,
