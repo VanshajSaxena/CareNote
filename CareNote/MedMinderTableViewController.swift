@@ -18,18 +18,18 @@ class MedMinderTableViewController: UITableViewController {
     
     //UI Outlet for the date filter of the application
     
-    @IBOutlet var FilterDateLabel: UILabel!
-    @IBOutlet var FilterDatePicker: UIDatePicker!
+    @IBOutlet var filterDateLabel: UILabel!
+    @IBOutlet var filterDatePicker: UIDatePicker!
 //---------------------------------------------------------------
     
     // Here we are saving the index path of the date label and date Picker Value
     var filterDateLabelIndexPath = IndexPath(row: 0, section: 0)
-    var FilterDatePickerIndexPath = IndexPath(row: 1, section: 0)
+    var filterDatePickerIndexPath = IndexPath(row: 1, section: 0)
 
     // this is the Variable used for the checking that is the Date Picker is visible or not
     var isFilterDatePickerVisible:Bool = false{
         didSet{
-            FilterDatePicker.isHidden = !isFilterDatePickerVisible
+            filterDatePicker.isHidden = !isFilterDatePickerVisible
         }
     }
     
@@ -37,7 +37,7 @@ class MedMinderTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath{
 //
-        case FilterDatePickerIndexPath:
+        case filterDatePickerIndexPath:
                     return isFilterDatePickerVisible ? 217 : 0
         default:
             return UITableView.automaticDimension
@@ -49,9 +49,6 @@ class MedMinderTableViewController: UITableViewController {
         if indexPath == filterDateLabelIndexPath {
                     isFilterDatePickerVisible.toggle()
                 } else {
-//                    // If any other row is selected, we hide the date picker if it's visible
-//                    if isFilterDatePickerVisible {
-//                        isFilterDatePickerVisible = false}
                     return
                     }
                 
@@ -72,20 +69,19 @@ class MedMinderTableViewController: UITableViewController {
     
     // this is the function which is used to update the Filter Date Label according to the Date Picker
     
-// **************************************************************************************
+//**************************************************************************************
+    
 // ------------------ DATE PICKER ------------------------------
     func updateDateview(){
-        FilterDateLabel.text = FilterDatePicker.date.formatted(date: .abbreviated, time: .omitted)
+        filterDateLabel.text = filterDatePicker.date.formatted(date: .abbreviated, time: .omitted)
         
     }
     
-    
-    
-    // Filter date picker Action Outlet -- filterDateChanged -- Whenever Date changed
+// Filter date picker Action Outlet -- filterDateChanged -- Whenever Date changed
     
     @IBAction func filterDateChanged(_ sender: UIDatePicker) {
         updateDateview()
-        print("date \(FilterDatePicker.date.formatted(date: .abbreviated, time: .omitted))")
+        print("date \(filterDatePicker.date.formatted(date: .abbreviated, time: .omitted))")
     }
     
 // **************************************************************************************
