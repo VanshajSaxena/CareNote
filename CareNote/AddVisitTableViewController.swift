@@ -11,6 +11,17 @@ class AddVisitTableViewController: UITableViewController {
     
     
     @IBOutlet var documnetPopButton: UIButton!
+    @IBOutlet var addVisitDateLabel: UILabel!
+    @IBOutlet var addVisitDatePicker: UIDatePicker!
+    
+    var addVisitDateLabelIndexPath = IndexPath(row: 0, section: 0)
+    var addVisitDatePickerIndexPath = IndexPath(row: 1, section: 0)
+    
+    var isAddVisitDatePickerVisible:Bool = false {
+        didSet {
+            addVisitDatePicker.isHidden = !isAddVisitDatePickerVisible
+        }
+    }
     
     struct addVisit {
         var date : Date
@@ -21,6 +32,7 @@ class AddVisitTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setDocumentPopButton()
+        updateDateView()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -28,6 +40,11 @@ class AddVisitTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    func updateDateView() {
+        addVisitDateLabel.text = addVisitDatePicker.date.formatted(date: .abbreviated, time: .omitted)
+    }
+    
     func setDocumentPopButton(){
         let optionClosure = {(action : UIAction) in
         print(action.title)}
@@ -39,6 +56,34 @@ class AddVisitTableViewController: UITableViewController {
         documnetPopButton.changesSelectionAsPrimaryAction = true
         
     }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath {
+        case addVisitDatePickerIndexPath:
+            return isAddVisitDatePickerVisible ? 217 : 0
+        default:
+            return UITableView.automaticDimension
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        if indexPath == addVisitDateLabelIndexPath {
+            isAddVisitDatePickerVisible.toggle()
+        } else {
+            return
+        }
+        
+        tableView.beginUpdates()
+        tableView.endUpdates()
+    }
+    
+    @IBAction func addVisitDateSelected(_ sender: UIDatePicker) {
+        updateDateView()
+    }
+    
+    
 
     // MARK: - Table view data source
 
