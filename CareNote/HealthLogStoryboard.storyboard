@@ -38,12 +38,6 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hgK-Xb-ClH">
                                 <rect key="frame" x="0.0" y="236" width="393" height="616"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3ch-Ru-TX4">
-                                        <rect key="frame" x="65" y="244" width="240" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                </subviews>
                                 <viewLayoutGuide key="contentLayoutGuide" id="zJA-mg-KZK"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="M1p-7R-yjY"/>
                             </scrollView>
@@ -59,13 +53,12 @@
                     <navigationItem key="navigationItem" title="HealthLog" id="MsV-Vh-qYz">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="rrd-GW-pmY">
                             <connections>
-                                <action selector="addButtonPressed:" destination="Y6W-OH-hqX" id="2z0-XX-JqE"/>
+                                <segue destination="s8j-1c-s6x" kind="show" id="Nlw-ff-Fyp"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="filter" destination="4Hg-8d-YXk" id="nzo-uy-gdQ"/>
-                        <outlet property="healthLogImageView" destination="3ch-Ru-TX4" id="nug-4b-aLc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -75,7 +68,6 @@
         <!--SCAN-->
         <scene sceneID="jxr-I9-5Dk">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wq1-FG-9Kv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="s8j-1c-s6x" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="a7T-38-Vm1">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
@@ -103,6 +95,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="SCAN" largeTitleDisplayMode="never" id="vDz-aT-JKM"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wq1-FG-9Kv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1798" y="-2"/>
         </scene>
@@ -111,14 +104,27 @@
             <objects>
                 <viewController id="bsY-qA-KIM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wBR-bl-jpx">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tvu-WJ-TSO">
-                                <rect key="frame" x="27" y="667" width="339" height="48"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Scanned image" translatesAutoresizingMaskIntoConstraints="NO" id="j7P-tR-w7Y">
+                                <rect key="frame" x="27" y="130" width="339" height="496"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="339" id="79l-wt-NTX"/>
-                                    <constraint firstAttribute="height" constant="48" id="lvw-gr-2N4"/>
+                                    <constraint firstAttribute="height" constant="496" id="WYm-eU-j5S"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Document Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fpW-o1-oAP">
+                                <rect key="frame" x="27" y="638" width="339" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="RYd-Tm-DAI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tvu-WJ-TSO">
+                                <rect key="frame" x="27" y="680" width="339" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="kqA-zX-Vrn"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Save">
@@ -128,23 +134,19 @@
                                     <segue destination="SnB-iz-TAH" kind="presentation" id="SWg-Vj-On5"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Document Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fpW-o1-oAP">
-                                <rect key="frame" x="27" y="625" width="339" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="339" id="0aM-on-uAP"/>
-                                    <constraint firstAttribute="height" constant="34" id="mye-ku-c8m"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xg6-P7-kPh"/>
                         <color key="backgroundColor" red="0.64313727620000005" green="0.87058818339999999" blue="0.90588235859999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="fpW-o1-oAP" firstAttribute="centerY" secondItem="wBR-bl-jpx" secondAttribute="centerY" constant="221" id="Dn8-eX-jCY"/>
-                            <constraint firstItem="fpW-o1-oAP" firstAttribute="centerX" secondItem="wBR-bl-jpx" secondAttribute="centerX" id="rdY-EZ-1Av"/>
-                            <constraint firstItem="tvu-WJ-TSO" firstAttribute="centerX" secondItem="wBR-bl-jpx" secondAttribute="centerX" id="si4-DS-tIS"/>
-                            <constraint firstItem="tvu-WJ-TSO" firstAttribute="centerY" secondItem="wBR-bl-jpx" secondAttribute="centerY" constant="270" id="yDz-nI-nAx"/>
+                            <constraint firstItem="fpW-o1-oAP" firstAttribute="top" secondItem="j7P-tR-w7Y" secondAttribute="bottom" constant="12" id="3Wy-y3-izb"/>
+                            <constraint firstItem="xg6-P7-kPh" firstAttribute="trailing" secondItem="j7P-tR-w7Y" secondAttribute="trailing" constant="27" id="9ac-e5-wfx"/>
+                            <constraint firstItem="xg6-P7-kPh" firstAttribute="trailing" secondItem="tvu-WJ-TSO" secondAttribute="trailing" constant="27" id="IMp-i0-0hG"/>
+                            <constraint firstItem="tvu-WJ-TSO" firstAttribute="leading" secondItem="xg6-P7-kPh" secondAttribute="leading" constant="27" id="J8R-hc-dMX"/>
+                            <constraint firstItem="fpW-o1-oAP" firstAttribute="leading" secondItem="xg6-P7-kPh" secondAttribute="leading" constant="27" id="O66-Jv-hyn"/>
+                            <constraint firstItem="j7P-tR-w7Y" firstAttribute="leading" secondItem="xg6-P7-kPh" secondAttribute="leading" constant="27" id="Yjc-hD-ngT"/>
+                            <constraint firstItem="xg6-P7-kPh" firstAttribute="trailing" secondItem="fpW-o1-oAP" secondAttribute="trailing" constant="27" id="jJ3-qH-Zhk"/>
+                            <constraint firstItem="tvu-WJ-TSO" firstAttribute="top" secondItem="fpW-o1-oAP" secondAttribute="bottom" constant="8" id="m8N-Ma-wdi"/>
+                            <constraint firstItem="j7P-tR-w7Y" firstAttribute="top" secondItem="xg6-P7-kPh" secondAttribute="top" constant="27" id="mbN-Wm-USz"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Document" id="vyV-et-wKj">
@@ -153,7 +155,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g3j-rZ-YSV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2632.8244274809158" y="-2.1126760563380285"/>
+            <point key="canvasLocation" x="2633" y="-2"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pKd-Zm-mbm">
@@ -340,6 +342,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Scanned image" width="943" height="1339"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
