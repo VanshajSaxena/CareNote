@@ -13,18 +13,21 @@ class EditMedicationTableViewController: UITableViewController {
     
     
     
-    @IBOutlet var MedicineNameTextField: UITextField!
-    @IBOutlet var DoseageTextField: UITextField!
-    @IBOutlet var FrequencyPopButton: UIButton!
-    @IBOutlet var TimePopButton: UIButton! //used for the time pop up button
+    @IBOutlet var medicineNameTextField: UITextField!
+    @IBOutlet var dosageTextField: UITextField!
+    @IBOutlet var frequencyPopButton: UIButton!
+    @IBOutlet var timePopButton: UIButton! //used for the time pop up button
     
+    @IBOutlet var noteTextField: UITextField!
+    @IBOutlet var notificationSwitch: UISwitch!
     @IBOutlet var reminderMePopButton: UIButton! //used for hte reminder pop up buttom
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setPopUpButton()
+        setFrequencyPopUpButton()
         setTimePopButton()
         setReminderMePopButton()
+        
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -32,24 +35,34 @@ class EditMedicationTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-    func setPopUpButton(){
+    
+    // Variable Declared to store the values of the pop up button items
+    var frequencySelected : String = ""
+    var slotTimeSelected : String = ""
+    var reminderModeSelected : String = ""
+    
+    func setFrequencyPopUpButton(){
         let optionClosure = {(action : UIAction) in
-        print(action.title)}
-//      Frequency = action.title
-        FrequencyPopButton.menu = UIMenu (children : [
+            print(action.title)
+            self.frequencySelected = "\(action.title)"
+            
+            }
+        frequencyPopButton.menu = UIMenu (children : [
         UIAction(title : "Select", state :.on, handler: optionClosure),
         UIAction(title : "Everyday", handler: optionClosure),
         UIAction(title : "Once A Week", handler: optionClosure),
         UIAction(title : "Alternate Days", handler: optionClosure),
         UIAction(title : "Custom", handler: optionClosure)])
-        FrequencyPopButton.showsMenuAsPrimaryAction = true
-        FrequencyPopButton.changesSelectionAsPrimaryAction = true
+        frequencyPopButton.showsMenuAsPrimaryAction = true
+        frequencyPopButton.changesSelectionAsPrimaryAction = true
         
     }
     func setTimePopButton(){
         let optionClosure = {(action : UIAction) in
-        print(action.title)}
-        TimePopButton.menu = UIMenu (children : [
+            print(action.title)
+            self.slotTimeSelected = "\(action.title)"
+        }
+        timePopButton.menu = UIMenu (children : [
         UIAction(title : "Select", state :.on, handler: optionClosure),
         UIAction(title : "Before Breakfast", handler: optionClosure),
         UIAction(title : "After Breakfast", handler: optionClosure),
@@ -57,13 +70,15 @@ class EditMedicationTableViewController: UITableViewController {
         UIAction(title : "After Lunch", handler: optionClosure),
         UIAction(title : "Before Dinner", handler: optionClosure),
         UIAction(title : "After Dinner", handler: optionClosure)])
-        TimePopButton.showsMenuAsPrimaryAction = true
-        TimePopButton.changesSelectionAsPrimaryAction = true
-        
+        timePopButton.showsMenuAsPrimaryAction = true
+        timePopButton.changesSelectionAsPrimaryAction = true
     }
+    
     func setReminderMePopButton(){
         let optionClosure = {(action : UIAction) in
-        print(action.title)}
+            print(action.title)
+            self.reminderModeSelected = "\(action.title)"
+            }
         reminderMePopButton.menu = UIMenu (children : [
         UIAction(title : "Select", state :.on, handler: optionClosure),
         UIAction(title : "Silent", handler: optionClosure),
@@ -73,10 +88,22 @@ class EditMedicationTableViewController: UITableViewController {
         
     }
     @IBAction func doneButtonTapped(_ sender: UIBarButtonItem) {
-        let name = MedicineNameTextField.text ?? ""
-        let dose = DoseageTextField.text ?? ""
-//        let frequency = FrequencyPopButton.
+        let medicineName = medicineNameTextField.text ?? ""
+        let dose = dosageTextField.text ?? ""
+        let note = noteTextField.text ?? ""
+        let notifiaction = notificationSwitch.isOn
+
         print("Done Buton tapped")
+        print(medicineName)
+        print(dose)
+        print(frequencySelected)
+        print(slotTimeSelected)
+        print(note)
+        print(notifiaction)
+        print(reminderModeSelected)
+        
+        print("Medicine name is \(medicineName) and number of doasages is \(dose) also the Frequency is \(frequencySelected)")
+        
     }
     
     // MARK: - Table view data source
