@@ -26,6 +26,9 @@ class HealthViewViewController: UIViewController,UITableViewDataSource, UITabBar
     @IBOutlet var hrView: UIView!
     @IBOutlet var creatinineView: UIView!
     @IBOutlet var recentReportTableView: UITableView!
+    @IBOutlet var scrollView: UIScrollView!
+    @IBOutlet var verticalStackView: UIStackView!
+    var tableViewHeightConstraint: NSLayoutConstraint?
     
     
     
@@ -61,8 +64,49 @@ class HealthViewViewController: UIViewController,UITableViewDataSource, UITabBar
         //Table View
         recentReportTableView.layer.cornerRadius = 10
         
+        recentReportTableView.isScrollEnabled = false
+        recentReportTableView.reloadData()
+        NSLayoutConstraint.activate([
+            recentReportTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+                ])
+        recentReportTableView.estimatedRowHeight = 100
+        recentReportTableView.rowHeight = UITableView.automaticDimension
+        setupTableViewHeightConstraint()
     }
     
+//    override func viewDidLayoutSubviews() {
+//        super.viewDidLayoutSubviews()
+//        updateTableViewHeight()
+//    }
+    
+    
+//    private func updateTableViewHeight() {
+//        recentReportTableView.layoutIfNeeded()
+//        var frame = recentReportTableView.frame
+//        frame.size.height = recentReportTableView.contentSize.height
+//        recentReportTableView.frame = frame
+//        
+//        updateScrollViewContentSize()
+//    }
+//    
+//    private func updateScrollViewContentSize() {
+//        recentReportBackView.layoutIfNeeded()
+//        scrollView.contentSize = recentReportBackView.frame.size
+//    }
+    func setupTableViewHeightConstraint() {
+            tableViewHeightConstraint = recentReportTableView.heightAnchor.constraint(equalToConstant: 0)
+            tableViewHeightConstraint?.isActive = true
+            recentReportTableView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
+        }
+
+        // Observe content size changes and update the height constraint
+        override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+            if keyPath == "contentSize" {
+                if let newSize = change?[.newKey] as? CGSize {
+                    tableViewHeightConstraint?.constant = newSize.height
+                }
+            }
+        }
     //Dummy Data
     struct BloodTest {
         let parameter: String
