@@ -12,6 +12,7 @@ class EditMedicationTableViewController: UITableViewController {
     var medicine : [Medicine] = []
     
     
+    @IBOutlet var doneButtonTapped_Outlet: UIBarButtonItem!
     
     @IBOutlet var medicineNameTextField: UITextField!
     @IBOutlet var dosageTextField: UITextField!
@@ -27,7 +28,7 @@ class EditMedicationTableViewController: UITableViewController {
         setFrequencyPopUpButton()
         setTimePopButton()
         setReminderMePopButton()
-        
+        updateSaveButtonState()
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -87,25 +88,46 @@ class EditMedicationTableViewController: UITableViewController {
         reminderMePopButton.changesSelectionAsPrimaryAction = true
         
     }
-    @IBAction func doneButtonTapped(_ sender: UIBarButtonItem) {
-        let medicineName = medicineNameTextField.text ?? ""
-        let dose = dosageTextField.text ?? ""
-        let note = noteTextField.text ?? ""
-        let notifiaction = notificationSwitch.isOn
-
-        print("Done Buton tapped")
-        print(medicineName)
-        print(dose)
-        print(frequencySelected)
-        print(slotTimeSelected)
-        print(note)
-        print(notifiaction)
-        print(reminderModeSelected)
-        
-        print("Medicine name is \(medicineName) and number of doasages is \(dose) also the Frequency is \(frequencySelected)")
-        
+//    @IBAction func doneButtonTapped(_ sender: UIBarButtonItem) {
+//        let medicineName = medicineNameTextField.text ?? ""
+//        let dose = dosageTextField.text ?? ""
+//        let note = noteTextField.text ?? ""
+//        let notifiaction = notificationSwitch.isOn
+//
+//        print("Done Buton tapped")
+//        print(medicineName)
+//        print(dose)
+//        print(frequencySelected)
+//        print(slotTimeSelected)
+//        print(note)
+//        print(notifiaction)
+//        print(reminderModeSelected)
+//        
+//        print("Medicine name is \(medicineName) and number of doasages is \(dose) also the Frequency is \(frequencySelected)")
+//        
+//    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateSaveButtonState()
     }
     
+    @IBAction func textChanged(_ sender: UITextField) {
+        updateSaveButtonState()
+    }
+    @IBAction func popUPButtonChanged(_ sender: UIButton) {
+        updateSaveButtonState()
+    }
+    
+    func updateSaveButtonState() {
+        let medicineName = medicineNameTextField.text ?? ""
+        let dose = dosageTextField.text ?? ""
+//        let note = noteTextField.text ?? ""
+        let frequency = frequencySelected
+        let slot = slotTimeSelected
+//        let notifiaction = notificationSwitch.isOn
+        doneButtonTapped_Outlet.isEnabled = !medicineName.isEmpty && !dose.isEmpty && frequency != "Select" && slot != "Select"
+    }
     // MARK: - Table view data source
 
     
@@ -166,4 +188,11 @@ class EditMedicationTableViewController: UITableViewController {
     }
     */
 
+//********************** ------------------------------------------ ************************************** -------------------------------
+    // cancel button Action
+    
+    @IBAction func cancelButtonTapped(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
+    
 }
