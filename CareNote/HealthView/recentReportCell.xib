@@ -3,7 +3,6 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -39,7 +38,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemMintColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="lvb-8v-zd4" firstAttribute="leading" secondItem="ap6-yc-QLh" secondAttribute="trailing" constant="2" id="0Yh-If-iDC"/>
                             <constraint firstItem="lvb-8v-zd4" firstAttribute="top" secondItem="wEK-WQ-vMP" secondAttribute="top" constant="11" id="4p8-3p-OHY"/>
@@ -70,9 +69,4 @@
             <point key="canvasLocation" x="174.80916030534351" y="-103.52112676056339"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <systemColor name="systemMintColor">
-            <color red="0.0" green="0.7803921568627451" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-    </resources>
 </document>

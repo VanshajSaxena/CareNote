@@ -28,24 +28,26 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
             healthViewCollectionView.register(UINib(nibName: "BloodPressureCell", bundle: nil), forCellWithReuseIdentifier: "BloodPressureCell")
             healthViewCollectionView.register(UINib(nibName: "recentReportCell", bundle: nil), forCellWithReuseIdentifier: "recentReportCell")
 
-            
-            
             // Set up data source and delegate
             healthViewCollectionView.delegate = self
             healthViewCollectionView.dataSource = self
             
-            // Register header view
-//            healthViewCollectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header")
-            
             // Set up collection view compositional layout
             healthViewCollectionView.setCollectionViewLayout(generateLayout(), animated: true)
+            healthViewCollectionView.backgroundColor = UIColor.clear
+            
+            // Register the section background view
+            healthViewCollectionView.register(SectionBackgroundView.self, forSupplementaryViewOfKind: "SectionBackgroundView", withReuseIdentifier: "SectionBackgroundView")
 
+            healthViewCollectionView.alwaysBounceHorizontal = false
+            
             //Set up headers
             healthViewCollectionView.register(HeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderCollectionReusableView")
         }
     
     func generateLayout() -> UICollectionViewLayout {
-        let layout = UICollectionViewCompositionalLayout { (sectionIndex, env)->NSCollectionLayoutSection? in let section: NSCollectionLayoutSection
+        let layout = UICollectionViewCompositionalLayout { (sectionIndex, env)->NSCollectionLayoutSection? in
+            let section: NSCollectionLayoutSection
             
             switch sectionIndex {
             case 0:
@@ -60,9 +62,16 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
             
             let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(44))
             let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment:  .top)
+            
+            // change section background colour
+            let sectionBackgroundColour = NSCollectionLayoutDecorationItem.background(elementKind: "SectionBackgroundView")
+            section.decorationItems = [sectionBackgroundColour]
+            
             section.boundarySupplementaryItems = [header]
             return section
         }
+        
+        layout.register(SectionBackgroundView.self, forDecorationViewOfKind: "SectionBackgroundView")
         return layout
     }
         
@@ -86,9 +95,11 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
         // Create a vertical group containing the Blood Pressure item and the nested vertical group
         let mainGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(300))
         let mainGroup = NSCollectionLayoutGroup.horizontal(layoutSize: mainGroupSize, subitems: [bloodPressureItem, verticalGroup])
+        mainGroup.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
         
         // Create the section
         let currentVitalsSection = NSCollectionLayoutSection(group: mainGroup)
+        currentVitalsSection.orthogonalScrollingBehavior = .groupPagingCentered
         
         // Return the compositional layout
         return currentVitalsSection
@@ -103,8 +114,11 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
         //Create vertical group
         let lastTestGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(150))
         let lastTestGroup = NSCollectionLayoutGroup.horizontal(layoutSize: lastTestGroupSize, subitems: [currentVitalsItem,currentVitalsItem])
+        lastTestGroup.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
         //last test section
         let lastTestSection = NSCollectionLayoutSection(group: lastTestGroup)
+        
+        lastTestSection.orthogonalScrollingBehavior = .groupPagingCentered
         
         return lastTestSection
     }
@@ -117,8 +131,11 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
         
         let recentReportGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(450)) // need change
         let recentReportGroup = NSCollectionLayoutGroup.vertical(layoutSize: recentReportGroupSize, subitems: [recentReportItem])
+        recentReportGroup.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
         
         let recentReportSection = NSCollectionLayoutSection(group: recentReportGroup)
+        
+        recentReportSection.orthogonalScrollingBehavior = .groupPagingCentered
         
         return recentReportSection
     }
@@ -222,11 +239,5 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
                 return cell
             }
         }
-        
-//        // UICollectionViewDelegateFlowLayout methods
-//        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//            // Return automatic size
-//            return UICollectionViewFlowLayout.automaticSize
-//        }
     }
 

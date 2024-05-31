@@ -34,7 +34,7 @@
 		C437C0C42C0844EE003924A4 /* BloodPressureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C437C0C32C0844EE003924A4 /* BloodPressureCell.swift */; };
 		C437C0C62C085084003924A4 /* recentReportCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C437C0C52C085084003924A4 /* recentReportCell.xib */; };
 		C437C0C82C085561003924A4 /* recentReportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C437C0C72C085561003924A4 /* recentReportCell.swift */; };
-		C49D15D02BFCAD6F00D0B4B3 /* HealthViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49D15CF2BFCAD6F00D0B4B3 /* HealthViewViewController.swift */; };
+		C4A310A32C09B2300001B733 /* SectionBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A310A22C09B2300001B733 /* SectionBackgroundView.swift */; };
 		C4C66D802C083D7C00A1E589 /* BloodPressureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4C66D7F2C083D7C00A1E589 /* BloodPressureCell.xib */; };
 		C4CDB3D52C06F13300BF4672 /* HealthViewCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CDB3D42C06F13300BF4672 /* HealthViewCollectionViewController.swift */; };
 		C4CDB4042C0725B400BF4672 /* CurrentVitalsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4CDB4032C0725B400BF4672 /* CurrentVitalsCell.xib */; };
@@ -69,7 +69,7 @@
 		C437C0C32C0844EE003924A4 /* BloodPressureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodPressureCell.swift; sourceTree = "<group>"; };
 		C437C0C52C085084003924A4 /* recentReportCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = recentReportCell.xib; sourceTree = "<group>"; };
 		C437C0C72C085561003924A4 /* recentReportCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recentReportCell.swift; sourceTree = "<group>"; };
-		C49D15CF2BFCAD6F00D0B4B3 /* HealthViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthViewViewController.swift; sourceTree = "<group>"; };
+		C4A310A22C09B2300001B733 /* SectionBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionBackgroundView.swift; sourceTree = "<group>"; };
 		C4C66D7F2C083D7C00A1E589 /* BloodPressureCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BloodPressureCell.xib; sourceTree = "<group>"; };
 		C4CDB3D42C06F13300BF4672 /* HealthViewCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthViewCollectionViewController.swift; sourceTree = "<group>"; };
 		C4CDB4032C0725B400BF4672 /* CurrentVitalsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrentVitalsCell.xib; sourceTree = "<group>"; };
@@ -146,13 +146,13 @@
 				C4CDB4092C073AF600BF4672 /* SectionHeaderView.xib */,
 				C4CDB40B2C073B8300BF4672 /* SectionHeaderView.swift */,
 				C4D656232C098C6D00DC9BA3 /* HeaderCollectionReusabeView.swift */,
+				C4A310A22C09B2300001B733 /* SectionBackgroundView.swift */,
 				C4C66D7F2C083D7C00A1E589 /* BloodPressureCell.xib */,
 				C437C0C32C0844EE003924A4 /* BloodPressureCell.swift */,
 				C4CDB4032C0725B400BF4672 /* CurrentVitalsCell.xib */,
 				C4CDB40D2C07403200BF4672 /* CurrentVitalsCell.swift */,
 				C437C0C52C085084003924A4 /* recentReportCell.xib */,
 				C437C0C72C085561003924A4 /* recentReportCell.swift */,
-				C49D15CF2BFCAD6F00D0B4B3 /* HealthViewViewController.swift */,
 			);
 			path = HealthView;
 			sourceTree = "<group>";
@@ -246,7 +246,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C49D15D02BFCAD6F00D0B4B3 /* HealthViewViewController.swift in Sources */,
+				C4A310A32C09B2300001B733 /* SectionBackgroundView.swift in Sources */,
 				053935E52C0839CD0091E5E9 /* DataController.swift in Sources */,
 				05ACBE222BFB2EBE002C58A9 /* ProfileViewController.swift in Sources */,
 				C4CDB40C2C073B8300BF4672 /* SectionHeaderView.swift in Sources */,
@@ -416,7 +416,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = VW3NC988UB;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CareNote/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Used for scanning images and obtaining text from them";
@@ -446,7 +446,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = VW3NC988UB;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CareNote/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Used for scanning images and obtaining text from them";
