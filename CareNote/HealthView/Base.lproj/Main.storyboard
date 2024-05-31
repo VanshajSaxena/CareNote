@@ -160,7 +160,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5bO-I0-S74">
                                 <rect key="frame" x="0.0" y="103" width="393" height="666"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewLayout key="collectionViewLayout" id="Lrw-ma-Amb"/>
+                                <collectionViewLayout key="collectionViewLayout" id="FcX-Yk-Mco"/>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="sTe-Mi-qua">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -174,7 +174,7 @@
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="LcN-xx-OdD"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.63921568630000003" green="0.87450980389999999" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="LcN-xx-OdD" firstAttribute="trailing" secondItem="5bO-I0-S74" secondAttribute="trailing" id="0Oi-ky-FCe"/>
                             <constraint firstItem="5bO-I0-S74" firstAttribute="leading" secondItem="LcN-xx-OdD" secondAttribute="leading" id="K4x-SH-Ima"/>
