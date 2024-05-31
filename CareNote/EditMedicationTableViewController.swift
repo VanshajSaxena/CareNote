@@ -21,6 +21,8 @@ class EditMedicationTableViewController: UITableViewController {
     
     @IBOutlet var noteTextField: UITextField!
     @IBOutlet var notificationSwitch: UISwitch!
+    
+    @IBOutlet var reminderModeLabel: UILabel!
     @IBOutlet var reminderMePopButton: UIButton! //used for hte reminder pop up buttom
     
     override func viewDidLoad() {
@@ -128,6 +130,61 @@ class EditMedicationTableViewController: UITableViewController {
 //        let notifiaction = notificationSwitch.isOn
         doneButtonTapped_Outlet.isEnabled = !medicineName.isEmpty && !dose.isEmpty && frequency != "Select" && slot != "Select"
     }
+    
+    
+//--------------------------- ****************************************************************************** ---------------------------
+    
+    var allowNotificationIndexPath = IndexPath(row: 0, section: 2)
+    var reminderIndexPath = IndexPath(row: 1, section: 2)
+    
+    var isReminderVisible:Bool = false{
+        didSet{
+            reminderModeLabel.isHidden = !isReminderVisible
+            reminderMePopButton.isHidden = !isReminderVisible
+        }
+    }
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath{
+//
+        case reminderIndexPath:
+            if isReminderVisible{
+                return 44 
+            }
+            else{
+                return 0
+            }
+        default:
+            return UITableView.automaticDimension
+        }
+    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        if indexPath == allowNotificationIndexPath {
+//                    isReminderVisible.toggle()//
+//            isReminderVisible = true
+            isReminderVisible.toggle()
+                } else {
+                    return
+                    }
+                
+        tableView.beginUpdates()
+        tableView.endUpdates()
+    }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     // MARK: - Table view data source
 
     
