@@ -19,356 +19,214 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
     }
     
     @IBOutlet var healthViewCollectionView: UICollectionView!
-    
-    
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        
-//        // Register the XIBs for the cell and header
-//        healthViewCollectionView.register(UINib(nibName: "CurrentVitalsCell", bundle: nil), forCellWithReuseIdentifier: "CurrentVitalsCell")
-//        healthViewCollectionView.register(UINib(nibName: "SectionHeaderView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "SectionHeaderView")
-//               
-//        // Set up data source and delegate
-//        healthViewCollectionView.dataSource = self
-//        healthViewCollectionView.delegate = self
-//               
-//        // Configure the compositional layout
-//        healthViewCollectionView.collectionViewLayout = createLayout()
-//    }
-//    
-//    func numberOfSections(in collectionView: UICollectionView) -> Int {
-//            return 3
-//        }
-//        
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        switch section {
-//        case 0:
-//            return 1 // Recent Report
-//        case 1:
-//            return 2 // Last Tests
-//        case 2:
-//            return 3 // Current Vitals
-//        default:
-//            return 0
-//        }
-//    }
         
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CurrentVitalsCell", for: indexPath) as! CurrentVitalsCell
-//            
-//        // Configure the cell with dummy data
-//        switch indexPath.section {
-//        case 0:
-//            if indexPath.item == 0 {
-//                cell.titleLabel.text = "Blood Pressure"
-//                cell.valueLabel.text = "125/83"
-//                cell.unitLabel.text = "mmHg"
-//                cell.iconImageView.image = UIImage(named: "icon_blood_pressure")
-//            } else if indexPath.item == 1 {
-//                cell.titleLabel.text = "Blood Sugar"
-//                cell.valueLabel.text = "69"
-//                cell.unitLabel.text = "mg/dL"
-//                cell.iconImageView.image = UIImage(named: "icon_blood_sugar")
-//            } else {
-//                cell.titleLabel.text = "Heart Rate"
-//                cell.valueLabel.text = "105"
-//                cell.unitLabel.text =  "bpm"
-//                cell.iconImageView.image = UIImage(named: "icon_heart_rate")
-//            }
-//        case 1:
-//            if indexPath.item == 0 {
-//                cell.titleLabel.text = "eGFR"
-//                cell.valueLabel.text = "77"
-//                cell.unitLabel.text = "mL/min"
-//                cell.iconImageView.image = UIImage(named: "icon_egfr")
-//            } else {
-//                cell.titleLabel.text = "Creatinine"
-//                cell.valueLabel.text = "1.4"
-//                cell.unitLabel.text = "mg/dL"
-//                cell.iconImageView.image = UIImage(named: "icon_creatinine")
-//            }
-//        case 2:
-//            cell.titleLabel.text = "Haemoglobin"
-//            cell.valueLabel.text = "8.70"
-//            cell.unitLabel.text = "g/dL"
-//            cell.iconImageView.image = UIImage(named: "icon_haemoglobin")
-//        default:
-//            break
-//        }
-//            
-//        return cell
-//    }
-////        
-//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-//        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SectionHeaderView", for: indexPath) as! SectionHeaderView
-//            
-//        // Configure the header with dummy data
-//        switch indexPath.section {
-//        case 0:
-//            header.titleLabel.text = "Current Vitals"
-//        case 1:
-//                header.titleLabel.text = "Last Tests"
-//        case 2:
-//            header.titleLabel.text = "Recent Report"
-//        default:
-//            break
-//        }
-//            
-//        return header
-//    }
-//        
-//    func createLayout() -> UICollectionViewLayout {
-//        return UICollectionViewCompositionalLayout { (sectionIndex, layoutEnvironment) -> NSCollectionLayoutSection? in
-//            // Define the item size
-//            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),heightDimension: .fractionalHeight(1.0))
-//            let item = NSCollectionLayoutItem(layoutSize: itemSize)
-//            
-//            // Define the group size and the number of items in the group
-//            let groupSize: NSCollectionLayoutSize
-//            let group: NSCollectionLayoutGroup
-//            if sectionIndex == 0 {
-//                let nestedGroup = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(150)), subitems: [item])
-//                            
-//                groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),heightDimension: .absolute(300))
-//                group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item, nestedGroup])
-//            } else if sectionIndex == 1 {
-//                groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-//                                                               heightDimension: .absolute(150))
-//                group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-//            } else {
-//                groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-//                                                               heightDimension: .absolute(150))
-//                group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-//            }
-//                        
-//            // Define the section and its content insets
-//            let section = NSCollectionLayoutSection(group: group)
-//            section.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 10, bottom: 20, trailing: 10)
-//                        
-//            // Add section header
-//            let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-//                                                                heightDimension: .estimated(44))
-//            let header = NSCollectionLayoutBoundarySupplementaryItem(
-//                            layoutSize: headerSize,
-//                            elementKind: UICollectionView.elementKindSectionHeader,
-//                            alignment: .top)
-//                        section.boundarySupplementaryItems = [header]
-//                        
-//            return section
-//        }
-//    }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Register the XIBs for the cell and header
-        healthViewCollectionView.register(UINib(nibName: "CurrentVitalsCell", bundle: nil), forCellWithReuseIdentifier: "CurrentVitalsCell")
-        healthViewCollectionView.register(UINib(nibName: "BloodPressureCell", bundle: nil), forCellWithReuseIdentifier: "BloodPressureCell")
-        
-        healthViewCollectionView.register(UINib(nibName: "SectionHeaderView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "SectionHeaderView")
-               
-        // Set up data source and delegate
-        healthViewCollectionView.delegate = self
-        healthViewCollectionView.dataSource = self
-        healthViewCollectionView.collectionViewLayout = createLayout()
-        // Register header view
-        healthViewCollectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header")
-    }
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            
+            // Register the XIBs for the cell and header
+            healthViewCollectionView.register(UINib(nibName: "CurrentVitalsCell", bundle: nil), forCellWithReuseIdentifier: "CurrentVitalsCell")
+            healthViewCollectionView.register(UINib(nibName: "BloodPressureCell", bundle: nil), forCellWithReuseIdentifier: "BloodPressureCell")
+            healthViewCollectionView.register(UINib(nibName: "recentReportCell", bundle: nil), forCellWithReuseIdentifier: "recentReportCell")
 
-    func createLayout() -> UICollectionViewLayout {
-        return UICollectionViewCompositionalLayout { (sectionIndex, layoutEnvironment) -> NSCollectionLayoutSection? in
+            
+            
+            // Set up data source and delegate
+            healthViewCollectionView.delegate = self
+            healthViewCollectionView.dataSource = self
+            
+            // Register header view
+//            healthViewCollectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header")
+            
+            // Set up collection view compositional layout
+            healthViewCollectionView.setCollectionViewLayout(generateLayout(), animated: true)
+
+            //Set up headers
+            healthViewCollectionView.register(HeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderCollectionReusableView")
+        }
+    
+    func generateLayout() -> UICollectionViewLayout {
+        let layout = UICollectionViewCompositionalLayout { (sectionIndex, env)->NSCollectionLayoutSection? in let section: NSCollectionLayoutSection
+            
             switch sectionIndex {
             case 0:
-                return self.currentVitalsSection()
+                section = self.currentVitalsLayout()
             case 1:
-                return self.lastTestSection()
+                section = self.lastTestLayout()
             case 2:
-                return self.recentReportSection()
+                section = self.recentReportLayout()
             default:
-                return nil
+                section = self.currentVitalsLayout()
             }
-        }
-    }
-    
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        switch section {
-//        case 0:
-//            return 1 // Recent Report
-//        case 1:
-//            return 2 // Last Tests
-//        case 2:
-//            return 3 // Current Vitals
-//        default:
-//             return 0
-//        }
-//    }
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SectionHeaderView", for: indexPath) as! SectionHeaderView
-
-        // Configure the header with dummy data
-        switch indexPath.section {
-        case 0:
-            header.titleLabel.text = "Current Vitals"
-        case 1:
-                header.titleLabel.text = "Last Tests"
-        case 2:
-            header.titleLabel.text = "Recent Report"
-        default:
-            break
-        }
-            return header
-    }
-
-    func currentVitalsSection() -> NSCollectionLayoutSection {
-        // Blood Pressure item
-        let bloodPressureItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
-        let bloodPressureItem = NSCollectionLayoutItem(layoutSize: bloodPressureItemSize)
-        bloodPressureItem.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2)
-        
-        // Blood Sugar and Heart Rate items
-        let smallItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.5))
-        let smallItem = NSCollectionLayoutItem(layoutSize: smallItemSize)
-        smallItem.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2)
-        
-        // Nested group for Blood Sugar and Heart Rate
-        let smallGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
-        let smallGroup = NSCollectionLayoutGroup.vertical(layoutSize: smallGroupSize, subitems: [smallItem, smallItem])
-        
-        // Combined group with Blood Pressure and the nested group
-        let combinedGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(0.6))
-        let combinedGroup = NSCollectionLayoutGroup.horizontal(layoutSize: combinedGroupSize, subitems: [bloodPressureItem, smallGroup])
-        
-        // Section
-        let section = NSCollectionLayoutSection(group: combinedGroup)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 10, bottom: 20, trailing: 10)
-        
-        // Header
-        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(44))
-        let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
-        section.boundarySupplementaryItems = [header]
-        
-        return section
-    }
-
-    func lastTestSection() -> NSCollectionLayoutSection {
-        // Items
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2)
-        
-        // Group
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(0.3))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
-        
-        // Section
-        let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 10, bottom: 20, trailing: 10)
-        
-        // Header
-        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(44))
-        let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
-        section.boundarySupplementaryItems = [header]
-        
-        return section
-    }
-
-    func recentReportSection() -> NSCollectionLayoutSection {
-        // Item
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2)
-        
-        // Group
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(0.5))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        
-        // Section
-        let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 10, bottom: 20, trailing: 10)
-        
-        // Header
-        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(44))
-        let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
-        section.boundarySupplementaryItems = [header]
-        
-        return section
-    }
-
-    // UICollectionViewDataSource methods
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if section == 0 {
-            return 3 // Number of items in the first section
-        } else if section == 1 {
-            return 2 // Number of items in the second section
-        } else {
-            return 1 // Number of items in the third section
-        }
-    }
-
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 3
-    }
-
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-//        cell.backgroundColor = .systemBlue // Customize your cell
-//        return cell
-//    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             
-        // Configure the cell with dummy data
-        switch indexPath.section {
-        case 0:
-            if indexPath.item == 0 {
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BloodPressureCell", for: indexPath) as! BloodPressureCell
-                cell.titleLabel.text = "Blood Pressure"
-                cell.value1Label.text = "125"
-                cell.value2Label.text = "83"
-                cell.unitLabel.text = "mmHg"
-                cell.iconImageView.image = UIImage(named: "icon_blood_pressure")
-                return cell
-            } else if indexPath.item == 1 {
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CurrentVitalsCell", for: indexPath) as! CurrentVitalsCell
-                cell.titleLabel.text = "Blood Sugar"
-                cell.valueLabel.text = "69"
-                cell.unitLabel.text = "mg/dL"
-                cell.iconImageView.image = UIImage(named: "icon_blood_sugar")
-                return cell
-            } else {
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CurrentVitalsCell", for: indexPath) as! CurrentVitalsCell
-                cell.titleLabel.text = "Heart Rate"
-                cell.valueLabel.text = "105"
-                cell.unitLabel.text =  "bpm"
-                cell.iconImageView.image = UIImage(named: "icon_heart_rate")
-                return cell
-            }
-        case 1:
-            if indexPath.item == 0 {
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CurrentVitalsCell", for: indexPath) as! CurrentVitalsCell
-                cell.titleLabel.text = "eGFR"
-                cell.valueLabel.text = "77"
-                cell.unitLabel.text = "mL/min"
-                cell.iconImageView.image = UIImage(named: "icon_egfr")
-                return cell
-            } else {
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CurrentVitalsCell", for: indexPath) as! CurrentVitalsCell
-                cell.titleLabel.text = "Creatinine"
-                cell.valueLabel.text = "1.4"
-                cell.unitLabel.text = "mg/dL"
-                cell.iconImageView.image = UIImage(named: "icon_creatinine")
-                return cell
-            }
-        case 2:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CurrentVitalsCell", for: indexPath) as! CurrentVitalsCell
-            cell.titleLabel.text = "Haemoglobin"
-            cell.valueLabel.text = "8.70"
-            cell.unitLabel.text = "g/dL"
-            cell.iconImageView.image = UIImage(named: "icon_haemoglobin")
-            return cell
-        default:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CurrentVitalsCell", for: indexPath) as! CurrentVitalsCell
-            return cell
+            let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(44))
+            let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment:  .top)
+            section.boundarySupplementaryItems = [header]
+            return section
         }
+        return layout
     }
-}
+        
+    //layout for current Vitals
+    func currentVitalsLayout() -> NSCollectionLayoutSection {
+        // Define the size of the Blood Pressure item (full width)
+        let bloodPressureItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .estimated(300))
+        let bloodPressureItem = NSCollectionLayoutItem(layoutSize: bloodPressureItemSize)
+        bloodPressureItem.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
+        
+        // Define the size of the Heart Rate and Blood Sugar items (half width)
+        let currentVitalsItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.65))
+        let currentVitalsItem = NSCollectionLayoutItem(layoutSize: currentVitalsItemSize)
+        currentVitalsItem.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5)
+        
+        // Create a horizontal group for the Heart Rate and Blood Sugar items
+        let verticalGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .estimated(150))
+        let verticalGroup = NSCollectionLayoutGroup.vertical(layoutSize: verticalGroupSize, subitems: [currentVitalsItem, currentVitalsItem])
+        verticalGroup.interItemSpacing = .fixed(10.0)
+        
+        // Create a vertical group containing the Blood Pressure item and the nested vertical group
+        let mainGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(300))
+        let mainGroup = NSCollectionLayoutGroup.horizontal(layoutSize: mainGroupSize, subitems: [bloodPressureItem, verticalGroup])
+        
+        // Create the section
+        let currentVitalsSection = NSCollectionLayoutSection(group: mainGroup)
+        
+        // Return the compositional layout
+        return currentVitalsSection
+    }
+    
+    //layout for last test
+    func lastTestLayout() -> NSCollectionLayoutSection {
+        
+        let currentVitalsItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .estimated(150))
+        let currentVitalsItem = NSCollectionLayoutItem(layoutSize: currentVitalsItemSize)
+        currentVitalsItem.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
+        //Create vertical group
+        let lastTestGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(150))
+        let lastTestGroup = NSCollectionLayoutGroup.horizontal(layoutSize: lastTestGroupSize, subitems: [currentVitalsItem,currentVitalsItem])
+        //last test section
+        let lastTestSection = NSCollectionLayoutSection(group: lastTestGroup)
+        
+        return lastTestSection
+    }
+    
+    // layout for recent report
+    func recentReportLayout() -> NSCollectionLayoutSection {
+        let recentReportItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(150))
+        let recentReportItem = NSCollectionLayoutItem(layoutSize: recentReportItemSize)
+        recentReportItem.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
+        
+        let recentReportGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(450)) // need change
+        let recentReportGroup = NSCollectionLayoutGroup.vertical(layoutSize: recentReportGroupSize, subitems: [recentReportItem])
+        
+        let recentReportSection = NSCollectionLayoutSection(group: recentReportGroup)
+        
+        return recentReportSection
+    }
+    
+        // UICollectionViewDataSource methods
+        func numberOfSections(in collectionView: UICollectionView) -> Int {
+            return 3
+        }
+    
+        func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+            switch section {
+            case 0:
+                return 3
+            case 1:
+                return 2
+            case 2:
+                return 1
+            default:
+                return 0
+            }
+    }
+    
+        func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+            if kind == UICollectionView.elementKindSectionHeader {
+                let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderCollectionReusableView", for: indexPath) as! HeaderCollectionReusableView
+        
+                // Configure the header with dummy data
+                    switch indexPath.section {
+                    case 0:
+                        header.headerLabel.text = "Current Vitals"
+                    case 1:
+                        header.headerLabel.text = "Last Tests"
+                    case 2:
+                        header.headerLabel.text = "Recent Report"
+                    default:
+                        break
+                    }
+                        return header
+            }
+            fatalError("Unexpected element kind")
+        }
+        
+        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+            
+            // Configure the cell with dummy data
+            switch indexPath.section {
+            case 0:
+                if indexPath.item == 0 {
+                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BloodPressureCell", for: indexPath) as! BloodPressureCell
+                    cell.titleLabel.text = "Blood Pressure"
+                    cell.value1Label.text = "125"
+                    cell.value2Label.text = "83"
+                    cell.unitLabel.text = "mmHg"
+                    cell.iconImageView.image = UIImage(named: "icon_blood_pressure")
+                    cell.layer.cornerRadius = 8
+                    return cell
+                } else if indexPath.item == 1 {
+                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CurrentVitalsCell", for: indexPath) as! CurrentVitalsCell
+                    cell.titleLabel.text = "Blood Sugar"
+                    cell.valueLabel.text = "69"
+                    cell.unitLabel.text = "mg/dL"
+                    cell.iconImageView.image = UIImage(named: "icon_blood_sugar")
+                    cell.layer.cornerRadius = 8
+                    return cell
+                } else {
+                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CurrentVitalsCell", for: indexPath) as! CurrentVitalsCell
+                    cell.titleLabel.text = "Heart Rate"
+                    cell.valueLabel.text = "105"
+                    cell.unitLabel.text = "bpm"
+                    cell.iconImageView.image = UIImage(named: "icon_heart_rate")
+                    cell.layer.cornerRadius = 8
+                    return cell
+                }
+            case 1:
+                if indexPath.item == 0 {
+                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CurrentVitalsCell", for: indexPath) as! CurrentVitalsCell
+                    cell.titleLabel.text = "eGFR"
+                    cell.valueLabel.text = "77"
+                    cell.unitLabel.text = "mL/min"
+                    cell.iconImageView.image = UIImage(named: "icon_egfr")
+                    cell.layer.cornerRadius = 8
+                    return cell
+                } else {
+                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CurrentVitalsCell", for: indexPath) as! CurrentVitalsCell
+                    cell.titleLabel.text = "Creatinine"
+                    cell.valueLabel.text = "1.4"
+                    cell.unitLabel.text = "mg/dL"
+                    cell.iconImageView.image = UIImage(named: "icon_creatinine")
+                    cell.layer.cornerRadius = 8
+                    return cell
+                }
+            case 2:
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recentReportCell", for: indexPath) as! recentReportCell
+                cell.titleLabel.text = "Haemoglobin"
+                cell.valueLabel.text = "8.70"
+                cell.unitLabel.text = "g/dL"
+                cell.layer.cornerRadius = 8
+                return cell
+            default:
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CurrentVitalsCell", for: indexPath) as! CurrentVitalsCell
+                return cell
+            }
+        }
+        
+//        // UICollectionViewDelegateFlowLayout methods
+//        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//            // Return automatic size
+//            return UICollectionViewFlowLayout.automaticSize
+//        }
+    }
 

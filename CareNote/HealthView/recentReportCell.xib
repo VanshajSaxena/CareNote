@@ -10,16 +10,49 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="TeF-Gj-Jxm">
-            <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="TeF-Gj-Jxm" customClass="recentReportCell" customModule="CareNote" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="345" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="8HY-9p-2gd">
-                <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                <rect key="frame" x="0.0" y="0.0" width="345" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wEK-WQ-vMP">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <rect key="frame" x="0.0" y="0.0" width="345" height="44"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Parameter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kkB-4r-ygC">
+                                <rect key="frame" x="20" y="11" width="201.66666666666666" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ap6-yc-QLh">
+                                <rect key="frame" x="223.66666666666663" y="11" width="68" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Unit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lvb-8v-zd4">
+                                <rect key="frame" x="293.66666666666663" y="11" width="49.333333333333329" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemMintColor"/>
+                        <constraints>
+                            <constraint firstItem="lvb-8v-zd4" firstAttribute="leading" secondItem="ap6-yc-QLh" secondAttribute="trailing" constant="2" id="0Yh-If-iDC"/>
+                            <constraint firstItem="lvb-8v-zd4" firstAttribute="top" secondItem="wEK-WQ-vMP" secondAttribute="top" constant="11" id="4p8-3p-OHY"/>
+                            <constraint firstItem="ap6-yc-QLh" firstAttribute="top" secondItem="wEK-WQ-vMP" secondAttribute="top" constant="11" id="CQi-pt-lYd"/>
+                            <constraint firstAttribute="bottom" secondItem="lvb-8v-zd4" secondAttribute="bottom" constant="11" id="NqO-5V-7uf"/>
+                            <constraint firstAttribute="bottom" secondItem="ap6-yc-QLh" secondAttribute="bottom" constant="11" id="Sa2-OY-4ut"/>
+                            <constraint firstItem="kkB-4r-ygC" firstAttribute="top" secondItem="wEK-WQ-vMP" secondAttribute="top" constant="11" id="he7-N6-331"/>
+                            <constraint firstItem="kkB-4r-ygC" firstAttribute="leading" secondItem="wEK-WQ-vMP" secondAttribute="leading" constant="20" symbolic="YES" id="i6f-Jb-ruI"/>
+                            <constraint firstAttribute="trailing" secondItem="lvb-8v-zd4" secondAttribute="trailing" constant="20" symbolic="YES" id="itU-Vg-lsU"/>
+                            <constraint firstItem="lvb-8v-zd4" firstAttribute="leading" secondItem="kkB-4r-ygC" secondAttribute="trailing" constant="72" id="iyk-AJ-76r"/>
+                            <constraint firstItem="ap6-yc-QLh" firstAttribute="leading" secondItem="kkB-4r-ygC" secondAttribute="trailing" constant="2" id="kUk-i4-Qb1"/>
+                            <constraint firstAttribute="bottom" secondItem="kkB-4r-ygC" secondAttribute="bottom" constant="11" id="vvC-iD-nuS"/>
+                        </constraints>
                     </view>
                 </subviews>
                 <constraints>
@@ -29,12 +62,17 @@
                     <constraint firstAttribute="bottom" secondItem="wEK-WQ-vMP" secondAttribute="bottom" id="u3Y-qx-eo4"/>
                 </constraints>
             </collectionViewCellContentView>
-            <point key="canvasLocation" x="176.33587786259542" y="-103.52112676056339"/>
+            <connections>
+                <outlet property="titleLabel" destination="kkB-4r-ygC" id="qkS-wh-INa"/>
+                <outlet property="unitLabel" destination="lvb-8v-zd4" id="AeR-hT-3eb"/>
+                <outlet property="valueLabel" destination="ap6-yc-QLh" id="w3R-US-R8s"/>
+            </connections>
+            <point key="canvasLocation" x="174.80916030534351" y="-103.52112676056339"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <systemColor name="systemMintColor">
+            <color red="0.0" green="0.7803921568627451" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
