@@ -10,7 +10,6 @@
 		0500A4A72C05EB9400AD2E02 /* DataClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0500A4A62C05EB9400AD2E02 /* DataClasses.swift */; };
 		053935E52C0839CD0091E5E9 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053935E42C0839CD0091E5E9 /* DataController.swift */; };
 		054CAF322BFDEA060041EE24 /* AddVisitTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054CAF312BFDEA060041EE24 /* AddVisitTableViewController.swift */; };
-		0556F0352C088C4E000B21B2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0556F0342C088C4E000B21B2 /* GoogleService-Info.plist */; };
 		0556F0382C0896A7000B21B2 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0556F0372C0896A7000B21B2 /* FirebaseAnalytics */; };
 		0556F03A2C0896A7000B21B2 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 0556F0392C0896A7000B21B2 /* FirebaseAnalyticsOnDeviceConversion */; };
 		0556F03C2C0896A7000B21B2 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0556F03B2C0896A7000B21B2 /* FirebaseAnalyticsSwift */; };
@@ -30,6 +29,8 @@
 		05ACBE1C2BFB2C63002C58A9 /* HealthLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05ACBE1B2BFB2C63002C58A9 /* HealthLogViewController.swift */; };
 		05ACBE202BFB2EAB002C58A9 /* ProfileStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05ACBE1F2BFB2EAB002C58A9 /* ProfileStoryboard.storyboard */; };
 		05ACBE222BFB2EBE002C58A9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05ACBE212BFB2EBE002C58A9 /* ProfileViewController.swift */; };
+		05D215A42C098DB30078A10D /* MedicalParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D215A32C098DB30078A10D /* MedicalParameters.swift */; };
+		05D215A62C09A6300078A10D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 05D215A52C09A6300078A10D /* GoogleService-Info.plist */; };
 		C49D15D02BFCAD6F00D0B4B3 /* HealthViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49D15CF2BFCAD6F00D0B4B3 /* HealthViewViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,7 +38,6 @@
 		0500A4A62C05EB9400AD2E02 /* DataClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataClasses.swift; sourceTree = "<group>"; };
 		053935E42C0839CD0091E5E9 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		054CAF312BFDEA060041EE24 /* AddVisitTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVisitTableViewController.swift; sourceTree = "<group>"; };
-		0556F0342C088C4E000B21B2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		056494DF2BFB491800EB5DE2 /* TimeLineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineViewController.swift; sourceTree = "<group>"; };
 		056CB6C72BFB67B100D96E25 /* MedMinderTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedMinderTableViewController.swift; sourceTree = "<group>"; };
 		0580560E2BFB2746006A897D /* CareNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CareNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,6 +54,8 @@
 		05ACBE1B2BFB2C63002C58A9 /* HealthLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthLogViewController.swift; sourceTree = "<group>"; };
 		05ACBE1F2BFB2EAB002C58A9 /* ProfileStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileStoryboard.storyboard; sourceTree = "<group>"; };
 		05ACBE212BFB2EBE002C58A9 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		05D215A32C098DB30078A10D /* MedicalParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalParameters.swift; sourceTree = "<group>"; };
+		05D215A52C09A6300078A10D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C49D15CF2BFCAD6F00D0B4B3 /* HealthViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthViewViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -92,7 +94,7 @@
 		058056102BFB2746006A897D /* CareNote */ = {
 			isa = PBXGroup;
 			children = (
-				0556F0342C088C4E000B21B2 /* GoogleService-Info.plist */,
+				05D215A52C09A6300078A10D /* GoogleService-Info.plist */,
 				058056112BFB2746006A897D /* AppDelegate.swift */,
 				05ACBE172BFB2B9D002C58A9 /* HealthLogStoryboard.storyboard */,
 				05ACBE1B2BFB2C63002C58A9 /* HealthLogViewController.swift */,
@@ -104,6 +106,7 @@
 				059E305E2BFCB9A0006A3F52 /* Medicine.swift */,
 				0500A4A62C05EB9400AD2E02 /* DataClasses.swift */,
 				053935E42C0839CD0091E5E9 /* DataController.swift */,
+				05D215A32C098DB30078A10D /* MedicalParameters.swift */,
 				058056132BFB2746006A897D /* SceneDelegate.swift */,
 				058056172BFB2746006A897D /* Main.storyboard */,
 				C49D15CF2BFCAD6F00D0B4B3 /* HealthViewViewController.swift */,
@@ -190,7 +193,7 @@
 				05ACBE202BFB2EAB002C58A9 /* ProfileStoryboard.storyboard in Resources */,
 				05ACBE182BFB2B9D002C58A9 /* HealthLogStoryboard.storyboard in Resources */,
 				058056192BFB2746006A897D /* Base in Resources */,
-				0556F0352C088C4E000B21B2 /* GoogleService-Info.plist in Resources */,
+				05D215A62C09A6300078A10D /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,6 +216,7 @@
 				058056142BFB2746006A897D /* SceneDelegate.swift in Sources */,
 				05ACBE1C2BFB2C63002C58A9 /* HealthLogViewController.swift in Sources */,
 				059E305F2BFCB9A0006A3F52 /* Medicine.swift in Sources */,
+				05D215A42C098DB30078A10D /* MedicalParameters.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
