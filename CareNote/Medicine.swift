@@ -6,14 +6,14 @@
 //
 
 import Foundation
-struct Medicine{
-    var name : String
-    var dose : String
-    var frequency : String
-    
-    var MedicineTime : Date
-
-    
-    var notification : Bool
-//    var roomType : RoomType
-}
+//struct Medicine{
+//    var name : String
+//    var dose : String
+//    var frequency : String
+//    
+//    var MedicineTime : Date
+//
+//    
+//    var notification : Bool
+////    var roomType : RoomType
+//}
