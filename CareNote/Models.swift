@@ -15,8 +15,8 @@ enum Gender {
     case unknown
 }
 
-// Represents a patient in the CareNote app
-class Patient {
+// Represents a user in the CareNote app
+class User {
     var id: UUID
     var userName: String
     var firstName: String
@@ -27,7 +27,7 @@ class Patient {
     var email: String
     var dateOfBirth: Date
     
-    // Holds the Current health metrics of the patient
+    // Holds the Current health metrics of the user
     struct CurrentHealthDetails {
         var height: String?
         var weight: String?
@@ -53,7 +53,7 @@ class Consultation {
     var id: UUID
     var dateOfConsultation: Date
     var title: String
-    var patient: Patient
+    var user: User
     var doctor: Doctor
     var consultationDocuments: [ConsultationDocument]?
     struct Prescription {
@@ -62,11 +62,11 @@ class Consultation {
         var description: String
         var recommendedMedication: [Medicine]
     }
-    init(id: UUID, dateOfConsultation: Date, title: String, patient: Patient, doctor: Doctor, consultationDocuments: [ConsultationDocument]? = nil) {
+    init(id: UUID, dateOfConsultation: Date, title: String, user: User, doctor: Doctor, consultationDocuments: [ConsultationDocument]? = nil) {
         self.id = id
         self.dateOfConsultation = dateOfConsultation
         self.title = title
-        self.patient = patient
+        self.user = user
         self.doctor = doctor
         self.consultationDocuments = consultationDocuments
     }
@@ -76,6 +76,7 @@ class Consultation {
 struct ConsultationDocument {
     var title: String
     var documentType: String
+    var content: Any?
     var note: String?
 }
 
@@ -97,42 +98,6 @@ class Doctor {
         self.name = name
         self.speciality = speciality
         self.contactNumber = contactNumber
-    }
-}
-
-// This class represents an abstract MedicalParameter that can be used to create more specific
-// medical parameters like, bloodPressureSystolic, bloodSugar, eGFR, etc.
-class MedicalParameter {
-    var name: String
-    var unitOfMeasure: String
-    // private(set) keyword is used to make properties publicly redable but privately modifiable.
-    private(set) var history: [(value: Any, date: Date)]? // history is an array of a tuple that can hold previous values of a parameter.
-    
-    init(name: String, unitOfMeasure: String, history: [(value: Any, date: Date)]? = nil) {
-        self.name = name
-        self.unitOfMeasure = unitOfMeasure
-        self.history = history
-    }
-    
-    func addValue(_ value: Any, date: Date) {
-        history?.append((value: value, date: date))
-    }
-    
-    func displayHistory(){
-        print("History of parameter: \(name).")
-        if let historyExists = history {
-            for entry in historyExists {
-                print("Value: \(entry.value) \(unitOfMeasure), Date: \(entry.date).")
-            }
-        }
-    }
-    
-    func getValues() -> [Any]? {
-        return history?.map { $0.value }
-    }
-
-    func getDates() -> [Date]? {
-        return history?.map { $0.date }
     }
 }
 

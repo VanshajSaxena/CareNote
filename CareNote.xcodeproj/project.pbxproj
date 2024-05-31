@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0500A4A72C05EB9400AD2E02 /* DataClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0500A4A62C05EB9400AD2E02 /* DataClasses.swift */; };
+		0500A4A72C05EB9400AD2E02 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0500A4A62C05EB9400AD2E02 /* Models.swift */; };
 		053935E52C0839CD0091E5E9 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053935E42C0839CD0091E5E9 /* DataController.swift */; };
 		054CAF322BFDEA060041EE24 /* AddVisitTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054CAF312BFDEA060041EE24 /* AddVisitTableViewController.swift */; };
 		0556F0382C0896A7000B21B2 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0556F0372C0896A7000B21B2 /* FirebaseAnalytics */; };
@@ -35,7 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0500A4A62C05EB9400AD2E02 /* DataClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataClasses.swift; sourceTree = "<group>"; };
+		0500A4A62C05EB9400AD2E02 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		053935E42C0839CD0091E5E9 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		054CAF312BFDEA060041EE24 /* AddVisitTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVisitTableViewController.swift; sourceTree = "<group>"; };
 		056494DF2BFB491800EB5DE2 /* TimeLineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineViewController.swift; sourceTree = "<group>"; };
@@ -104,7 +104,7 @@
 				059E305C2BFCB39F006A3F52 /* EditMedicationTableViewController.swift */,
 				056CB6C72BFB67B100D96E25 /* MedMinderTableViewController.swift */,
 				059E305E2BFCB9A0006A3F52 /* Medicine.swift */,
-				0500A4A62C05EB9400AD2E02 /* DataClasses.swift */,
+				0500A4A62C05EB9400AD2E02 /* Models.swift */,
 				053935E42C0839CD0091E5E9 /* DataController.swift */,
 				05D215A32C098DB30078A10D /* MedicalParameters.swift */,
 				058056132BFB2746006A897D /* SceneDelegate.swift */,
@@ -210,7 +210,7 @@
 				056CB6C82BFB67B100D96E25 /* MedMinderTableViewController.swift in Sources */,
 				054CAF322BFDEA060041EE24 /* AddVisitTableViewController.swift in Sources */,
 				056494E02BFB491800EB5DE2 /* TimeLineViewController.swift in Sources */,
-				0500A4A72C05EB9400AD2E02 /* DataClasses.swift in Sources */,
+				0500A4A72C05EB9400AD2E02 /* Models.swift in Sources */,
 				058056122BFB2746006A897D /* AppDelegate.swift in Sources */,
 				059E305D2BFCB39F006A3F52 /* EditMedicationTableViewController.swift in Sources */,
 				058056142BFB2746006A897D /* SceneDelegate.swift in Sources */,

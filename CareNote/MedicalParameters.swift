@@ -15,10 +15,14 @@ class MedicalParameter {
     // private(set) keyword is used to make properties publicly redable but privately modifiable.
     private(set) var history: [(value: Any, date: Date)]? // history is an array of a tuple that can hold previous values of a parameter.
     
-    init(name: String, unitOfMeasure: String, history: [(value: Any, date: Date)]? = nil) {
+    init(name: String, initialValue: Any? = nil, unitOfMeasure: String, dateOfMeasurement: Date? = nil) {
         self.name = name
         self.unitOfMeasure = unitOfMeasure
-        self.history = history
+        if let initialValue = initialValue, let dateOfMeasurement = dateOfMeasurement {
+            self.history = [(value: initialValue, date: dateOfMeasurement)]
+        }else {
+            self.history = nil
+        }
         
     }
     
@@ -28,10 +32,12 @@ class MedicalParameter {
     
     func displayHistory(){
         print("History of parameter: \(name).")
-        if let historyExists = history {
-            for entry in historyExists {
-                print("Value: \(entry.value) \(unitOfMeasure), Date: \(entry.date).")
-            }
+        guard let history = history else {
+            print("No history available for \(name)")
+            return
+        }
+        for entry in history {
+            print("Value: \(entry.value) \(unitOfMeasure), Date: \(entry.date).")
         }
     }
     
@@ -43,8 +49,8 @@ class MedicalParameter {
         return history?.map { $0.date }
     }
     
-    
 }
+    
 
 
 
