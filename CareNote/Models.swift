@@ -8,7 +8,7 @@
 import Foundation
 
 // Gender Enum Representing Possible Genders
-enum Gender: Codable {
+enum Gender: String, Codable {
     case male
     case female
     case other
