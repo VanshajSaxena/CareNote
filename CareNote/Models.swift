@@ -8,7 +8,7 @@
 import Foundation
 
 // Gender Enum Representing Possible Genders
-enum Gender {
+enum Gender: Codable {
     case male
     case female
     case other
@@ -16,7 +16,7 @@ enum Gender {
 }
 
 // Represents a user in the CareNote app
-class User {
+class User: Codable {
     var id: UUID
     var userName: String
     var firstName: String
@@ -49,7 +49,7 @@ class User {
 }
 
 // Represents a single consultation or a doctor visit
-class Consultation {
+class Consultation: Codable {
     var id: UUID
     var dateOfConsultation: Date
     var title: String
@@ -73,21 +73,21 @@ class Consultation {
 }
 
 // Documents after a doctor visit
-struct ConsultationDocument {
+struct ConsultationDocument: Codable {
     var title: String
     var documentType: String
-    var content: Any?
+    var content: String?
     var note: String?
 }
 
 // Represents a single medicine
-struct Medicine {
+struct Medicine: Codable {
     var name: String
     var unitOfMeasure: String
 }
 
 // Represents a doctor in the CareNote app
-class Doctor {
+class Doctor: Codable {
     var id: UUID
     var name: String
     var speciality: String
@@ -100,4 +100,3 @@ class Doctor {
         self.contactNumber = contactNumber
     }
 }
-
