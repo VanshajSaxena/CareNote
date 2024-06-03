@@ -35,22 +35,29 @@ class HealthLogViewController: UIViewController, VNDocumentCameraViewControllerD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.bringSubviewToFront(timelineSegmentView!)
+        self.view.bringSubviewToFront(timelineSegmentView)
         
         if #available(iOS 17.4, *) {
-            filter.datePickerMode = .yearAndMonth
+//            filter.datePickerMode = .yearAndMonth
         } else {
             // Fallback on earlier versions
         }
+
+//        filter.addTarget(self, action: #selector(filter(_:)), for: .valueChanged)
+
 
         filter.addTarget(self, action: #selector(filter(_:)), for: .valueChanged)
     }
     
     @objc func filter(_ sender: UIDatePicker) {
 
+
         let selectedDate = sender.date
         
         let calendar = Calendar.current
+//        let selectedDate = sender.date
+//        
+//        let calendar = Calendar.current
 //        let month = calendar.component(.month, from: selectedDate)
 //        let year = calendar.component(.year, from: selectedDate)
         
@@ -102,6 +109,15 @@ class HealthLogViewController: UIViewController, VNDocumentCameraViewControllerD
         print("Document Gallery: \(documentGalleryData)")
 
     }
+//    func loadTimelineData() {
+//        let timelineData: [String] = ["Visit1", "Visit2", "Visit3"]
+//        print("Timeline Data: \(timelineData)")
+//    }
+//    
+//    func loadDocumentGallery() {
+//        let documentGalleryData: [String] = ["Doc1", "Doc2", "Doc3"]
+//        print("Document Gallery: \(documentGalleryData)")
+//    }
 
     func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFailWithError error: Error) {
         // Handle the failure here
