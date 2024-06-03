@@ -9,6 +9,7 @@ import UIKit
 
 class HealthViewCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
+    let dataController = DataController.shared
     //Code to make tab bar icon visible
     required init?(coder: NSCoder)
     {
@@ -22,6 +23,8 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
         
         override func viewDidLoad() {
             super.viewDidLoad()
+            
+            addGradientBackground()
             
             // Register the XIBs for the cell and header
             healthViewCollectionView.register(UINib(nibName: "CurrentVitalsCell", bundle: nil), forCellWithReuseIdentifier: "CurrentVitalsCell")
@@ -44,6 +47,22 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
             //Set up headers
             healthViewCollectionView.register(HeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderCollectionReusableView")
         }
+    
+    //GradientBackground
+    func addGradientBackground() {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = self.view.bounds
+        
+        let colour1 = UIColor(red: 0x66 / 255.0, green: 0xFF / 255.0, blue: 0xFF / 255.0, alpha: 1.0)
+        let colour2 = UIColor(red: 0x66 / 255.0, green: 0xCC / 255.0, blue: 0xFF / 255.0, alpha: 1.0)
+        
+        gradientLayer.colors = [colour1.cgColor, colour2.cgColor]
+        
+        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
+        
+        self.view.layer.insertSublayer(gradientLayer, at: 0)
+    }
     
     func generateLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { (sectionIndex, env)->NSCollectionLayoutSection? in
@@ -129,8 +148,8 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
         let recentReportItem = NSCollectionLayoutItem(layoutSize: recentReportItemSize)
         recentReportItem.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
         
-        let recentReportGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(450)) // need change
-        let recentReportGroup = NSCollectionLayoutGroup.vertical(layoutSize: recentReportGroupSize, subitems: [recentReportItem])
+        let recentReportGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(60)) // need change
+        let recentReportGroup = NSCollectionLayoutGroup.vertical(layoutSize: recentReportGroupSize, subitem: recentReportItem, count: 1)
         recentReportGroup.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
         
         let recentReportSection = NSCollectionLayoutSection(group: recentReportGroup)
@@ -166,10 +185,14 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
                     switch indexPath.section {
                     case 0:
                         header.headerLabel.text = "Current Vitals"
+                        header.iconButton.isHidden = false
+                        header.iconButton.addTarget(self, action: #selector(iconButtonTapped), for: .touchUpInside)
                     case 1:
                         header.headerLabel.text = "Last Tests"
+                        header.iconButton.isHidden = false
                     case 2:
                         header.headerLabel.text = "Recent Report"
+                        header.iconButton.isHidden = true
                     default:
                         break
                     }
@@ -185,53 +208,64 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
             case 0:
                 if indexPath.item == 0 {
                     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BloodPressureCell", for: indexPath) as! BloodPressureCell
-                    cell.titleLabel.text = "Blood Pressure"
+                    let bpCell = dataController.getMedicalParameters(name: "Blood Pressure")
+                    cell.titleLabel.text = bpCell?.name
                     cell.value1Label.text = "125"
                     cell.value2Label.text = "83"
-                    cell.unitLabel.text = "mmHg"
-                    cell.iconImageView.image = UIImage(named: "icon_blood_pressure")
+                    cell.unitLabel.text = bpCell?.unitOfMeasure
+                    cell.iconImageView.image = UIImage(systemName: "waveform.path.ecg")
+                    cell.iconImageView.tintColor = UIColor.systemBlue
                     cell.layer.cornerRadius = 8
                     return cell
                 } else if indexPath.item == 1 {
                     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CurrentVitalsCell", for: indexPath) as! CurrentVitalsCell
-                    cell.titleLabel.text = "Blood Sugar"
-                    cell.valueLabel.text = "69"
-                    cell.unitLabel.text = "mg/dL"
-                    cell.iconImageView.image = UIImage(named: "icon_blood_sugar")
+                    let bsCell = dataController.getMedicalParameters(name: "Blood Sugar")
+                    cell.titleLabel.text = bsCell?.name
+                    cell.valueLabel.text = bsCell?.getValues()?.first as? String
+                    cell.unitLabel.text = bsCell?.unitOfMeasure
+                    cell.iconImageView.image = UIImage(systemName: "drop")
+                    cell.iconImageView.tintColor = UIColor.orange
                     cell.layer.cornerRadius = 8
                     return cell
                 } else {
                     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CurrentVitalsCell", for: indexPath) as! CurrentVitalsCell
-                    cell.titleLabel.text = "Heart Rate"
-                    cell.valueLabel.text = "105"
-                    cell.unitLabel.text = "bpm"
-                    cell.iconImageView.image = UIImage(named: "icon_heart_rate")
+                    let hrCell = dataController.getMedicalParameters(name: "Heart Rate")
+                    cell.titleLabel.text = hrCell?.name
+                    cell.valueLabel.text = hrCell?.getValues()?.first as? String
+                    cell.unitLabel.text = hrCell?.unitOfMeasure
+                    cell.iconImageView.image = UIImage(systemName: "heart")
+                    cell.iconImageView.tintColor = UIColor.red
                     cell.layer.cornerRadius = 8
                     return cell
                 }
             case 1:
                 if indexPath.item == 0 {
                     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CurrentVitalsCell", for: indexPath) as! CurrentVitalsCell
-                    cell.titleLabel.text = "eGFR"
-                    cell.valueLabel.text = "77"
-                    cell.unitLabel.text = "mL/min"
-                    cell.iconImageView.image = UIImage(named: "icon_egfr")
+                    let egfrCell = dataController.getMedicalParameters(name: "eGFR")
+                    cell.titleLabel.text = egfrCell?.name
+                    cell.valueLabel.text = egfrCell?.getValues()?.first as? String
+                    cell.unitLabel.text = egfrCell?.unitOfMeasure
+                    cell.iconImageView.image = UIImage(systemName: "chart.bar.doc.horizontal")
+                    cell.iconImageView.tintColor = UIColor.systemGreen
                     cell.layer.cornerRadius = 8
                     return cell
                 } else {
                     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CurrentVitalsCell", for: indexPath) as! CurrentVitalsCell
-                    cell.titleLabel.text = "Creatinine"
-                    cell.valueLabel.text = "1.4"
-                    cell.unitLabel.text = "mg/dL"
-                    cell.iconImageView.image = UIImage(named: "icon_creatinine")
+                    let crCell = dataController.getMedicalParameters(name: "Creatinine")
+                    cell.titleLabel.text = crCell?.name
+                    cell.valueLabel.text = crCell?.getValues()?.first as? String
+                    cell.unitLabel.text = crCell?.unitOfMeasure
+                    cell.iconImageView.image = UIImage(systemName: "cross.vial")
+                    cell.iconImageView.tintColor = UIColor.purple
                     cell.layer.cornerRadius = 8
                     return cell
                 }
             case 2:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recentReportCell", for: indexPath) as! recentReportCell
-                cell.titleLabel.text = "Haemoglobin"
-                cell.valueLabel.text = "8.70"
-                cell.unitLabel.text = "g/dL"
+                let hgCell = dataController.getMedicalParameters(name: "Haemoglobin")
+                cell.titleLabel.text = hgCell?.name
+                cell.valueLabel.text = hgCell?.getValues()?.first as? String
+                cell.unitLabel.text = hgCell?.unitOfMeasure
                 cell.layer.cornerRadius = 8
                 return cell
             default:
@@ -239,5 +273,20 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
                 return cell
             }
         }
+    
+    
+    @objc private func iconButtonTapped() {
+        print("hello")
+        // Handle button tap event here
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let currentVitalsVC = storyboard.instantiateViewController(withIdentifier: "CurrentVitalsSegmentedViewController") as? CurrentVitalsSegmentedViewController {
+            // Get the current visible view controller
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+               let sceneDelegate = windowScene.delegate as? SceneDelegate,
+               let rootViewController = sceneDelegate.window?.rootViewController as? UINavigationController {
+                rootViewController.pushViewController(currentVitalsVC, animated: true)
+            }
+        }
+    }
     }
 
