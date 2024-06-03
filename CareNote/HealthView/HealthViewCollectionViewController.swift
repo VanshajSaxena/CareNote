@@ -207,7 +207,7 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
             case 0:
                 if indexPath.item == 0 {
                     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BloodPressureCell", for: indexPath) as! BloodPressureCell
-                    let bpCell = dataController.getMedicalParameters(name: "Blood Pressure")
+                    let bpCell = dataController.getMedicalParameter(name: "Blood Pressure")
                     cell.titleLabel.text = bpCell?.name
                     cell.value1Label.text = "125"
                     cell.value2Label.text = "83"
@@ -218,9 +218,9 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
                     return cell
                 } else if indexPath.item == 1 {
                     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CurrentVitalsCell", for: indexPath) as! CurrentVitalsCell
-                    let bsCell = dataController.getMedicalParameters(name: "Blood Sugar")
+                    let bsCell = dataController.getMedicalParameter(name: "Blood Sugar")
                     cell.titleLabel.text = bsCell?.name
-                    cell.valueLabel.text = bsCell?.getValues()?.first as? String
+                    cell.valueLabel.text = bsCell?.getValues().first as? String
                     cell.unitLabel.text = bsCell?.unitOfMeasure
                     cell.iconImageView.image = UIImage(systemName: "drop")
                     cell.iconImageView.tintColor = UIColor.orange
@@ -228,9 +228,9 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
                     return cell
                 } else {
                     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CurrentVitalsCell", for: indexPath) as! CurrentVitalsCell
-                    let hrCell = dataController.getMedicalParameters(name: "Heart Rate")
+                    let hrCell = dataController.getMedicalParameter(name: "Heart Rate")
                     cell.titleLabel.text = hrCell?.name
-                    cell.valueLabel.text = hrCell?.getValues()?.first as? String
+                    cell.valueLabel.text = hrCell?.getValues().first as? String
                     cell.unitLabel.text = hrCell?.unitOfMeasure
                     cell.iconImageView.image = UIImage(systemName: "heart")
                     cell.iconImageView.tintColor = UIColor.red
@@ -240,9 +240,9 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
             case 1:
                 if indexPath.item == 0 {
                     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CurrentVitalsCell", for: indexPath) as! CurrentVitalsCell
-                    let egfrCell = dataController.getMedicalParameters(name: "eGFR")
+                    let egfrCell = dataController.getMedicalParameter(name: "eGFR")
                     cell.titleLabel.text = egfrCell?.name
-                    cell.valueLabel.text = egfrCell?.getValues()?.first as? String
+                    cell.valueLabel.text = egfrCell?.getValues().first as? String
                     cell.unitLabel.text = egfrCell?.unitOfMeasure
                     cell.iconImageView.image = UIImage(systemName: "chart.bar.doc.horizontal")
                     cell.iconImageView.tintColor = UIColor.systemGreen
@@ -250,9 +250,9 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
                     return cell
                 } else {
                     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CurrentVitalsCell", for: indexPath) as! CurrentVitalsCell
-                    let crCell = dataController.getMedicalParameters(name: "Creatinine")
+                    let crCell = dataController.getMedicalParameter(name: "Creatinine")
                     cell.titleLabel.text = crCell?.name
-                    cell.valueLabel.text = crCell?.getValues()?.first as? String
+                    cell.valueLabel.text = crCell?.getValues().first as? String
                     cell.unitLabel.text = crCell?.unitOfMeasure
                     cell.iconImageView.image = UIImage(systemName: "cross.vial")
                     cell.iconImageView.tintColor = UIColor.purple
@@ -261,9 +261,9 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
                 }
             case 2:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recentReportCell", for: indexPath) as! recentReportCell
-                let hgCell = dataController.getMedicalParameters(name: "Haemoglobin")
+                let hgCell = dataController.getMedicalParameter(name: "Haemoglobin")
                 cell.titleLabel.text = hgCell?.name
-                cell.valueLabel.text = hgCell?.getValues()?.first as? String
+                cell.valueLabel.text = hgCell?.getValues().first as? String
                 cell.unitLabel.text = hgCell?.unitOfMeasure
                 cell.layer.cornerRadius = 8
                 return cell
