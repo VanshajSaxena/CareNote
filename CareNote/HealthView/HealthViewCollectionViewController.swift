@@ -186,13 +186,12 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
                     case 0:
                         header.headerLabel.text = "Current Vitals"
                         header.iconButton.isHidden = false
-                        header.iconButton.addTarget(self, action: #selector(iconButtonTapped), for: .touchUpInside)
                     case 1:
                         header.headerLabel.text = "Last Tests"
                         header.iconButton.isHidden = false
                     case 2:
                         header.headerLabel.text = "Recent Report"
-                        header.iconButton.isHidden = true
+                        header.iconButton.isHidden = false
                     default:
                         break
                     }
@@ -273,20 +272,5 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
                 return cell
             }
         }
-    
-    
-    @objc private func iconButtonTapped() {
-        print("hello")
-        // Handle button tap event here
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let currentVitalsVC = storyboard.instantiateViewController(withIdentifier: "CurrentVitalsSegmentedViewController") as? CurrentVitalsSegmentedViewController {
-            // Get the current visible view controller
-            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-               let sceneDelegate = windowScene.delegate as? SceneDelegate,
-               let rootViewController = sceneDelegate.window?.rootViewController as? UINavigationController {
-                rootViewController.pushViewController(currentVitalsVC, animated: true)
-            }
-        }
-    }
     }
 

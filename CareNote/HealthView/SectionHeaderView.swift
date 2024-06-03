@@ -11,8 +11,10 @@ import UIKit
 class SectionHeaderView: UICollectionReusableView {
     
     @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var detailButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
+
 }

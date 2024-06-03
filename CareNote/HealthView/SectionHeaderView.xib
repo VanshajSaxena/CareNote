@@ -40,6 +40,7 @@
                 <constraint firstItem="2LH-DM-LdK" firstAttribute="trailing" secondItem="eWs-Wj-dl9" secondAttribute="trailing" id="zGr-xO-TZ9"/>
             </constraints>
             <connections>
+                <outlet property="detailButton" destination="eWs-Wj-dl9" id="hlw-k6-OjJ"/>
                 <outlet property="titleLabel" destination="PEf-v8-AP6" id="KJN-A3-JX3"/>
             </connections>
             <point key="canvasLocation" x="142.74809160305344" y="-135.91549295774649"/>
