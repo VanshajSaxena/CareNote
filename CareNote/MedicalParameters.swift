@@ -9,33 +9,26 @@ import Foundation
 
 // This class represents an abstract MedicalParameter that can be used to create more specific
 // medical parameters like, bloodPressureSystolic, bloodSugar, eGFR, etc.
-class MedicalParameter {
+class MedicalParameter: Codable {
     var name: String
     var unitOfMeasure: String
     /// private(set) keyword is used to make properties publicly redable but privately modifiable.
-    private(set) var history: [(value: Any, date: Date)]? // history is an array of a tuple that can hold previous values of a parameter.
-    
+    private(set) var history: [(value: Any, date: Date)] = []  // Always initialize as empty array
+
     init(name: String, initialValue: Any? = nil, unitOfMeasure: String, dateOfMeasurement: Date? = nil) {
         self.name = name
         self.unitOfMeasure = unitOfMeasure
         if let initialValue = initialValue, let dateOfMeasurement = dateOfMeasurement {
-            self.history = [(value: initialValue, date: dateOfMeasurement)]
-        }else {
-            self.history = nil
+            self.history.append((value: initialValue, date: dateOfMeasurement))
         }
-        
     }
-    
+
     func addValue(_ value: Any, date: Date) {
-        if history == nil {
-            history = [(value: value, date: date)]
-        } else {
-            history?.append((value: value, date: date))
-        }
+        history.append((value: value, date: date))
     }
-    
-    func displayHistory(){
-        guard let history = history else {
+
+    func displayHistory() {
+        if history.isEmpty {
             print("No history available for \(name)")
             return
         }
@@ -44,13 +37,13 @@ class MedicalParameter {
             print("Value: \(entry.value) \(unitOfMeasure), Date: \(entry.date).")
         }
     }
-    
-    func getValues() -> [Any]? {
-        return history?.map { $0.value }
+
+    func getValues() -> [Any] {
+        return history.map { $0.value }
     }
 
-    func getDates() -> [Date]? {
-        return history?.map { $0.date }
+    func getDates() -> [Date] {
+        return history.map { $0.date }
     }
 
     /// this private enum helps in customising the encode and decode process as
@@ -58,19 +51,17 @@ class MedicalParameter {
     private enum CodingKeys: String, CodingKey {
         case name, unitOfMeasure, history
     }
-    
+
     /// Custom encoding and decoding to handle `Any` type in `history`
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(name, forKey: .name)
         try container.encode(unitOfMeasure, forKey: .unitOfMeasure)
-        
-        if let history = history {
-            let encodedHistory = history.map { entry in
-                ["value": AnyCodable(entry.value), "date": AnyCodable(entry.date)]
-            }
-            try container.encode(encodedHistory, forKey: .history)
+
+        let encodedHistory = history.map { entry in
+            ["value": AnyCodable(entry.value), "date": AnyCodable(entry.date)]
         }
+        try container.encode(encodedHistory, forKey: .history)
     }
 
     required init(from decoder: Decoder) throws {
@@ -78,17 +69,31 @@ class MedicalParameter {
         name = try container.decode(String.self, forKey: .name)
         unitOfMeasure = try container.decode(String.self, forKey: .unitOfMeasure)
 
-        if let decodedHistory = try container.decodeIfPresent([[String: AnyCodable]].self, forKey: .history){
-            history = decodedHistory.map {
-                entry in let value = entry["value"]!.value
-                let date = entry["date"]!.value as! Date
+        let decodedHistory = try container.decodeIfPresent([[String: AnyCodable]].self, forKey: .history) ?? []
+        history = decodedHistory.compactMap {
+            entry in
+            if let value = entry["value"]!.value as? String,
+            let dateString = entry["date"]!.value as? String,
+            let date = dateFromString(dateString){
                 return (value, date)
+            } else {
+                return nil
             }
-        } else {
-            history = nil
         }
     }
-    
+
+    // Function to convert string to Date
+    func dateFromString(_ dateString: String) -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss" // DO NOT CHANGE
+        if let date = dateFormatter.date(from: dateString) {
+            return date
+        } else {
+            print("Failed to convert string to Date: \(dateString)")
+            return nil
+        }
+    }
+
     /// The AnyCodable struct is a custom type used to allow encoding and decoding of properties with the type Any within Swift's Codable framework.
     /// Swift's Codable protocol does not natively support the Any type because it requires specific type information to encode and decode data.
     /// The AnyCodable struct wraps around Any values and implements the Codable protocol, providing the necessary type information at runtime.
@@ -101,7 +106,6 @@ class MedicalParameter {
 
         init(from decoder: Decoder) throws {
             let container = try decoder.singleValueContainer()
-
             if let intValue = try? container.decode(Int.self) {
                 value = intValue
             } else if let doubleValue = try? container.decode(Double.self) {
@@ -123,7 +127,6 @@ class MedicalParameter {
 
         func encode(to encoder: Encoder) throws {
             var container = encoder.singleValueContainer()
-
             if let intValue = value as? Int {
                 try container.encode(intValue)
             } else if let doubleValue = value as? Double {
@@ -145,5 +148,4 @@ class MedicalParameter {
             }
         }
     }
-
 }
