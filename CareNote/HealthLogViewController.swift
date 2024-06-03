@@ -19,16 +19,41 @@ class HealthLogViewController: UIViewController, VNDocumentCameraViewControllerD
     }
 
     @IBOutlet var filter: UIDatePicker!
+
     var scannedImages: [Any] = []
+    
+
+
+    
+    @IBAction func segmentControl(_ sender: UISegmentedControl) {
+    }
+    @IBOutlet var timelineSegmentView: UIView!
+    
+    @IBOutlet var documentGallerySegmentView: UIView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        filter.datePickerMode = .date
+        
+        self.view.bringSubviewToFront(timelineSegmentView!)
+        
+        if #available(iOS 17.4, *) {
+            filter.datePickerMode = .yearAndMonth
+        } else {
+            // Fallback on earlier versions
+        }
+
         filter.addTarget(self, action: #selector(filter(_:)), for: .valueChanged)
     }
     
     @objc func filter(_ sender: UIDatePicker) {
-//        let selectedDate = sender.date
+
+        let selectedDate = sender.date
+        
+        let calendar = Calendar.current
+//        let month = calendar.component(.month, from: selectedDate)
+//        let year = calendar.component(.year, from: selectedDate)
+        
         
 //        let calendar = Calendar.current
 //        let month = calendar.component(.month, from: selectedDate)
@@ -41,6 +66,7 @@ class HealthLogViewController: UIViewController, VNDocumentCameraViewControllerD
         
     }
     
+
     func presentDocumentScanner() {
         let scannerViewController = VNDocumentCameraViewController()
         scannerViewController.delegate = self
@@ -50,6 +76,31 @@ class HealthLogViewController: UIViewController, VNDocumentCameraViewControllerD
     func documentCameraViewControllerDidCancel(_ controller: VNDocumentCameraViewController) {
         // Handle the cancellation here
         controller.dismiss(animated: true)
+    }
+
+    
+    
+    @IBAction func segmentChanged(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            self.view.bringSubviewToFront(timelineSegmentView)
+        case 1:
+            self.view.bringSubviewToFront(documentGallerySegmentView)
+        default:
+            break
+        }
+        
+    }
+    
+    func loadTimelineData() {
+        let timelineData: [String] = ["Visit1", "Visit2", "Visit3"]
+        print("Timeline Data: \(timelineData)")
+    }
+    
+    func loadDocumentGallery() {
+        let documentGalleryData: [String] = ["Doc1", "Doc2", "Doc3"]
+        print("Document Gallery: \(documentGalleryData)")
+
     }
 
     func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFailWithError error: Error) {
