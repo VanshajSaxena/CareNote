@@ -11,7 +11,7 @@ class SectionBackgroundView: UICollectionReusableView {
     override init(frame: CGRect) {
             super.init(frame: frame)
             self.layer.cornerRadius = 10
-            self.backgroundColor = .cyan.withAlphaComponent(1)
+        self.backgroundColor = .white.withAlphaComponent(0.2)
         }
         
         required init?(coder: NSCoder) {
