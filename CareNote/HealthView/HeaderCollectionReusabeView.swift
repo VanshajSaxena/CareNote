@@ -42,16 +42,16 @@ class HeaderCollectionReusableView: UICollectionReusableView {
     }
             
     @objc private func iconButtonTapped() {
-        print(<#T##items: Any...##Any#>)
-        // Handle button tap event here
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let currentVitalsVC = storyboard.instantiateViewController(withIdentifier: "CurrentVitalsSegmentedViewController") as? CurrentVitalsSegmentedViewController {
-            // Get the current visible view controller
-            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-               let sceneDelegate = windowScene.delegate as? SceneDelegate,
-               let rootViewController = sceneDelegate.window?.rootViewController as? UINavigationController {
-                rootViewController.pushViewController(currentVitalsVC, animated: true)
+        var responder: UIResponder? = self
+        while let nextResponder = responder?.next {
+            if let viewController = nextResponder as? UIViewController {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                if let currentVitalsVC = storyboard.instantiateViewController(withIdentifier: "CurrentVitalsSegmentedViewController") as? CurrentVitalsSegmentedViewController {
+                    viewController.navigationController?.pushViewController(currentVitalsVC, animated: true)
+                    return
+                }
             }
+            responder = nextResponder
         }
     }
 }
