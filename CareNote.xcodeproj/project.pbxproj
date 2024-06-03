@@ -17,6 +17,9 @@
 		0556F03E2C0896A7000B21B2 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 0556F03D2C0896A7000B21B2 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		0556F0402C0896A7000B21B2 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 0556F03F2C0896A7000B21B2 /* FirebaseAppCheck */; };
 		056494E02BFB491800EB5DE2 /* TimeLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056494DF2BFB491800EB5DE2 /* TimeLineViewController.swift */; };
+		052E25522C0DA27900FCBD90 /* DocumentGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052E25512C0DA27900FCBD90 /* DocumentGalleryViewController.swift */; };
+		052E25562C0DA8C300FCBD90 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052E25552C0DA8C300FCBD90 /* TimelineViewController.swift */; };
+		054CAF322BFDEA060041EE24 /* AddVisitTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054CAF312BFDEA060041EE24 /* AddVisitTableViewController.swift */; };
 		056CB6C82BFB67B100D96E25 /* MedMinderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056CB6C72BFB67B100D96E25 /* MedMinderTableViewController.swift */; };
 		058056122BFB2746006A897D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058056112BFB2746006A897D /* AppDelegate.swift */; };
 		058056142BFB2746006A897D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058056132BFB2746006A897D /* SceneDelegate.swift */; };
@@ -25,8 +28,6 @@
 		0580561E2BFB2748006A897D /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 0580561D2BFB2748006A897D /* Base */; };
 		059E305D2BFCB39F006A3F52 /* EditMedicationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E305C2BFCB39F006A3F52 /* EditMedicationTableViewController.swift */; };
 		059E305F2BFCB9A0006A3F52 /* Medicine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E305E2BFCB9A0006A3F52 /* Medicine.swift */; };
-		059E81332C099A4500CEA483 /* TimelineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E81322C099A4500CEA483 /* TimelineTableViewController.swift */; };
-		059E81352C099B1600CEA483 /* DocumentsGalleryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E81342C099B1600CEA483 /* DocumentsGalleryTableViewController.swift */; };
 		05ACBE182BFB2B9D002C58A9 /* HealthLogStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05ACBE172BFB2B9D002C58A9 /* HealthLogStoryboard.storyboard */; };
 		05ACBE1A2BFB2BB1002C58A9 /* MedMinderStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05ACBE192BFB2BB1002C58A9 /* MedMinderStoryboard.storyboard */; };
 		05ACBE1C2BFB2C63002C58A9 /* HealthLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05ACBE1B2BFB2C63002C58A9 /* HealthLogViewController.swift */; };
@@ -52,8 +53,9 @@
 		0500A4A62C05EB9400AD2E02 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		053935E42C0839CD0091E5E9 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		050BF9A42C083B33007C3C95 /* HealthLogTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HealthLogTableViewController.swift; path = Assets.xcassets/HealthLogTableViewController.swift; sourceTree = "<group>"; };
+		052E25512C0DA27900FCBD90 /* DocumentGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentGalleryViewController.swift; sourceTree = "<group>"; };
+		052E25552C0DA8C300FCBD90 /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		054CAF312BFDEA060041EE24 /* AddVisitTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVisitTableViewController.swift; sourceTree = "<group>"; };
-		056494DF2BFB491800EB5DE2 /* TimeLineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineViewController.swift; sourceTree = "<group>"; };
 		056CB6C72BFB67B100D96E25 /* MedMinderTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedMinderTableViewController.swift; sourceTree = "<group>"; };
 		0580560E2BFB2746006A897D /* CareNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CareNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		058056112BFB2746006A897D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -64,8 +66,6 @@
 		0580561F2BFB2748006A897D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		059E305C2BFCB39F006A3F52 /* EditMedicationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMedicationTableViewController.swift; sourceTree = "<group>"; };
 		059E305E2BFCB9A0006A3F52 /* Medicine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Medicine.swift; sourceTree = "<group>"; };
-		059E81322C099A4500CEA483 /* TimelineTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineTableViewController.swift; sourceTree = "<group>"; };
-		059E81342C099B1600CEA483 /* DocumentsGalleryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsGalleryTableViewController.swift; sourceTree = "<group>"; };
 		05ACBE172BFB2B9D002C58A9 /* HealthLogStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HealthLogStoryboard.storyboard; sourceTree = "<group>"; };
 		05ACBE192BFB2BB1002C58A9 /* MedMinderStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MedMinderStoryboard.storyboard; sourceTree = "<group>"; };
 		05ACBE1B2BFB2C63002C58A9 /* HealthLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthLogViewController.swift; sourceTree = "<group>"; };
@@ -125,11 +125,9 @@
 				05D215A52C09A6300078A10D /* GoogleService-Info.plist */,
 				058056112BFB2746006A897D /* AppDelegate.swift */,
 				05ACBE172BFB2B9D002C58A9 /* HealthLogStoryboard.storyboard */,
-				050BF9A42C083B33007C3C95 /* HealthLogTableViewController.swift */,
 				05ACBE1B2BFB2C63002C58A9 /* HealthLogViewController.swift */,
-				059E81322C099A4500CEA483 /* TimelineTableViewController.swift */,
-				059E81342C099B1600CEA483 /* DocumentsGalleryTableViewController.swift */,
-				056494DF2BFB491800EB5DE2 /* TimeLineViewController.swift */,
+				052E25552C0DA8C300FCBD90 /* TimelineViewController.swift */,
+				052E25512C0DA27900FCBD90 /* DocumentGalleryViewController.swift */,
 				054CAF312BFDEA060041EE24 /* AddVisitTableViewController.swift */,
 				05ACBE192BFB2BB1002C58A9 /* MedMinderStoryboard.storyboard */,
 				059E305C2BFCB39F006A3F52 /* EditMedicationTableViewController.swift */,
@@ -267,7 +265,7 @@
 				050BF9A52C083B33007C3C95 /* HealthLogTableViewController.swift in Sources */,
 				C49D15D02BFCAD6F00D0B4B3 /* HealthViewViewController.swift in Sources */,
 				05ACBE222BFB2EBE002C58A9 /* ProfileViewController.swift in Sources */,
-				059E81352C099B1600CEA483 /* DocumentsGalleryTableViewController.swift in Sources */,
+				052E25522C0DA27900FCBD90 /* DocumentGalleryViewController.swift in Sources */,
 				056CB6C82BFB67B100D96E25 /* MedMinderTableViewController.swift in Sources */,
 				054CAF322BFDEA060041EE24 /* AddVisitTableViewController.swift in Sources */,
 				056494E02BFB491800EB5DE2 /* TimeLineViewController.swift in Sources */,
@@ -280,6 +278,7 @@
 				058056142BFB2746006A897D /* SceneDelegate.swift in Sources */,
 				C437C0C42C0844EE003924A4 /* BloodPressureCell.swift in Sources */,
 				05ACBE1C2BFB2C63002C58A9 /* HealthLogViewController.swift in Sources */,
+				052E25562C0DA8C300FCBD90 /* TimelineViewController.swift in Sources */,
 				059E305F2BFCB9A0006A3F52 /* Medicine.swift in Sources */,
 				05D215A42C098DB30078A10D /* MedicalParameters.swift in Sources */,
 				059E81332C099A4500CEA483 /* TimelineTableViewController.swift in Sources */,
