@@ -18,7 +18,7 @@ class HealthLogViewController: UIViewController, VNDocumentCameraViewControllerD
         super.tabBarItem.selectedImage = UIImage(systemName: "calendar.circle.fill")
     }
 
-    @IBOutlet var filter: UIDatePicker!
+//    @IBOutlet var filter: UIDatePicker!
 
     var scannedImages: [Any] = []
     
@@ -46,15 +46,15 @@ class HealthLogViewController: UIViewController, VNDocumentCameraViewControllerD
 //        filter.addTarget(self, action: #selector(filter(_:)), for: .valueChanged)
 
 
-        filter.addTarget(self, action: #selector(filter(_:)), for: .valueChanged)
+//        filter.addTarget(self, action: #selector(filter(_:)), for: .valueChanged)
     }
     
     @objc func filter(_ sender: UIDatePicker) {
 
 
-        let selectedDate = sender.date
+//        let selectedDate = sender.date
         
-        let calendar = Calendar.current
+//        let calendar = Calendar.current
 //        let selectedDate = sender.date
 //        
 //        let calendar = Calendar.current
@@ -99,25 +99,7 @@ class HealthLogViewController: UIViewController, VNDocumentCameraViewControllerD
         
     }
     
-    func loadTimelineData() {
-        let timelineData: [String] = ["Visit1", "Visit2", "Visit3"]
-        print("Timeline Data: \(timelineData)")
-    }
-    
-    func loadDocumentGallery() {
-        let documentGalleryData: [String] = ["Doc1", "Doc2", "Doc3"]
-        print("Document Gallery: \(documentGalleryData)")
 
-    }
-//    func loadTimelineData() {
-//        let timelineData: [String] = ["Visit1", "Visit2", "Visit3"]
-//        print("Timeline Data: \(timelineData)")
-//    }
-//    
-//    func loadDocumentGallery() {
-//        let documentGalleryData: [String] = ["Doc1", "Doc2", "Doc3"]
-//        print("Document Gallery: \(documentGalleryData)")
-//    }
 
     func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFailWithError error: Error) {
         // Handle the failure here

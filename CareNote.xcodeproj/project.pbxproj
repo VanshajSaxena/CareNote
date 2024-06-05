@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0500A4A72C05EB9400AD2E02 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0500A4A62C05EB9400AD2E02 /* Models.swift */; };
 		053935E52C0839CD0091E5E9 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053935E42C0839CD0091E5E9 /* DataController.swift */; };
-		050BF9A52C083B33007C3C95 /* HealthLogTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050BF9A42C083B33007C3C95 /* HealthLogTableViewController.swift */; };
 		054CAF322BFDEA060041EE24 /* AddVisitTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054CAF312BFDEA060041EE24 /* AddVisitTableViewController.swift */; };
 		0556F0382C0896A7000B21B2 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0556F0372C0896A7000B21B2 /* FirebaseAnalytics */; };
 		0556F03A2C0896A7000B21B2 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 0556F0392C0896A7000B21B2 /* FirebaseAnalyticsOnDeviceConversion */; };
@@ -52,7 +51,6 @@
 /* Begin PBXFileReference section */
 		0500A4A62C05EB9400AD2E02 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		053935E42C0839CD0091E5E9 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
-		050BF9A42C083B33007C3C95 /* HealthLogTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HealthLogTableViewController.swift; path = Assets.xcassets/HealthLogTableViewController.swift; sourceTree = "<group>"; };
 		052E25512C0DA27900FCBD90 /* DocumentGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentGalleryViewController.swift; sourceTree = "<group>"; };
 		052E25552C0DA8C300FCBD90 /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		054CAF312BFDEA060041EE24 /* AddVisitTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVisitTableViewController.swift; sourceTree = "<group>"; };
@@ -262,7 +260,6 @@
 				C4CDB40C2C073B8300BF4672 /* SectionHeaderView.swift in Sources */,
 				C4CDB3D52C06F13300BF4672 /* HealthViewCollectionViewController.swift in Sources */,
 				C437C0C82C085561003924A4 /* recentReportCell.swift in Sources */,
-				050BF9A52C083B33007C3C95 /* HealthLogTableViewController.swift in Sources */,
 				C49D15D02BFCAD6F00D0B4B3 /* HealthViewViewController.swift in Sources */,
 				05ACBE222BFB2EBE002C58A9 /* ProfileViewController.swift in Sources */,
 				052E25522C0DA27900FCBD90 /* DocumentGalleryViewController.swift in Sources */,
