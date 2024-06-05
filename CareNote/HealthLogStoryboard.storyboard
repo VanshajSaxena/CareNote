@@ -46,26 +46,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="U7l-er-GDu">
-                                <rect key="frame" x="262" y="192" width="111" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="111" id="9Ll-mD-gik"/>
-                                </constraints>
+                            <datePicker contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="U7l-er-GDu">
+                                <rect key="frame" x="233" y="191" width="140" height="35"/>
                             </datePicker>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" red="0.64313727620000005" green="0.87058818339999999" blue="0.90588235859999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="07C-18-7S1" firstAttribute="top" secondItem="U7l-er-GDu" secondAttribute="bottom" constant="5" id="80L-bS-EOs"/>
-                            <constraint firstItem="U7l-er-GDu" firstAttribute="top" secondItem="enJ-1p-9Yi" secondAttribute="bottom" constant="6" id="ALV-Gh-Unu"/>
                             <constraint firstItem="enJ-1p-9Yi" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="AYq-Ai-GuW"/>
+                            <constraint firstItem="07C-18-7S1" firstAttribute="top" secondItem="U7l-er-GDu" secondAttribute="bottom" constant="5" id="Dnq-LA-MgQ"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="2a8-q3-UNe" secondAttribute="trailing" id="EUq-s4-jOW"/>
                             <constraint firstItem="Xhl-2w-vBh" firstAttribute="top" secondItem="enJ-1p-9Yi" secondAttribute="bottom" constant="8" id="ElA-TG-M5C"/>
                             <constraint firstItem="07C-18-7S1" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="MVq-i0-Kz2"/>
                             <constraint firstItem="2a8-q3-UNe" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="N9E-dN-ztw"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="U7l-er-GDu" secondAttribute="trailing" constant="20" id="OEv-YM-0tT"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="enJ-1p-9Yi" secondAttribute="trailing" constant="8" id="Q2A-Su-IO4"/>
                             <constraint firstItem="2a8-q3-UNe" firstAttribute="top" secondItem="enJ-1p-9Yi" secondAttribute="bottom" constant="45" id="SUy-xQ-WQL"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="U7l-er-GDu" secondAttribute="trailing" constant="20" id="Xsb-pq-DRq"/>
                             <constraint firstItem="2a8-q3-UNe" firstAttribute="centerY" secondItem="07C-18-7S1" secondAttribute="centerY" id="Ypn-jk-JQ5"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="07C-18-7S1" secondAttribute="trailing" id="aIl-rG-Ekc"/>
                             <constraint firstItem="07C-18-7S1" firstAttribute="top" secondItem="Xhl-2w-vBh" secondAttribute="bottom" constant="8" id="aSL-9j-egO"/>
@@ -73,6 +69,7 @@
                             <constraint firstItem="Xhl-2w-vBh" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="huk-ac-vgr"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="07C-18-7S1" secondAttribute="bottom" id="oKO-O3-Flx"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="2a8-q3-UNe" secondAttribute="bottom" id="u70-ch-0xa"/>
+                            <constraint firstItem="U7l-er-GDu" firstAttribute="top" secondItem="enJ-1p-9Yi" secondAttribute="bottom" constant="5" id="vWf-Ai-XLB"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="HealthLog" id="MsV-Vh-qYz">
@@ -281,19 +278,19 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="765-ow-hw7">
-                                        <rect key="frame" x="0.0" y="386.99999237060547" width="393" height="49"/>
+                                        <rect key="frame" x="0.0" y="386.99999237060547" width="393" height="49.333332061767578"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="765-ow-hw7" id="Q6g-hl-LAu">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="49.333332061767578"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="olp-Lf-MSB">
-                                                    <rect key="frame" x="338.66666666666669" y="11" width="34.333333333333314" height="27"/>
+                                                    <rect key="frame" x="338.66666666666669" y="10.999999999999998" width="34.333333333333314" height="27.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7bs-e9-7ir">
-                                                    <rect key="frame" x="36" y="11" width="57" height="27"/>
+                                                    <rect key="frame" x="36" y="10.999999999999998" width="57" height="27.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -446,7 +443,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s47-zi-MX7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="280" y="663"/>
+            <point key="canvasLocation" x="279" y="663"/>
         </scene>
     </scenes>
     <resources>
