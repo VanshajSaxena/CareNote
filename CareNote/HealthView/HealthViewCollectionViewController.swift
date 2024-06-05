@@ -159,118 +159,118 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
         return recentReportSection
     }
     
-        // UICollectionViewDataSource methods
-        func numberOfSections(in collectionView: UICollectionView) -> Int {
-            return 3
-        }
-    
-        func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            switch section {
-            case 0:
-                return 3
-            case 1:
-                return 2
-            case 2:
-                return 1
-            default:
-                return 0
-            }
+    // UICollectionViewDataSource methods
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 3
     }
     
-        func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-            if kind == UICollectionView.elementKindSectionHeader {
-                let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderCollectionReusableView", for: indexPath) as! HeaderCollectionReusableView
-        
-                // Configure the header with dummy data
-                    switch indexPath.section {
-                    case 0:
-                        header.headerLabel.text = "Current Vitals"
-                        header.iconButton.isHidden = false
-                    case 1:
-                        header.headerLabel.text = "Last Tests"
-                        header.iconButton.isHidden = false
-                    case 2:
-                        header.headerLabel.text = "Recent Report"
-                        header.iconButton.isHidden = false
-                    default:
-                        break
-                    }
-                        return header
-            }
-            fatalError("Unexpected element kind")
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        switch section {
+        case 0:
+            return 3
+        case 1:
+            return 2
+        case 2:
+            return 1
+        default:
+            return 0
         }
+}
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionView.elementKindSectionHeader {
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderCollectionReusableView", for: indexPath) as! HeaderCollectionReusableView
+    
+            // Configure the header with dummy data
+                switch indexPath.section {
+                case 0:
+                    header.headerLabel.text = "Current Vitals"
+                    header.iconButton.isHidden = false
+                case 1:
+                    header.headerLabel.text = "Last Tests"
+                    header.iconButton.isHidden = false
+                case 2:
+                    header.headerLabel.text = "Recent Report"
+                    header.iconButton.isHidden = true
+                default:
+                    break
+                }
+                    return header
+        }
+        fatalError("Unexpected element kind")
+    }
         
-        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            
-            // Configure the cell with dummy data
-            switch indexPath.section {
-            case 0:
-                if indexPath.item == 0 {
-                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BloodPressureCell", for: indexPath) as! BloodPressureCell
-                    let bpCell = dataController.getMedicalParameter(name: "Blood Pressure")
-                    cell.titleLabel.text = bpCell?.name
-                    cell.value1Label.text = "125"
-                    cell.value2Label.text = "83"
-                    cell.unitLabel.text = bpCell?.unitOfMeasure
-                    cell.iconImageView.image = UIImage(systemName: "waveform.path.ecg")
-                    cell.iconImageView.tintColor = UIColor.systemBlue
-                    cell.layer.cornerRadius = 8
-                    return cell
-                } else if indexPath.item == 1 {
-                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CurrentVitalsCell", for: indexPath) as! CurrentVitalsCell
-                    let bsCell = dataController.getMedicalParameter(name: "Blood Sugar")
-                    cell.titleLabel.text = bsCell?.name
-                    cell.valueLabel.text = bsCell?.getValues().first as? String
-                    cell.unitLabel.text = bsCell?.unitOfMeasure
-                    cell.iconImageView.image = UIImage(systemName: "drop")
-                    cell.iconImageView.tintColor = UIColor.orange
-                    cell.layer.cornerRadius = 8
-                    return cell
-                } else {
-                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CurrentVitalsCell", for: indexPath) as! CurrentVitalsCell
-                    let hrCell = dataController.getMedicalParameter(name: "Heart Rate")
-                    cell.titleLabel.text = hrCell?.name
-                    cell.valueLabel.text = hrCell?.getValues().first as? String
-                    cell.unitLabel.text = hrCell?.unitOfMeasure
-                    cell.iconImageView.image = UIImage(systemName: "heart")
-                    cell.iconImageView.tintColor = UIColor.red
-                    cell.layer.cornerRadius = 8
-                    return cell
-                }
-            case 1:
-                if indexPath.item == 0 {
-                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CurrentVitalsCell", for: indexPath) as! CurrentVitalsCell
-                    let egfrCell = dataController.getMedicalParameter(name: "eGFR")
-                    cell.titleLabel.text = egfrCell?.name
-                    cell.valueLabel.text = egfrCell?.getValues().first as? String
-                    cell.unitLabel.text = egfrCell?.unitOfMeasure
-                    cell.iconImageView.image = UIImage(systemName: "chart.bar.doc.horizontal")
-                    cell.iconImageView.tintColor = UIColor.systemGreen
-                    cell.layer.cornerRadius = 8
-                    return cell
-                } else {
-                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CurrentVitalsCell", for: indexPath) as! CurrentVitalsCell
-                    let crCell = dataController.getMedicalParameter(name: "Creatinine")
-                    cell.titleLabel.text = crCell?.name
-                    cell.valueLabel.text = crCell?.getValues().first as? String
-                    cell.unitLabel.text = crCell?.unitOfMeasure
-                    cell.iconImageView.image = UIImage(systemName: "cross.vial")
-                    cell.iconImageView.tintColor = UIColor.purple
-                    cell.layer.cornerRadius = 8
-                    return cell
-                }
-            case 2:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recentReportCell", for: indexPath) as! recentReportCell
-                let hgCell = dataController.getMedicalParameter(name: "Haemoglobin")
-                cell.titleLabel.text = hgCell?.name
-                cell.valueLabel.text = hgCell?.getValues().first as? String
-                cell.unitLabel.text = hgCell?.unitOfMeasure
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        // Configure the cell with dummy data
+        switch indexPath.section {
+        case 0:
+            if indexPath.item == 0 {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BloodPressureCell", for: indexPath) as! BloodPressureCell
+                let bpCell = dataController.getMedicalParameter(name: "Blood Pressure")
+                cell.titleLabel.text = bpCell?.name
+                cell.value1Label.text = "125"
+                cell.value2Label.text = "83"
+                cell.unitLabel.text = bpCell?.unitOfMeasure
+                cell.iconImageView.image = UIImage(systemName: "waveform.path.ecg")
+                cell.iconImageView.tintColor = UIColor.systemBlue
                 cell.layer.cornerRadius = 8
                 return cell
-            default:
+            } else if indexPath.item == 1 {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CurrentVitalsCell", for: indexPath) as! CurrentVitalsCell
+                let bsCell = dataController.getMedicalParameter(name: "Blood Sugar")
+                cell.titleLabel.text = bsCell?.name
+                cell.valueLabel.text = bsCell?.getValues().first as? String
+                cell.unitLabel.text = bsCell?.unitOfMeasure
+                cell.iconImageView.image = UIImage(systemName: "drop")
+                cell.iconImageView.tintColor = UIColor.orange
+                cell.layer.cornerRadius = 8
+                return cell
+            } else {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CurrentVitalsCell", for: indexPath) as! CurrentVitalsCell
+                let hrCell = dataController.getMedicalParameter(name: "Heart Rate")
+                cell.titleLabel.text = hrCell?.name
+                cell.valueLabel.text = hrCell?.getValues().first as? String
+                cell.unitLabel.text = hrCell?.unitOfMeasure
+                cell.iconImageView.image = UIImage(systemName: "heart")
+                cell.iconImageView.tintColor = UIColor.red
+                cell.layer.cornerRadius = 8
                 return cell
             }
+        case 1:
+            if indexPath.item == 0 {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CurrentVitalsCell", for: indexPath) as! CurrentVitalsCell
+                let egfrCell = dataController.getMedicalParameter(name: "eGFR")
+                cell.titleLabel.text = egfrCell?.name
+                cell.valueLabel.text = egfrCell?.getValues().first as? String
+                cell.unitLabel.text = egfrCell?.unitOfMeasure
+                cell.iconImageView.image = UIImage(systemName: "chart.bar.doc.horizontal")
+                cell.iconImageView.tintColor = UIColor.systemGreen
+                cell.layer.cornerRadius = 8
+                return cell
+            } else {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CurrentVitalsCell", for: indexPath) as! CurrentVitalsCell
+                let crCell = dataController.getMedicalParameter(name: "Creatinine")
+                cell.titleLabel.text = crCell?.name
+                cell.valueLabel.text = crCell?.getValues().first as? String
+                cell.unitLabel.text = crCell?.unitOfMeasure
+                cell.iconImageView.image = UIImage(systemName: "cross.vial")
+                cell.iconImageView.tintColor = UIColor.purple
+                cell.layer.cornerRadius = 8
+                return cell
+            }
+        case 2:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recentReportCell", for: indexPath) as! recentReportCell
+            let hgCell = dataController.getMedicalParameter(name: "Haemoglobin")
+            cell.titleLabel.text = hgCell?.name
+            cell.valueLabel.text = hgCell?.getValues().first as? String
+            cell.unitLabel.text = hgCell?.unitOfMeasure
+            cell.layer.cornerRadius = 8
+            return cell
+        default:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CurrentVitalsCell", for: indexPath) as! CurrentVitalsCell
+            return cell
         }
     }
+}
 

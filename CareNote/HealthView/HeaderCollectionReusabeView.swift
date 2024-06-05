@@ -38,6 +38,7 @@ class HeaderCollectionReusableView: UICollectionReusableView {
         iconButton.setImage(chevronImage, for: .normal)
         iconButton.tintColor = UIColor.systemGray
     
+        headerLabel.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         iconButton.addTarget(self, action: #selector(iconButtonTapped), for: .touchUpInside)
     }
             
