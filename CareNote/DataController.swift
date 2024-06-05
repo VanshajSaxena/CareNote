@@ -12,7 +12,7 @@ class DataController {
     private var user: User?
     private var doctors: [Doctor]?
     private var consultations: [Consultation]?
-    private var _parametersDict = ["Blood Pressure": "mmHg", "Blood Sugar": "mg/dL"]
+    private var _parametersDict = ["Blood Pressure": "mmHg", "Blood Sugar": "mg/dL", "Heart Rate": "bpm", "eGFR": "mL/min", "Creatinine": "mg/dL"]
     
     var medicines: [Medicine] = []
     var medicalParameters : [MedicalParameter] = []
@@ -47,7 +47,6 @@ class DataController {
 
     func saveData() {
         let encoder = JSONEncoder()
-//        encoder.dateEncodingStrategy = .iso8601
 
         do {
             if let user = user {
