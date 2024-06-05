@@ -52,7 +52,6 @@ class CurrentVitalsSegmentedViewController: UIViewController {
         //comparision view's default view
         timeSegmentedControl.selectedSegmentIndex = 0
         timeSegmentedControl(self.timeSegmentedControl)
-        
     }
     
     //GradientBackground
@@ -81,6 +80,8 @@ class CurrentVitalsSegmentedViewController: UIViewController {
             subParaValue2.text = "84-89"
             subParameter1Label.text = "Systolic"
             subParameter2Label.text = "Diastolic"
+            subParaName2.isHidden = false
+            subParaValue2.isHidden = false
             bpComparisionView.isHidden = false
             comparisionView.isHidden = true
         case 1:
