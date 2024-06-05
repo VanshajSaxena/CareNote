@@ -10,19 +10,19 @@ import Foundation
 class DataController {
 
     private var user: User?
-    private var doctors: [Doctor]?
-    private var consultations: [Consultation]?
-    private var _parametersDict = ["Blood Pressure": "mmHg", "Blood Sugar": "mg/dL", "Heart Rate": "bpm", "eGFR": "mL/min", "Creatinine": "mg/dL"]
+    private var doctors: [Doctor] = []
+    private var consultations: [Consultation] = []
+    private var medicalParameters : [MedicalParameter] = []
+    private var medicines: [Medicine] = []
     
-    var medicines: [Medicine] = []
-    var medicalParameters : [MedicalParameter] = []
+    private var _parametersDict = ["Blood Pressure": "mmHg", "Blood Sugar": "mg/dL", "Heart Rate": "bpm", "eGFR": "mL/min", "Creatinine": "mg/dL"]
     
     static let shared = DataController()
     
     init(user: User? = nil, doctors: [Doctor]? = nil, consultations: [Consultation]? = nil, medicines: [Medicine]? = nil) {
         self.user = user
-        self.doctors = doctors
-        self.consultations = consultations
+        self.doctors = doctors ?? []
+        self.consultations = consultations ?? []
         self.medicines = medicines ?? [] // this makes medicines array always available for appending.
 
         for (param, unit) in _parametersDict {
@@ -30,17 +30,59 @@ class DataController {
             medicalParameters.append(medicalParameter)
         }
     }
-
+    
+    func getDoctor(name: String) -> Doctor? {
+        return doctors.first { $0.name == name }
+    }
+    
+    func getDoctors() -> [Doctor] {
+        return doctors
+    }
+    
+    func addDoctor(name: String, speciality: String? = nil, contactNumber: Int? = nil) {
+        var newDoctor = Doctor(id: UUID(), name: name, speciality: speciality, contactNumber: contactNumber)
+        doctors.append(newDoctor)
+    }
+    
+    func getMostRecentConsultation() -> Consultation? {
+        return consultations.first
+    }
+    
+    func getConsultations() -> [Consultation] {
+        return consultations
+    }
+    
     func getMedicalParameter(name: String) -> MedicalParameter? {
         return medicalParameters.first { $0.name == name }
     }
-
-    func getDoctor(name: String) -> Doctor? {
-        return doctors?.first { $0.name == name }
+    
+    func getMedicalParametes() -> [MedicalParameter] {
+        return medicalParameters
+    }
+    
+    func getMedicines() -> [Medicine] {
+        return medicines
     }
 
     func getMedicine(name: String) -> Medicine? {
         return medicines.first {$0.name == name}
+    }
+    
+    func getRecentFiveParameterValues(parameterName name: String) -> [Double]{
+        guard let parameter = getMedicalParameter(name: name)  else {
+            print("Parameter list is empty")
+            return []
+        }
+        let recentValues = parameter.history.suffix(5).map { $0.value }
+        return recentValues
+    }
+    
+    func getUnitOfParameter(parameterName parameter: String) -> String {
+        guard let parameter = _parametersDict[parameter] else {
+            print("\(parameter) does not exists")
+            return ""
+        }
+        return parameter
     }
 
     // MARK: - Persistence Methods
@@ -54,15 +96,11 @@ class DataController {
                 saveToFile(data: userData, fileName: "user.json")
             }
 
-            if let doctors = doctors {
-                let doctorsData = try encoder.encode(doctors)
-                saveToFile(data: doctorsData, fileName: "doctors.json")
-            }
+            let doctorsData = try encoder.encode(doctors)
+            saveToFile(data: doctorsData, fileName: "doctors.json")
 
-            if let consultations = consultations {
-                let consultationsData = try encoder.encode(consultations)
-                saveToFile(data: consultationsData, fileName: "consultations.json")
-            }
+            let consultationsData = try encoder.encode(consultations)
+            saveToFile(data: consultationsData, fileName: "consultations.json")
 
             let medicinesData = try encoder.encode(medicines)
             saveToFile(data: medicinesData, fileName: "medicines.json")

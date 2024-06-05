@@ -13,18 +13,23 @@ class MedicalParameter: Codable {
     var name: String
     var unitOfMeasure: String
     /// private(set) keyword is used to make properties publicly redable but privately modifiable.
-    private(set) var history: [(value: Any, date: Date)] = []  // Always initialize as empty array
+    private(set) var history: [HistoryEntry] = []  // Always initialize as empty array
+    
+    struct HistoryEntry: Codable {
+        var value: Double
+        var date: Date
+    }
 
-    init(name: String, initialValue: Any? = nil, unitOfMeasure: String, dateOfMeasurement: Date? = nil) {
+    init(name: String, initialValue: Double? = nil, unitOfMeasure: String, dateOfMeasurement: Date? = nil) {
         self.name = name
         self.unitOfMeasure = unitOfMeasure
         if let initialValue = initialValue, let dateOfMeasurement = dateOfMeasurement {
-            self.history.append((value: initialValue, date: dateOfMeasurement))
+            self.history.append(HistoryEntry(value: initialValue,date: dateOfMeasurement))
         }
     }
 
-    func addValue(_ value: Any, date: Date) {
-        history.append((value: value, date: date))
+    func addHistoryEntry(_ value: Double, date: Date) {
+        history.append(HistoryEntry(value: value, date: date))
     }
 
     func displayHistory() {
@@ -38,13 +43,33 @@ class MedicalParameter: Codable {
         }
     }
 
-    func getValues() -> [Any] {
+    func getValues() -> [Double] {
         return history.map { $0.value }
     }
 
     func getDates() -> [Date] {
         return history.map { $0.date }
     }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(name, forKey: .name)
+        try container.encode(unitOfMeasure, forKey: .unitOfMeasure)
+        try container.encode(history, forKey: .history)
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        name = try container.decode(String.self, forKey: .name)
+        unitOfMeasure = try container.decode(String.self, forKey: .unitOfMeasure)
+        history = try container.decode([HistoryEntry].self, forKey: .history)
+    }
+    
+    private enum CodingKeys: String, CodingKey {
+        case name, unitOfMeasure, history
+    }
+
+    /*
 
     /// this private enum helps in customising the encode and decode process as
     /// the compiler do not autogenerate the implementation to encode and decode the class's properties.
@@ -148,4 +173,5 @@ class MedicalParameter: Codable {
             }
         }
     }
+     */
 }

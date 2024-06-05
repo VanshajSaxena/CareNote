@@ -90,10 +90,10 @@ struct Medicine: Codable {
 class Doctor: Codable {
     var id: UUID
     var name: String
-    var speciality: String
+    var speciality: String?
     var contactNumber: Int?
     
-    init(id: UUID, name: String, speciality: String, contactNumber: Int? = nil) {
+    init(id: UUID, name: String, speciality: String? = nil, contactNumber: Int? = nil) {
         self.id = id
         self.name = name
         self.speciality = speciality
