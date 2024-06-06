@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 // Gender Enum Representing Possible Genders
 enum Gender: String, Codable {
@@ -99,5 +100,33 @@ class Doctor: Codable {
         self.name = name
         self.speciality = speciality
         self.contactNumber = contactNumber
+    }
+}
+
+struct Images: Codable {
+    var id: UUID
+    var name: String
+    var imageData: Data?
+    var image: UIImage? {
+        get {
+            guard let imageData = imageData else { return nil }
+            return UIImage(data: imageData)
+        }
+        set {
+            imageData = newValue?.jpegData(compressionQuality: 1.0)
+        }
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case imageData
+    }
+    
+    // Initializer that accepts UIImage
+    init(id: UUID, name: String, image: UIImage?) {
+        self.id = id
+        self.name = name
+        self.imageData = image?.jpegData(compressionQuality: 1.0)
     }
 }

@@ -4,7 +4,202 @@
 //
 //  Created by Yash Tayal on 05/06/24.
 //
+import UIKit
+import Vision
+import VisionKit
 import Foundation
+
+private struct TextInImage: Comparable, CustomStringConvertible {
+    var xPosition: Int
+    var yPosition: Int
+    var text: String
+    
+    var description: String {
+        return "X: \(xPosition) Y: \(yPosition) Text: \(text)"
+    }
+    
+    static func < (lhs: TextInImage, rhs: TextInImage) -> Bool {
+        lhs.yPosition > rhs.yPosition
+    }
+    
+}
+
+private let parameterListSplitted = ["Packed", "Cell", "Volume", "Mean", "Corpuscular", "Volume"]
+
+struct RecordedParameter: CustomStringConvertible {
+    var name: String
+    var value: Float
+    
+    var description: String {
+        "\(name) : \(value)"
+    }
+}
+
+private var parametersInImage: [TextInImage] = []
+private var textsInImage: [TextInImage] = []
+private var ySortedTextsInImage: [TextInImage] = []
+
+private var recordedParameters: [RecordedParameter] = []
+
+func getRecordedParameters() -> [RecordedParameter] {
+    return recordedParameters
+}
+
+private var neighbours: [TextInImage] = []
+
+func getText(from image: UIImage) {
+    guard let cgImage = image.cgImage else { return }
+    
+    let requestHandler = VNImageRequestHandler(cgImage: cgImage)
+    
+    let request = VNRecognizeTextRequest()
+    
+    do {
+        try requestHandler.perform([request])
+    } catch {
+        print("Error")
+    }
+    
+    guard let observations = request.results else {
+        return
+    }
+    
+    var boundingBoxes: [CGRect] = []
+    var recognizedStrings: [String?] = []
+    
+    for observation in observations {
+        let normalizedBoundingBox = observation.boundingBox
+        let boundingBox = VNImageRectForNormalizedRect(normalizedBoundingBox, Int(image.size.width), Int(image.size.height))
+        boundingBoxes.append(boundingBox)
+        recognizedStrings.append(observation.topCandidates(1).first?.string)
+    }
+    
+    //        let recognizedStrings = observations.compactMap { observation in return observation.topCandidates(1).first?.string
+    //        }
+    
+    for i in 0..<boundingBoxes.count {
+        textsInImage.append(TextInImage(xPosition: Int(boundingBoxes[i].origin.x), yPosition: Int(boundingBoxes[i].origin.y), text: recognizedStrings[i]!))
+        print("Box \(i)")
+        print(boundingBoxes[i])
+        print(boundingBoxes[i].origin.y)
+        print(recognizedStrings[i]!)
+    }
+    
+    ySortedTextsInImage = textsInImage.sorted()
+    
+    for i in ySortedTextsInImage {
+        print(i)
+    }
+    
+    findParameter()
+}
+
+private func findParameter() {
+    for i in textsInImage {
+        let subTexts = i.text
+        print(subTexts)
+        if let score = dictionary[subTexts] {
+            parametersInImage.append(i)
+            print(score)
+        } else if parameterListSplitted.contains(String(subTexts).lowercased()) {
+            parametersInImage.append(i)
+            break
+        }
+        
+    }
+    print("\n\n\n")
+    for parameter in parametersInImage {
+        print(parameter)
+    }
+    findParameterValue()
+}
+
+private func findParameterValue() {
+    for parameter in parametersInImage {
+        for i in textsInImage {
+            if abs(parameter.yPosition - i.yPosition) <= 10 && parameter.text != i.text {
+                if let value = Float(i.text) {
+                    recordedParameters.append(RecordedParameter(name: parameter.text, value: value))
+                }
+            }
+        }
+    }
+    
+    print("\n\n\n")
+    for parameter in recordedParameters {
+        print(parameter)
+    }
+}
+
+func copyCSVToDocuments(fileName: String) {
+    let fileManager = FileManager.default
+    
+//    print("Looking for file named: \(fileName).csv in bundle.")
+    
+    if let bundlePath = Bundle.main.path(forResource: fileName, ofType: "csv") {
+        print("File found in bundle at path: \(bundlePath)")
+        let documentsPath = getDocumentsDirectory().appendingPathComponent("\(fileName).csv")
+        
+        if !fileManager.fileExists(atPath: documentsPath.path) {
+            do {
+                try fileManager.copyItem(atPath: bundlePath, toPath: documentsPath.path)
+                print("CSV file copied to documents directory")
+            } catch {
+                print("Error copying file: \(error.localizedDescription)")
+            }
+        } else {
+            print("CSV file already exists in documents directory")
+        }
+    } else {
+        print("CSV file not found in bundle")
+    }
+}
+
+// Function to get the path to the Documents directory
+func getDocumentsDirectory() -> URL {
+    return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+}
+
+// Function to read the content of the CSV file from the Documents directory
+func readCSV(fileName: String) -> String? {
+    let filePath = getDocumentsDirectory().appendingPathComponent("\(fileName).csv")
+    do {
+        let contents = try String(contentsOf: filePath, encoding: .utf8)
+        return contents
+    } catch {
+        print("Failed to read the CSV file: \(error.localizedDescription)")
+        return nil
+    }
+}
+
+var dictionary: [String: String] = [:]
+// Function to convert CSV content to a dictionary
+func csvToDictionary(csvContent: String) -> [String: String] {
+   
+    let lines = csvContent.components(separatedBy: .newlines)
+    
+    for line in lines {
+        let columns = line.components(separatedBy: ",")
+        if columns.count == 2 {
+            let key = columns[0].trimmingCharacters(in: .whitespacesAndNewlines)
+            let value = columns[1].trimmingCharacters(in: .whitespacesAndNewlines)
+            if !key.isEmpty && !value.isEmpty {
+                dictionary[key] = value
+            }
+        }
+    }
+    
+    return dictionary
+}
+
+// Function to read CSV and convert to dictionary, then print it
+func processCSVFile() {
+    if let csvContent = readCSV(fileName: "ParametersCSV") {
+        let dictionary = csvToDictionary(csvContent: csvContent)
+        print(dictionary)
+    }
+}
+
 //var dictionary = [
 //    "Absolute basophil count (ABC)": "Basophils",
 //    "Absolute eosinophil count (AEC)": "Eosinophils",
@@ -335,13 +530,13 @@ import Foundation
 //    "Serum Haemoglobin":"Hemoglobin",
 //    "Serum Hemoglobin":"Hemoglobin",
 //
-//    
-//    
-//    
-//    
-//    
-//            
-//            
+//
+//
+//
+//
+//
+//
+//
 //    // RED BLOOD CELL (RBC)
 //    "Red blood Cell count":"RBC",
 //    "Blood RBC":"RBC",
@@ -368,27 +563,27 @@ import Foundation
 //    "Red Cell Concentration":"RBC",
 //    "Red Cell Count":"RBC",
 //    "Total RBC count":"RBC",
-//    
+//
 //    //PCV
 //    "Packed Cell Volume (PCV)":"PCV",
-//    
-//    
-//    
-//    
+//
+//
+//
+//
 //    //MCV
 //    "Mean Corpuscular Volume (MCV)":"MCV",
-//    
+//
 //    //MCH
 //    "MCH":"MCH",
-//    
+//
 //    //MCHC
 //    "MCHC":"MCHC",
-//    
+//
 //    //RDW-CV (Red Cell Distribution Width - Coefficient of Variation)
 //    "RDW":"RDW",
-//    
-//    
-//            
+//
+//
+//
 //    //NEUTROPHIL
 //    "NEUTROPHIL":"NEUTROPHIL",
 //    "Absolute neutrophil count (ANC)":"NEUTROPHIL",
@@ -412,7 +607,7 @@ import Foundation
 //    "Polymorphonuclear leukocytes (PMNs)":"NEUTROPHIL",
 //    "Polys":"NEUTROPHIL",
 //    "Segs":"NEUTROPHIL",
-//    
+//
 //    // Eosinophils
 //    "Eosinophils":"Eosinophils",
 //    "Absolute eosinophil count (AEC)":"Eosinophils",
@@ -434,15 +629,15 @@ import Foundation
 //    "Eosinophilic cells":"Eosinophils",
 //    "Eosinophilic granulocytes":"Eosinophils",
 //    "Eosinophilic leukocytes":"Eosinophils",
-//    
-//    
-//    
-//    
-//    
-//    
-//    
-//    
-//    
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //    //LYMPHOCYTE
 //    "LYMPHOCYTE":"LYMPHOCYTE",
 //    "LYMPHOCYTES":"LYMPHOCYTE",
@@ -478,7 +673,7 @@ import Foundation
 // Function to copy the CSV file from the bundle to the Documents directory
 //func copyCSVToDocuments(fileName: String) {
 //    let fileManager = FileManager.default
-//    
+//
 //    if let bundlePath = Bundle.main.path(forResource: fileName, ofType: "csv") {
 //        let documentsPath = getDocumentsDirectory().appendingPathComponent("\(fileName).csv")
 //        if !fileManager.fileExists(atPath: documentsPath.path) {
@@ -494,74 +689,3 @@ import Foundation
 //    }
 //}
 //---=-=00987654567890-09876543
-func copyCSVToDocuments(fileName: String) {
-    let fileManager = FileManager.default
-    
-//    print("Looking for file named: \(fileName).csv in bundle.")
-    
-    if let bundlePath = Bundle.main.path(forResource: fileName, ofType: "csv") {
-        print("File found in bundle at path: \(bundlePath)")
-        let documentsPath = getDocumentsDirectory().appendingPathComponent("\(fileName).csv")
-        
-        if !fileManager.fileExists(atPath: documentsPath.path) {
-            do {
-                try fileManager.copyItem(atPath: bundlePath, toPath: documentsPath.path)
-                print("CSV file copied to documents directory")
-            } catch {
-                print("Error copying file: \(error.localizedDescription)")
-            }
-        } else {
-            print("CSV file already exists in documents directory")
-        }
-    } else {
-        print("CSV file not found in bundle")
-    }
-}
-
-
-// Function to get the path to the Documents directory
-func getDocumentsDirectory() -> URL {
-    return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-}
-
-// Function to read the content of the CSV file from the Documents directory
-func readCSV(fileName: String) -> String? {
-    let filePath = getDocumentsDirectory().appendingPathComponent("\(fileName).csv")
-    do {
-        let contents = try String(contentsOf: filePath, encoding: .utf8)
-        return contents
-    } catch {
-        print("Failed to read the CSV file: \(error.localizedDescription)")
-        return nil
-    }
-}
-var dictionary: [String: String] = [:]
-// Function to convert CSV content to a dictionary
-func csvToDictionary(csvContent: String) -> [String: String] {
-   
-    let lines = csvContent.components(separatedBy: .newlines)
-    
-    for line in lines {
-        let columns = line.components(separatedBy: ",")
-        if columns.count == 2 {
-            let key = columns[0].trimmingCharacters(in: .whitespacesAndNewlines)
-            let value = columns[1].trimmingCharacters(in: .whitespacesAndNewlines)
-            if !key.isEmpty && !value.isEmpty {
-                dictionary[key] = value
-            }
-        }
-    }
-    
-    return dictionary
-}
-
-// Function to read CSV and convert to dictionary, then print it
-func processCSVFile() {
-    if let csvContent = readCSV(fileName: "ParametersCSV") {
-        let dictionary = csvToDictionary(csvContent: csvContent)
-        print(dictionary)
-    }
-}
-
-// Example of using the functions
-

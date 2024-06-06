@@ -14,6 +14,7 @@ class DataController {
     private var consultations: [Consultation] = []
     private var medicalParameters : [MedicalParameter] = []
     private var medicines: [Medicine] = []
+    private var images: [Images] = []
 
     private var _parametersDict = ["Blood Pressure": "mmHg", "Blood Sugar": "mg/dL", "Heart Rate": "bpm", "eGFR": "mL/min", "Creatinine": "mg/dL"]
 
@@ -135,6 +136,10 @@ class DataController {
     func removeMedicine(id: UUID){
         medicines.removeAll { $0.id == id }
     }
+    
+    func getImages() -> [Images] {
+        return images
+    }
 
     func getRecentParameterValues(name: String, count: Int = 5) -> [String] {
         guard let parameter = getMedicalParameter(name: name) else {
@@ -171,6 +176,9 @@ class DataController {
 
             let medicinesData = try encoder.encode(medicines)
             saveToFile(data: medicinesData, fileName: "medicines.json")
+            
+            let imagesData = try encoder.encode(images)
+            saveToFile(data: imagesData, fileName: "images.json")
 
             let medicalParametersData = try encoder.encode(medicalParameters)
             saveToFile(data: medicalParametersData, fileName: "medicalParameters.json")
@@ -211,6 +219,14 @@ class DataController {
         if let medicinesData = loadFromFile(fileName: "medicines.json") {
             do {
                 medicines = try decoder.decode([Medicine].self, from: medicinesData)
+            } catch let error {
+                print("Failed to decode consultations data: \(error.localizedDescription)")
+            }
+        }
+        
+        if let imagesDate = loadFromFile(fileName: "images.json") {
+            do {
+                images = try decoder.decode([Images].self, from: imagesDate)
             } catch let error {
                 print("Failed to decode consultations data: \(error.localizedDescription)")
             }

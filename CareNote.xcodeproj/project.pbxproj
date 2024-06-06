@@ -36,6 +36,7 @@
 		05E7F67A2C12CA1F008BF9D9 /* TimelineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E7F6792C12CA1F008BF9D9 /* TimelineCollectionViewCell.swift */; };
 		05D427F62C1181F0008639F3 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D427F52C1181F0008639F3 /* ScanViewController.swift */; };
 		05D427F82C1182D0008639F3 /* MedicalParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D427F72C1182D0008639F3 /* MedicalParameter.swift */; };
+		05D427F82C1182D0008639F3 /* OCR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D427F72C1182D0008639F3 /* OCR.swift */; };
 		05D427FB2C118DD9008639F3 /* VisionKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D427FA2C118DD9008639F3 /* VisionKit.framework */; };
 		05D427FD2C118E04008639F3 /* Vision.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D427FC2C118E04008639F3 /* Vision.framework */; };
 		05D428012C11B989008639F3 /* ParametersCSV.csv in Resources */ = {isa = PBXBuildFile; fileRef = 05D428002C1190D2008639F3 /* ParametersCSV.csv */; };
@@ -78,6 +79,7 @@
 		05E7F6792C12CA1F008BF9D9 /* TimelineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineCollectionViewCell.swift; sourceTree = "<group>"; };
 		05D427F52C1181F0008639F3 /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
 		05D427F72C1182D0008639F3 /* MedicalParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalParameter.swift; sourceTree = "<group>"; };
+		05D427F72C1182D0008639F3 /* OCR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCR.swift; sourceTree = "<group>"; };
 		05D427FA2C118DD9008639F3 /* VisionKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VisionKit.framework; path = System/Library/Frameworks/VisionKit.framework; sourceTree = SDKROOT; };
 		05D427FC2C118E04008639F3 /* Vision.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Vision.framework; path = System/Library/Frameworks/Vision.framework; sourceTree = SDKROOT; };
 		05D428002C1190D2008639F3 /* ParametersCSV.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = ParametersCSV.csv; sourceTree = "<group>"; };
@@ -142,8 +144,7 @@
 				052E25512C0DA27900FCBD90 /* DocumentGalleryViewController.swift */,
 				054CAF312BFDEA060041EE24 /* AddVisitTableViewController.swift */,
 				05ACBE192BFB2BB1002C58A9 /* MedMinderStoryboard.storyboard */,
-				05D427F52C1181F0008639F3 /* ScanViewController.swift */,
-				05D427F72C1182D0008639F3 /* MedicalParameter.swift */,
+				05D427F72C1182D0008639F3 /* OCR.swift */,
 				05D428002C1190D2008639F3 /* ParametersCSV.csv */,
 				059E305C2BFCB39F006A3F52 /* EditMedicationTableViewController.swift */,
 				056CB6C72BFB67B100D96E25 /* MedMinderTableViewController.swift */,
@@ -302,10 +303,9 @@
 				C48AA2F52C10679100A8CA9D /* Graphs.swift in Sources */,
 				C4E366392C0D93A0003983DE /* CurrentVitalsSegmentedViewController.swift in Sources */,
 				058056122BFB2746006A897D /* AppDelegate.swift in Sources */,
-				05D427F62C1181F0008639F3 /* ScanViewController.swift in Sources */,
 				C4D656242C098C6D00DC9BA3 /* HeaderCollectionReusabeView.swift in Sources */,
 				059E305D2BFCB39F006A3F52 /* EditMedicationTableViewController.swift in Sources */,
-				05D427F82C1182D0008639F3 /* MedicalParameter.swift in Sources */,
+				05D427F82C1182D0008639F3 /* OCR.swift in Sources */,
 				C4CDB40E2C07403200BF4672 /* CurrentVitalsCell.swift in Sources */,
 				058056142BFB2746006A897D /* SceneDelegate.swift in Sources */,
 				C437C0C42C0844EE003924A4 /* BloodPressureCell.swift in Sources */,
@@ -463,7 +463,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = VW3NC988UB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CareNote/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Used for scanning images and obtaining text from them";
@@ -493,7 +493,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = VW3NC988UB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CareNote/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Used for scanning images and obtaining text from them";
