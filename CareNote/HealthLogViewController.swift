@@ -10,6 +10,8 @@ import VisionKit
 
 class HealthLogViewController: UIViewController, VNDocumentCameraViewControllerDelegate {
     
+    let dataController = DataController.shared
+    
     required init?(coder: NSCoder)
     {
         super.init(coder: coder)
@@ -19,11 +21,6 @@ class HealthLogViewController: UIViewController, VNDocumentCameraViewControllerD
     }
 
 //    @IBOutlet var filter: UIDatePicker!
-
-    var scannedImages: [Any] = []
-    
-
-
     
     @IBAction func segmentControl(_ sender: UISegmentedControl) {
     }
@@ -122,9 +119,14 @@ class HealthLogViewController: UIViewController, VNDocumentCameraViewControllerD
     
     func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
             // Handle the scanned documents here
+            copyCSVToDocuments(fileName: "ParametersCSV")
+            processCSVFile()
             for pageIndex in 0..<scan.pageCount {
                 let scannedImage = scan.imageOfPage(at: pageIndex)
-                scannedImages.append(scannedImage)
+                var images = dataController.getImages()
+                images.append(Images(id: UUID(), name: "newImage", image: scannedImage))
+                dataController.saveData()
+                getText(from: scannedImage)
             }
         controller.dismiss(animated: true)
     }
