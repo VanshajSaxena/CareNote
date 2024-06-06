@@ -38,6 +38,7 @@
 		05D427F82C1182D0008639F3 /* MedicalParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D427F72C1182D0008639F3 /* MedicalParameter.swift */; };
 		05D427FB2C118DD9008639F3 /* VisionKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D427FA2C118DD9008639F3 /* VisionKit.framework */; };
 		05D427FD2C118E04008639F3 /* Vision.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D427FC2C118E04008639F3 /* Vision.framework */; };
+		05D428012C11B989008639F3 /* ParametersCSV.csv in Resources */ = {isa = PBXBuildFile; fileRef = 05D428002C1190D2008639F3 /* ParametersCSV.csv */; };
 		C437C0C42C0844EE003924A4 /* BloodPressureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C437C0C32C0844EE003924A4 /* BloodPressureCell.swift */; };
 		C437C0C62C085084003924A4 /* recentReportCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C437C0C52C085084003924A4 /* recentReportCell.xib */; };
 		C437C0C82C085561003924A4 /* recentReportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C437C0C72C085561003924A4 /* recentReportCell.swift */; };
@@ -142,8 +143,8 @@
 				054CAF312BFDEA060041EE24 /* AddVisitTableViewController.swift */,
 				05ACBE192BFB2BB1002C58A9 /* MedMinderStoryboard.storyboard */,
 				05D427F52C1181F0008639F3 /* ScanViewController.swift */,
-				05D428002C1190D2008639F3 /* ParametersCSV.csv */,
 				05D427F72C1182D0008639F3 /* MedicalParameter.swift */,
+				05D428002C1190D2008639F3 /* ParametersCSV.csv */,
 				059E305C2BFCB39F006A3F52 /* EditMedicationTableViewController.swift */,
 				056CB6C72BFB67B100D96E25 /* MedMinderTableViewController.swift */,
 				0500A4A62C05EB9400AD2E02 /* Models.swift */,
@@ -264,6 +265,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05D428012C11B989008639F3 /* ParametersCSV.csv in Resources */,
 				0580561B2BFB2748006A897D /* Assets.xcassets in Resources */,
 				05ACBE1A2BFB2BB1002C58A9 /* MedMinderStoryboard.storyboard in Resources */,
 				C4CDB4042C0725B400BF4672 /* CurrentVitalsCell.xib in Resources */,
