@@ -34,6 +34,10 @@
 		05D215A62C09A6300078A10D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 05D215A52C09A6300078A10D /* GoogleService-Info.plist */; };
 		05E7F6782C12C9A4008BF9D9 /* TimelineCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05E7F6772C12C9A4008BF9D9 /* TimelineCollectionViewCell.xib */; };
 		05E7F67A2C12CA1F008BF9D9 /* TimelineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E7F6792C12CA1F008BF9D9 /* TimelineCollectionViewCell.swift */; };
+		05D427F62C1181F0008639F3 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D427F52C1181F0008639F3 /* ScanViewController.swift */; };
+		05D427F82C1182D0008639F3 /* MedicalParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D427F72C1182D0008639F3 /* MedicalParameter.swift */; };
+		05D427FB2C118DD9008639F3 /* VisionKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D427FA2C118DD9008639F3 /* VisionKit.framework */; };
+		05D427FD2C118E04008639F3 /* Vision.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D427FC2C118E04008639F3 /* Vision.framework */; };
 		C437C0C42C0844EE003924A4 /* BloodPressureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C437C0C32C0844EE003924A4 /* BloodPressureCell.swift */; };
 		C437C0C62C085084003924A4 /* recentReportCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C437C0C52C085084003924A4 /* recentReportCell.xib */; };
 		C437C0C82C085561003924A4 /* recentReportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C437C0C72C085561003924A4 /* recentReportCell.swift */; };
@@ -71,6 +75,11 @@
 		05D215A52C09A6300078A10D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		05E7F6772C12C9A4008BF9D9 /* TimelineCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimelineCollectionViewCell.xib; sourceTree = "<group>"; };
 		05E7F6792C12CA1F008BF9D9 /* TimelineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineCollectionViewCell.swift; sourceTree = "<group>"; };
+		05D427F52C1181F0008639F3 /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
+		05D427F72C1182D0008639F3 /* MedicalParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalParameter.swift; sourceTree = "<group>"; };
+		05D427FA2C118DD9008639F3 /* VisionKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VisionKit.framework; path = System/Library/Frameworks/VisionKit.framework; sourceTree = SDKROOT; };
+		05D427FC2C118E04008639F3 /* Vision.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Vision.framework; path = System/Library/Frameworks/Vision.framework; sourceTree = SDKROOT; };
+		05D428002C1190D2008639F3 /* ParametersCSV.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = ParametersCSV.csv; sourceTree = "<group>"; };
 		C437C0C32C0844EE003924A4 /* BloodPressureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodPressureCell.swift; sourceTree = "<group>"; };
 		C437C0C52C085084003924A4 /* recentReportCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = recentReportCell.xib; sourceTree = "<group>"; };
 		C437C0C72C085561003924A4 /* recentReportCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recentReportCell.swift; sourceTree = "<group>"; };
@@ -89,6 +98,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05D427FD2C118E04008639F3 /* Vision.framework in Frameworks */,
+				05D427FB2C118DD9008639F3 /* VisionKit.framework in Frameworks */,
 				0556F03C2C0896A7000B21B2 /* FirebaseAnalyticsSwift in Frameworks */,
 				0556F0382C0896A7000B21B2 /* FirebaseAnalytics in Frameworks */,
 				0556F03A2C0896A7000B21B2 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
@@ -105,6 +116,7 @@
 			children = (
 				058056102BFB2746006A897D /* CareNote */,
 				0580560F2BFB2746006A897D /* Products */,
+				05D427F92C118DD9008639F3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -129,6 +141,9 @@
 				052E25512C0DA27900FCBD90 /* DocumentGalleryViewController.swift */,
 				054CAF312BFDEA060041EE24 /* AddVisitTableViewController.swift */,
 				05ACBE192BFB2BB1002C58A9 /* MedMinderStoryboard.storyboard */,
+				05D427F52C1181F0008639F3 /* ScanViewController.swift */,
+				05D428002C1190D2008639F3 /* ParametersCSV.csv */,
+				05D427F72C1182D0008639F3 /* MedicalParameter.swift */,
 				059E305C2BFCB39F006A3F52 /* EditMedicationTableViewController.swift */,
 				056CB6C72BFB67B100D96E25 /* MedMinderTableViewController.swift */,
 				0500A4A62C05EB9400AD2E02 /* Models.swift */,
@@ -143,6 +158,15 @@
 				0580561F2BFB2748006A897D /* Info.plist */,
 			);
 			path = CareNote;
+			sourceTree = "<group>";
+		};
+		05D427F92C118DD9008639F3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				05D427FC2C118E04008639F3 /* Vision.framework */,
+				05D427FA2C118DD9008639F3 /* VisionKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		C4A431372C0DB93D003616E4 /* Cells */ = {
@@ -276,8 +300,10 @@
 				C48AA2F52C10679100A8CA9D /* Graphs.swift in Sources */,
 				C4E366392C0D93A0003983DE /* CurrentVitalsSegmentedViewController.swift in Sources */,
 				058056122BFB2746006A897D /* AppDelegate.swift in Sources */,
+				05D427F62C1181F0008639F3 /* ScanViewController.swift in Sources */,
 				C4D656242C098C6D00DC9BA3 /* HeaderCollectionReusabeView.swift in Sources */,
 				059E305D2BFCB39F006A3F52 /* EditMedicationTableViewController.swift in Sources */,
+				05D427F82C1182D0008639F3 /* MedicalParameter.swift in Sources */,
 				C4CDB40E2C07403200BF4672 /* CurrentVitalsCell.swift in Sources */,
 				058056142BFB2746006A897D /* SceneDelegate.swift in Sources */,
 				C437C0C42C0844EE003924A4 /* BloodPressureCell.swift in Sources */,
