@@ -7,6 +7,7 @@
 
 import UIKit
 import Charts
+import SwiftUI
 
 class CurrentVitalsSegmentedViewController: UIViewController {
 
@@ -37,11 +38,12 @@ class CurrentVitalsSegmentedViewController: UIViewController {
     @IBOutlet var bpComparisionView: UIView!
     @IBOutlet var comparisionView: UIView!
     
+    @IBOutlet var graphContainer: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         addGradientBackground()
-        
+          
         bpComparisionView.layer.cornerRadius = 8
         comparisionView.layer.cornerRadius = 8
         
@@ -52,8 +54,10 @@ class CurrentVitalsSegmentedViewController: UIViewController {
         //comparision view's default view
         timeSegmentedControl.selectedSegmentIndex = 0
         timeSegmentedControl(self.timeSegmentedControl)
+        
+        currentVitalsGraph()
     }
-    
+      
     //GradientBackground
     public func addGradientBackground() {
         let gradientLayer = CAGradientLayer()
@@ -61,109 +65,129 @@ class CurrentVitalsSegmentedViewController: UIViewController {
         
         let colour1 = UIColor(red: 0x66 / 255.0, green: 0xFF / 255.0, blue: 0xFF / 255.0, alpha: 1.0)
         let colour2 = UIColor(red: 0x66 / 255.0, green: 0xCC / 255.0, blue: 0xFF / 255.0, alpha: 1.0)
-        
+          
         gradientLayer.colors = [colour1.cgColor, colour2.cgColor]
-        
+          
         gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
         gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
-        
+          
         self.view.layer.insertSublayer(gradientLayer, at: 0)
     }
-
-    @IBAction func vitalsSegmentedControl(_ sender: UISegmentedControl) {
-        switch vitalsSegmentedControl.selectedSegmentIndex {
-        case 0:
-            parameterNameLabel.text = "Blood Pressure"
-            subParaName1.text = "Systolic"
-            subParaValue1.text = "127-152"
-            subParaName2.text = "Diastolic"
-            subParaValue2.text = "84-89"
-            subParameter1Label.text = "Systolic"
-            subParameter2Label.text = "Diastolic"
-            subParaName2.isHidden = false
-            subParaValue2.isHidden = false
-            bpComparisionView.isHidden = false
-            comparisionView.isHidden = true
-        case 1:
-            parameterNameLabel.text = "Heart Rate"
-            subParaName1.text = "Heart Rate"
-            subParaValue1.text = "79-98"
-            subParameterLabel.text = "Heart Rate"
-            subParaName2.isHidden = true
-            subParaValue2.isHidden = true
-            bpComparisionView.isHidden = true
-            comparisionView.isHidden = false
-        case 2:
-            parameterNameLabel.text = "eGFR"
-            subParaName1.text = "eGFR"
-            subParaValue1.text = "45-83"
-            subParameterLabel.text = "eGFR"
-            subParaName2.isHidden = true
-            subParaValue2.isHidden = true
-            bpComparisionView.isHidden = true
-            comparisionView.isHidden = false
-        case 3:
-            parameterNameLabel.text = "Creatinine"
-            subParaName1.text = "Creatinine"
-            subParaValue1.text = "1.1-2.8"
-            subParameterLabel.text = "Creatinine"
-            subParaName2.isHidden = true
-            subParaValue2.isHidden = true
-            bpComparisionView.isHidden = true
-            comparisionView.isHidden = false
-        case 4:
-            parameterNameLabel.text = "Sugar"
-            subParaName1.text = "Blood Sugar"
-            subParaValue1.text = "65-98"
-            subParameterLabel.text = "Sugar"
-            subParaName2.isHidden = true
-            subParaValue2.isHidden = true
-            bpComparisionView.isHidden = true
-            comparisionView.isHidden = false
-        default:
-            print("Fatal Error")
-        }
-        setTimeSegmentControl()
-    }
-    @IBAction func timeSegmentedControl(_ sender: UISegmentedControl) {
-        setTimeSegmentControl()
-    }
     
-    func setTimeSegmentControl() {
-        if vitalsSegmentedControl.selectedSegmentIndex == 0 {
-            switch timeSegmentedControl.selectedSegmentIndex {
-            case 0:
-                timeLabel1.text = "Today"
-                timeLabel2.text = "Yesterday"
-            case 1:
-                timeLabel1.text = "Current Week"
-                timeLabel2.text = "Previous Week"
-            case 2:
-                timeLabel1.text = "Current Month"
-                timeLabel2.text = "Previous Month"
-            case 3:
-                timeLabel1.text = "Current Year"
-                timeLabel2.text = "Previous Year"
-            default:
-                print("Fatal Error")
-            }
-        } else {
-            switch timeSegmentedControl.selectedSegmentIndex {
-            case 0:
-                soloTimeLabel1.text = "Today"
-                soloTimeLabel2.text = "Yesterday"
-            case 1:
-                soloTimeLabel1.text = "Current Week"
-                soloTimeLabel2.text = "Previous Week"
-            case 2:
-                soloTimeLabel1.text = "Current Month"
-                soloTimeLabel2.text = "Previous Month"
-            case 3:
-                soloTimeLabel1.text = "Current Year"
-                soloTimeLabel2.text = "Previous Year"
-            default:
-                print("Fatal Error")
-            }
-        }
+    func currentVitalsGraph () {
+        let graphView = graphContainerView()
+        let hostingController = UIHostingController(rootView: graphView)
+                
+        addChild(hostingController)
+        graphContainer.addSubview(hostingController.view)
+        
+        hostingController.view.translatesAutoresizingMaskIntoConstraints = false
+        hostingController.view.backgroundColor = UIColor.white.withAlphaComponent(0.2)
+        hostingController.view.layer.cornerRadius = 8
+        NSLayoutConstraint.activate([
+            hostingController.view.topAnchor.constraint(equalTo: graphContainer.topAnchor),
+            hostingController.view.bottomAnchor.constraint(equalTo: graphContainer.bottomAnchor),
+            hostingController.view.leadingAnchor.constraint(equalTo: graphContainer.leadingAnchor),
+            hostingController.view.trailingAnchor.constraint(equalTo: graphContainer.trailingAnchor)
+        ])
+        
+        hostingController.didMove(toParent: self)
     }
-}
+
+      @IBAction func vitalsSegmentedControl(_ sender: UISegmentedControl) {
+          switch vitalsSegmentedControl.selectedSegmentIndex {
+          case 0:
+              parameterNameLabel.text = "Blood Pressure"
+              subParaName1.text = "Systolic"
+              subParaValue1.text = "127-152"
+              subParaName2.text = "Diastolic"
+              subParaValue2.text = "84-89"
+              subParameter1Label.text = "Systolic"
+              subParameter2Label.text = "Diastolic"
+              subParaName2.isHidden = false
+              subParaValue2.isHidden = false
+              bpComparisionView.isHidden = false
+              comparisionView.isHidden = true
+          case 1:
+              parameterNameLabel.text = "Heart Rate"
+              subParaName1.text = "Heart Rate"
+              subParaValue1.text = "79-98"
+              subParameterLabel.text = "Heart Rate"
+              subParaName2.isHidden = true
+              subParaValue2.isHidden = true
+              bpComparisionView.isHidden = true
+              comparisionView.isHidden = false
+          case 2:
+              parameterNameLabel.text = "eGFR"
+              subParaName1.text = "eGFR"
+              subParaValue1.text = "45-83"
+              subParameterLabel.text = "eGFR"
+              subParaName2.isHidden = true
+              subParaValue2.isHidden = true
+              bpComparisionView.isHidden = true
+              comparisionView.isHidden = false
+          case 3:
+              parameterNameLabel.text = "Creatinine"
+              subParaName1.text = "Creatinine"
+              subParaValue1.text = "1.1-2.8"
+              subParameterLabel.text = "Creatinine"
+              subParaName2.isHidden = true
+              subParaValue2.isHidden = true
+              bpComparisionView.isHidden = true
+              comparisionView.isHidden = false
+          case 4:
+              parameterNameLabel.text = "Sugar"
+              subParaName1.text = "Blood Sugar"
+              subParaValue1.text = "65-98"
+              subParameterLabel.text = "Sugar"
+              subParaName2.isHidden = true
+              subParaValue2.isHidden = true
+              bpComparisionView.isHidden = true
+              comparisionView.isHidden = false
+          default:
+              print("Fatal Error")
+          }
+          setTimeSegmentControl()
+      }
+      @IBAction func timeSegmentedControl(_ sender: UISegmentedControl) {
+          setTimeSegmentControl()
+      }
+      
+      func setTimeSegmentControl() {
+          if vitalsSegmentedControl.selectedSegmentIndex == 0 {
+              switch timeSegmentedControl.selectedSegmentIndex {
+              case 0:
+                  timeLabel1.text = "Today"
+                  timeLabel2.text = "Yesterday"
+              case 1:
+                  timeLabel1.text = "Current Week"
+                  timeLabel2.text = "Previous Week"
+              case 2:
+                  timeLabel1.text = "Current Month"
+                  timeLabel2.text = "Previous Month"
+              case 3:
+                  timeLabel1.text = "Current Year"
+                  timeLabel2.text = "Previous Year"
+              default:
+                  print("Fatal Error")
+              }
+          } else {
+              switch timeSegmentedControl.selectedSegmentIndex {
+              case 0:
+                  soloTimeLabel1.text = "Today"
+                  soloTimeLabel2.text = "Yesterday"
+              case 1:
+                  soloTimeLabel1.text = "Current Week"
+                  soloTimeLabel2.text = "Previous Week"
+              case 2:
+                  soloTimeLabel1.text = "Current Month"
+                  soloTimeLabel2.text = "Previous Month"
+              case 3:
+                  soloTimeLabel1.text = "Current Year"
+                  soloTimeLabel2.text = "Previous Year"
+              default:
+                  print("Fatal Error")
+              }
+          }
+      }
+  }

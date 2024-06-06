@@ -46,6 +46,7 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
             
             //Set up headers
             healthViewCollectionView.register(HeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderCollectionReusableView")
+            
         }
     
     //GradientBackground
