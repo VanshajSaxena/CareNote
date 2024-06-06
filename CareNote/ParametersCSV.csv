@@ -1,0 +1,438 @@
+ParameterVariation,CorrectParameter
+Creatinine,Creatinine
+Serum Creatinine,Creatinine
+SCr,Creatinine
+Serum Creatinine,Creatinine
+Creatinine (Serum),Creatinine
+Serum Cr,Creatinine
+Blood Creatinine,Creatinine
+Plasma Creatinine,Creatinine
+Serum Creatinine Level,Creatinine
+Serum Creatinine Concentration,Creatinine
+S-Creatinine,Creatinine
+Cr (Serum),Creatinine
+Cr-S,Creatinine
+Serum Cr Level,Creatinine
+SCr Level,Creatinine
+Serum Creatinine Test,Creatinine
+Serum Cr Concentration,Creatinine
+SCr Concentration,Creatinine
+Serum Creatinine Measurement,Creatinine
+Creatinine in Serum,Creatinine
+Blood Serum Creatinine,Creatinine
+Serum Creatinine Value,Creatinine
+,
+eGFR,eGFR
+eGFR (estimated Glomerular Filtration Rate),eGFR
+Estimated Glomerular Filtration Rate,eGFR
+GFR Estimate,eGFR
+e-GFR,eGFR
+eGFR Level,eGFR
+eGFR Calculation,eGFR
+eGFR Value,eGFR
+eGFR Result,eGFR
+Estimated Glomerular Filtration Rate (eGFR),eGFR
+eGFR Measurement,eGFR
+GFR Estimation,eGFR
+eGFR (ml/min/1.73 m²),eGFR
+eGFR Test,eGFR
+Est. GFR,eGFR
+eGFR Reading,eGFR
+eGFR Score,eGFR
+GFR (estimated),eGFR
+Renal function,eGFR
+estimated GFR,eGFR
+Glomerular Filtration Rate,eGFR
+,
+Hemoglobin,Hemoglobin
+Haemoglobin,Hemoglobin
+Blood hemoglobin,Hemoglobin
+Hb,Hemoglobin
+Hgb,Hemoglobin
+Blood Haemoglobin,Hemoglobin
+Haemoglobin Level,Hemoglobin
+Hemoglobin Level,Hemoglobin
+Haemoglobin Concentration,Hemoglobin
+Hemoglobin Concentration,Hemoglobin
+Hb Level,Hemoglobin
+Hgb Level,Hemoglobin
+Haemoglobin Measurement,Hemoglobin
+Hemoglobin Measurement,Hemoglobin
+Serum Haemoglobin,Hemoglobin
+Serum Hemoglobin,Hemoglobin
+Blood Hb,Hemoglobin
+Blood Hgb,Hemoglobin
+Hb Concentration,Hemoglobin
+Hgb Concentration,Hemoglobin
+,
+RBC,RBC
+Red Blood Cells,RBC
+Red Blood Cell Count,RBC
+RBC Count,RBC
+Erythrocytes,RBC
+Erythrocyte Count,RBC
+Red Cell Count,RBC
+RBCs,RBC
+Red Blood Cell Concentration,RBC
+RBC Level,RBC
+Blood RBC,RBC
+Blood Red Blood Cells,RBC
+Total RBC,RBC
+RBC Measurement,RBC
+Erythrocyte Concentration,RBC
+Erythrocyte Level,RBC
+RBC Test,RBC
+RBC Analysis,RBC
+Red Blood Corpuscles,RBC
+Red Cell Concentration,RBC
+,
+PCV,PCV
+Packed Cell Volume,PCV
+Haematocrit,PCV
+Hematocrit (US spelling),PCV
+Hct,PCV
+HCT,PCV
+Haematocrit Value,PCV
+Hematocrit Value,PCV
+PCV Level,PCV
+Packed Cell Volume Level,PCV
+Haematocrit Measurement,PCV
+Hematocrit Measurement,PCV
+PCV Percentage,PCV
+Packed Cell Volume Percentage,PCV
+Hct Level,PCV
+HCT Level,PCV
+Haematocrit Test,PCV
+Hematocrit Test,PCV
+Blood PCV,PCV
+Blood Haematocrit,PCV
+,
+MCV,MVC
+MVC,MVC
+Mean Corpuscular Volume,MVC
+Mean Cell Volume,MVC
+MCV Level,MVC
+MCV Value,MVC
+MCV Measurement,MVC
+MCV Test,MVC
+Mean Corpuscular Volume Level,MVC
+Mean Corpuscular Volume Value,MVC
+Mean Cell Volume Level,MVC
+Mean Cell Volume Value,MVC
+MCV Result,MVC
+Blood MCV,MVC
+Red Cell MCV,MVC
+Erythrocyte MCV,MVC
+Mean Corpuscular Volume (MCV),MVC
+Mean Cell Volume (MCV),MVC
+MCV (Mean Corpuscular Volume),MVC
+MCV (Mean Cell Volume),MVC
+Mean RBC Volume,MVC
+
+,
+MCH,MHC
+MHC,MHC
+Mean Corpuscular Hemoglobin,MHC
+Mean Cell Hemoglobin,MHC
+MCH Level,MHC
+MCH Value,MHC
+MCH Measurement,MHC
+MCH Test,MHC
+Mean Corpuscular Hemoglobin Level,MHC
+Mean Corpuscular Hemoglobin Value,MHC
+Mean Cell Hemoglobin Level,MHC
+Mean Cell Hemoglobin Value,MHC
+MCH Result,MHC
+Blood MCH,MHC
+Red Cell MCH,MHC
+Erythrocyte MCH,MHC
+Mean Corpuscular Hemoglobin (MCH),MHC
+Mean Cell Hemoglobin (MCH),MHC
+MCH (Mean Corpuscular Hemoglobin),MHC
+MCH (Mean Cell Hemoglobin),MHC
+Mean RBC Hemoglobin,MHC
+,
+MCHC,MCHC
+Mean Corpuscular Hemoglobin Concentration,MCHC
+Mean Cell Hemoglobin Concentration,MCHC
+MCHC Level,MCHC
+MCHC Value,MCHC
+MCHC Measurement,MCHC
+MCHC Test,MCHC
+Mean Corpuscular Hemoglobin Concentration Level,MCHC
+Mean Corpuscular Hemoglobin Concentration Value,MCHC
+Mean Cell Hemoglobin Concentration Level,MCHC
+Mean Cell Hemoglobin Concentration Value,MCHC
+MCHC Result,MCHC
+Blood MCHC,MCHC
+Red Cell MCHC,MCHC
+Erythrocyte MCHC,MCHC
+Erythrocyte MCHC,MCHC
+Mean Cell Hemoglobin Concentration (MCHC),MCHC
+MCHC (Mean Corpuscular Hemoglobin Concentration),MCHC
+MCHC (Mean Cell Hemoglobin Concentration),MCHC
+Average Corpuscular Hemoglobin Concentration,MCHC
+,
+RDW,RDW
+Red Cell Distribution Width,RDW
+RDW-CV (Red Cell Distribution Width - Coefficient of Variation),RDW
+RDW-SD (Red Cell Distribution Width - Standard Deviation),RDW
+RDW Level,RDW
+RDW Value,RDW
+RDW Measurement,RDW
+RDW Test,RDW
+Red Blood Cell Distribution Width,RDW
+RDW-CV Level,RDW
+RDW-CV Value,RDW
+RDW-SD Level,RDW
+RDW-SD Value,RDW
+Red Cell Distribution Width Level,RDW
+Red Cell Distribution Width Value,RDW
+RDW Result,RDW
+Blood RDW,RDW
+RBC Distribution Width,RDW
+RDW Analysis,RDW
+Red Blood Cell Distribution Width Level,RDW
+
+,
+WBC,WBC
+White Blood Cells,WBC
+Leukocytes,WBC
+White Cell Count,WBC
+WBC Count,WBC
+WBC Count (TCL),WBC
+White Blood Cell Count,WBC
+White Blood Cell Level,WBC
+WBC Level,WBC
+White Cell Concentration,WBC
+WBC Concentration,WBC
+White Blood Cell Concentration,WBC
+WBC Value,WBC
+White Cell Count Level,WBC
+White Cell Count Value,WBC
+WBC Measurement,WBC
+White Blood Cell Measurement,WBC
+WBC Test,WBC
+White Cell Test,WBC
+Blood WBC,WBC
+White Blood Cell Analysis,WBC
+,
+Neutrophil,Neutrophil
+Neuts,Neutrophil
+Polymorphonuclear leukocytes (PMNs),Neutrophil
+Segs,Neutrophil
+Polys,Neutrophil
+PMN,Neutrophil
+Neutrophil count,Neutrophil
+Neutrophil level,Neutrophil
+Neutrophil percentage,Neutrophil
+Neutrophil concentration,Neutrophil
+Neutrophilic granulocytes,Neutrophil
+Polymorphonuclear cells,Neutrophil
+Neutrophilic cells,Neutrophil
+Neutrophil count (Absolute),Neutrophil
+Absolute neutrophil count (ANC),Neutrophil
+Neutrophil fraction,Neutrophil
+Granulocytes,Neutrophil
+Neutrophil population,Neutrophil
+Neutrophil index,Neutrophil
+Neutrophilic polymorphs,Neutrophil
+,
+Lymphocytes,Lymphocytes
+Lymphs,Lymphocytes
+Lymphocyte count,Lymphocytes
+Lymphocyte level,Lymphocytes
+Lymphocyte percentage,Lymphocytes
+Lymphocyte concentration,Lymphocytes
+Lymphoid cells,Lymphocytes
+Lymphocytic cells,Lymphocytes
+Lymphocyte fraction,Lymphocytes
+Lymphocyte population,Lymphocytes
+Lymphocyte index,Lymphocytes
+Lymphocytosis,Lymphocytes
+Lymphocytopenia,Lymphocytes
+Lymphocytic leukocytes,Lymphocytes
+Lymphoid leukocytes,Lymphocytes
+Small lymphocytes,Lymphocytes
+Large lymphocytes,Lymphocytes
+Absolute lymphocyte count (ALC),Lymphocytes
+Lymphocytosis (Absolute),Lymphocytes
+Lymphocyte subset,Lymphocytes
+,
+Eosinophils,Eosinophils
+Eos,Eosinophils
+Eosinophil count,Eosinophils
+Eosinophil level,Eosinophils
+Eosinophil percentage,Eosinophils
+Eosinophil concentration,Eosinophils
+Acidophils,Eosinophils
+Acidophils (Eosinophils),Eosinophils
+Acidophilic leukocytes,Eosinophils
+Acidophilic granulocytes,Eosinophils
+Eosinophil fraction,Eosinophils
+Eosinophil population,Eosinophils
+Eosinophil index,Eosinophils
+Eosinophilic cells,Eosinophils
+Eosinophilic granulocytes,Eosinophils
+Eosinophilia,Eosinophils
+Eosinophil count (Absolute),Eosinophils
+Absolute eosinophil count (AEC),Eosinophils
+Eosinophilic leukocytes,Eosinophils
+Eosinophil subset,Eosinophils
+,
+Monocytes,Monocytes
+Monos,Monocytes
+Monocyte count,Monocytes
+Monocyte level,Monocytes
+Monocyte percentage,Monocytes
+Monocyte concentration,Monocytes
+Mononuclear cells,Monocytes
+Monocytic cells,Monocytes
+Monocyte fraction,Monocytes
+Monocyte population,Monocytes
+Monocyte index,Monocytes
+Mononuclear leukocytes,Monocytes
+Monocytosis,Monocytes
+Monocytopenia,Monocytes
+Monocyte count (Absolute),Monocytes
+Absolute monocyte count (AMC),Monocytes
+Monocytic leukocytes,Monocytes
+Large monocytes,Monocytes
+Small monocytes,Monocytes
+Monocyte subset,Monocytes
+,
+Basophils,Basophils
+Basos,Basophils
+Basophil count,Basophils
+Basophil level,Basophils
+Basophil percentage,Basophils
+Basophil concentration,Basophils
+Basophilic leukocytes,Basophils
+Basophilic cells,Basophils
+Basophil fraction,Basophils
+Basophil population,Basophils
+Basophil index,Basophils
+Basophilocytosis,Basophils
+Basophil count (Absolute),Basophils
+Absolute basophil count (ABC),Basophils
+Basophilic granulocytes,Basophils
+Basophilic leukocytes,Basophils
+Basophil subset,Basophils
+Basophilic cytoplasmic granules,Basophils
+Basophilic cytoplasm,Basophils
+,
+Platelet Count,Platelet Count
+Platelets,Platelet Count
+Thrombocytes,Platelet Count
+Platelet Level,Platelet Count
+Platelet Concentration,Platelet Count
+Platelet Number,Platelet Count
+Platelet Quantity,Platelet Count
+Platelet Enumeration,Platelet Count
+Thrombocyte Count,Platelet Count
+Platelet Density,Platelet Count
+Platelet Volume,Platelet Count
+Platelet Quantification,Platelet Count
+Platelet Assessment,Platelet Count
+Platelet Analysis,Platelet Count
+Platelet Evaluation,Platelet Count
+Platelet Measurement,Platelet Count
+Platelet Density Assessment,Platelet Count
+Thrombocyte Enumeration,Platelet Count
+Thrombocyte Quantification,Platelet Count
+,
+Hct,Hematocrit
+Hematocrit,Hematocrit
+Hematocrit Level,Hematocrit
+Hematocrit Value,Hematocrit
+Hematocrit Measurement,Hematocrit
+HCT,Hematocrit
+HCT Level,Hematocrit
+HCT Value,Hematocrit
+HCT Measurement,Hematocrit
+Hct Percentage,Hematocrit
+Hematocrit Percentage,Hematocrit
+Packed Cell Volume (PCV),Hematocrit
+PCV (Packed Cell Volume),Hematocrit
+Red Cell Volume,Hematocrit
+Red Blood Cell Volume,Hematocrit
+Hct Test,Hematocrit
+Hematocrit Test,Hematocrit
+Blood Hct,Hematocrit
+Blood Hematocrit,Hematocrit
+Hct Reading,Hematocrit
+,
+Urea,Urea
+Blood Urea,Urea
+Blood Urea Nitrogen (BUN),Urea
+BUN,Urea
+Serum Urea,Urea
+Urea Level,Urea
+Urea Concentration,Urea
+Blood Urea Level,Urea
+Blood Urea Nitrogen Level,Urea
+Serum Urea Level,Urea
+Urea Nitrogen,Urea
+Urea Nitrogen Level,Urea
+Urea Nitrogen Concentration,Urea
+Urea Nitrogen Level (BUN),Urea
+Serum Urea Nitrogen,Urea
+Urea Nitrogen Test,Urea
+Blood Urea Test,Urea
+Urea Test,Urea
+Urea Measurement,Urea
+Urea Value,Urea
+Urea Analysis,Urea
+,
+Uric Acid,Uric Acid
+Serum Uric Acid,Uric Acid
+Blood Uric Acid,Uric Acid
+Urate,Uric Acid
+Serum Urate,Uric Acid
+Blood Urate,Uric Acid
+Uric Acid Level,Uric Acid
+Uric Acid Concentration,Uric Acid
+Serum Uric Acid Level,Uric Acid
+Blood Uric Acid Level,Uric Acid
+Uric Acid Measurement,Uric Acid
+Uric Acid Test,Uric Acid
+Uric Acid Value,Uric Acid
+Uric Acid Analysis,Uric Acid
+Serum Urate Level,Uric Acid
+Blood Urate Level,Uric Acid
+Uric Acid Content,Uric Acid
+Uric Acid Count,Uric Acid
+Uric Acid Assay,Uric Acid
+Uric Acid Quantification,Uric Acid
+,
+Albumin,Albumin
+,
+Serum Albumin,Albumin
+Blood Albumin,Albumin
+Serum Albumin Level,Albumin
+Blood Albumin Level,Albumin
+Albumin Concentration,Albumin
+Serum Albumin Concentration,Albumin
+Blood Albumin Concentration,Albumin
+Albumin Test,Albumin
+Serum Albumin Test,Albumin
+Blood Albumin Test,Albumin
+Albumin Measurement,Albumin
+Serum Albumin Measurement,Albumin
+Blood Albumin Measurement,Albumin
+Albumin Value,Albumin
+Serum Albumin Value,Albumin
+Blood Albumin Value,Albumin
+Albumin Assay,Albumin
+Serum Albumin Assay,Albumin
+Blood Albumin Assay,Albumin
+Phosphorus,Phosphorus
+Alkaline Phosphatase (ALP),Alkaline Phosphatase (ALP)
+Total Protein,Total Protein
+Sodium,Sodium
+Potassium,Potassium
+Chloride,Chloride
+
+
+
+
