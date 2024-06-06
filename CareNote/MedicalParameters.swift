@@ -10,11 +10,11 @@ import Foundation
 // This class represents an abstract MedicalParameter that can be used to create more specific
 // medical parameters like, bloodPressureSystolic, bloodSugar, eGFR, etc.
 class MedicalParameter: Codable {
-    var name: String
-    var unitOfMeasure: String
+    private var name: String
+    private var unitOfMeasure: String
     /// private(set) keyword is used to make properties publicly redable but privately modifiable.
     private(set) var history: [HistoryEntry] = []  // Always initialize as empty array
-    
+
     struct HistoryEntry: Codable {
         var value: Double
         var date: Date
@@ -43,6 +43,14 @@ class MedicalParameter: Codable {
         }
     }
 
+    func getName() -> String {
+        return name
+    }
+
+    func getunitOfMeasure() -> String {
+        return unitOfMeasure
+    }
+
     func getValues() -> [Double] {
         return history.map { $0.value }
     }
@@ -50,21 +58,37 @@ class MedicalParameter: Codable {
     func getDates() -> [Date] {
         return history.map { $0.date }
     }
-    
+
+    func getRecentValue() -> String? {
+        guard let stringValue = getValues().first?.formatted() else {
+            print("value does not exists")
+            return nil
+        }
+        return stringValue
+    }
+
+    func getRecentDate() -> Date? {
+        guard let dateObj = getDates().first else {
+            print("date does not exists")
+            return nil
+        }
+        return dateObj
+    }
+
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(name, forKey: .name)
         try container.encode(unitOfMeasure, forKey: .unitOfMeasure)
         try container.encode(history, forKey: .history)
     }
-    
+
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         name = try container.decode(String.self, forKey: .name)
         unitOfMeasure = try container.decode(String.self, forKey: .unitOfMeasure)
         history = try container.decode([HistoryEntry].self, forKey: .history)
     }
-    
+
     private enum CodingKeys: String, CodingKey {
         case name, unitOfMeasure, history
     }

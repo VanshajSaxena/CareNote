@@ -47,7 +47,7 @@ class DataController {
     }
 
     func addDoctor(name: String, speciality: String? = nil, contactNumber: Int? = nil) {
-        var newDoctor = Doctor(id: UUID(), name: name, speciality: speciality, contactNumber: contactNumber)
+        let newDoctor = Doctor(id: UUID(), name: name, speciality: speciality, contactNumber: contactNumber)
         doctors.append(newDoctor)
     }
 
@@ -79,7 +79,7 @@ class DataController {
     }
 
     func addConsultation(title: String, dateOfConsultation: Date, user: User, doctor: Doctor, consultationDocuments: [ConsultationDocument]? = nil){
-        var newConsultation = Consultation(id: UUID(), dateOfConsultation: dateOfConsultation, title: title, user: user, doctor: doctor, consultationDocuments: consultationDocuments)
+        let newConsultation = Consultation(id: UUID(), dateOfConsultation: dateOfConsultation, title: title, user: user, doctor: doctor, consultationDocuments: consultationDocuments)
         consultations.append(newConsultation)
     }
 
@@ -95,7 +95,7 @@ class DataController {
 
     // MARK: - Medical Parameter Methods
     func getMedicalParameter(name: String) -> MedicalParameter? {
-        return medicalParameters.first { $0.name == name }
+        return medicalParameters.first { $0.getName() == name }
     }
 
     func getMedicalParameters() -> [MedicalParameter] {
@@ -116,7 +116,7 @@ class DataController {
     }
 
     func removeMedicalParameter(name: String) {
-        medicalParameters.removeAll { $0.name == name }
+        medicalParameters.removeAll { $0.getName() == name }
     }
 
     // MARK: - Medicine Methods
@@ -136,12 +136,12 @@ class DataController {
         medicines.removeAll { $0.id == id }
     }
 
-    func getRecentParameterValues(name: String, count: Int = 5) -> [Double] {
+    func getRecentParameterValues(name: String, count: Int = 5) -> [String] {
         guard let parameter = getMedicalParameter(name: name) else {
             print("Parameter list is empty")
             return []
         }
-        return Array(parameter.history.suffix(count).map{ $0.value })
+        return Array(parameter.history.suffix(count).map{ $0.value.formatted() })
     }
 
     func getUnitOfParameter(parameterName parameter: String) -> String {
