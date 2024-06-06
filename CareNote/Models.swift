@@ -82,6 +82,7 @@ struct ConsultationDocument: Codable {
 
 // Represents a single medicine
 struct Medicine: Codable {
+    var id: UUID
     var name: String
     var unitOfMeasure: String
 }
