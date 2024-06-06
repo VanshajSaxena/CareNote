@@ -47,7 +47,7 @@ class MedicalParameter: Codable {
         return name
     }
 
-    func getunitOfMeasure() -> String {
+    func getUnitOfMeasure() -> String {
         return unitOfMeasure
     }
 
