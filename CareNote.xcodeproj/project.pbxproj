@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0500A4A72C05EB9400AD2E02 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0500A4A62C05EB9400AD2E02 /* Models.swift */; };
+		052E25522C0DA27900FCBD90 /* DocumentGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052E25512C0DA27900FCBD90 /* DocumentGalleryViewController.swift */; };
+		052E25562C0DA8C300FCBD90 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052E25552C0DA8C300FCBD90 /* TimelineViewController.swift */; };
 		053935E52C0839CD0091E5E9 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053935E42C0839CD0091E5E9 /* DataController.swift */; };
 		054CAF322BFDEA060041EE24 /* AddVisitTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054CAF312BFDEA060041EE24 /* AddVisitTableViewController.swift */; };
 		0556F0382C0896A7000B21B2 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0556F0372C0896A7000B21B2 /* FirebaseAnalytics */; };
@@ -15,10 +17,7 @@
 		0556F03C2C0896A7000B21B2 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0556F03B2C0896A7000B21B2 /* FirebaseAnalyticsSwift */; };
 		0556F03E2C0896A7000B21B2 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 0556F03D2C0896A7000B21B2 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		0556F0402C0896A7000B21B2 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 0556F03F2C0896A7000B21B2 /* FirebaseAppCheck */; };
-		056494E02BFB491800EB5DE2 /* TimeLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056494DF2BFB491800EB5DE2 /* TimeLineViewController.swift */; };
-		052E25522C0DA27900FCBD90 /* DocumentGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052E25512C0DA27900FCBD90 /* DocumentGalleryViewController.swift */; };
-		052E25562C0DA8C300FCBD90 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052E25552C0DA8C300FCBD90 /* TimelineViewController.swift */; };
-		054CAF322BFDEA060041EE24 /* AddVisitTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054CAF312BFDEA060041EE24 /* AddVisitTableViewController.swift */; };
+		056494E02BFB491800EB5DE2 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		056CB6C82BFB67B100D96E25 /* MedMinderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056CB6C72BFB67B100D96E25 /* MedMinderTableViewController.swift */; };
 		058056122BFB2746006A897D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058056112BFB2746006A897D /* AppDelegate.swift */; };
 		058056142BFB2746006A897D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058056132BFB2746006A897D /* SceneDelegate.swift */; };
@@ -36,8 +35,8 @@
 		C437C0C42C0844EE003924A4 /* BloodPressureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C437C0C32C0844EE003924A4 /* BloodPressureCell.swift */; };
 		C437C0C62C085084003924A4 /* recentReportCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C437C0C52C085084003924A4 /* recentReportCell.xib */; };
 		C437C0C82C085561003924A4 /* recentReportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C437C0C72C085561003924A4 /* recentReportCell.swift */; };
+		C48AA2F52C10679100A8CA9D /* Graphs.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48AA2F42C10679100A8CA9D /* Graphs.swift */; };
 		C4A310A32C09B2300001B733 /* SectionBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A310A22C09B2300001B733 /* SectionBackgroundView.swift */; };
-		C4A4313A2C0DBF23003616E4 /* Graphs.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A431392C0DBF23003616E4 /* Graphs.swift */; };
 		C4C66D802C083D7C00A1E589 /* BloodPressureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4C66D7F2C083D7C00A1E589 /* BloodPressureCell.xib */; };
 		C4CDB3D52C06F13300BF4672 /* HealthViewCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CDB3D42C06F13300BF4672 /* HealthViewCollectionViewController.swift */; };
 		C4CDB4042C0725B400BF4672 /* CurrentVitalsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4CDB4032C0725B400BF4672 /* CurrentVitalsCell.xib */; };
@@ -48,9 +47,9 @@
 
 /* Begin PBXFileReference section */
 		0500A4A62C05EB9400AD2E02 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
-		053935E42C0839CD0091E5E9 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		052E25512C0DA27900FCBD90 /* DocumentGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentGalleryViewController.swift; sourceTree = "<group>"; };
 		052E25552C0DA8C300FCBD90 /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
+		053935E42C0839CD0091E5E9 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		054CAF312BFDEA060041EE24 /* AddVisitTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVisitTableViewController.swift; sourceTree = "<group>"; };
 		056CB6C72BFB67B100D96E25 /* MedMinderTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedMinderTableViewController.swift; sourceTree = "<group>"; };
 		0580560E2BFB2746006A897D /* CareNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CareNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,8 +70,8 @@
 		C437C0C32C0844EE003924A4 /* BloodPressureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodPressureCell.swift; sourceTree = "<group>"; };
 		C437C0C52C085084003924A4 /* recentReportCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = recentReportCell.xib; sourceTree = "<group>"; };
 		C437C0C72C085561003924A4 /* recentReportCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recentReportCell.swift; sourceTree = "<group>"; };
+		C48AA2F42C10679100A8CA9D /* Graphs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graphs.swift; sourceTree = "<group>"; };
 		C4A310A22C09B2300001B733 /* SectionBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionBackgroundView.swift; sourceTree = "<group>"; };
-		C4A431392C0DBF23003616E4 /* Graphs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graphs.swift; sourceTree = "<group>"; };
 		C4C66D7F2C083D7C00A1E589 /* BloodPressureCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BloodPressureCell.xib; sourceTree = "<group>"; };
 		C4CDB3D42C06F13300BF4672 /* HealthViewCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthViewCollectionViewController.swift; sourceTree = "<group>"; };
 		C4CDB4032C0725B400BF4672 /* CurrentVitalsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrentVitalsCell.xib; sourceTree = "<group>"; };
@@ -157,10 +156,10 @@
 			isa = PBXGroup;
 			children = (
 				058056172BFB2746006A897D /* Main.storyboard */,
+				C48AA2F42C10679100A8CA9D /* Graphs.swift */,
 				C4CDB3D42C06F13300BF4672 /* HealthViewCollectionViewController.swift */,
 				C4E366382C0D93A0003983DE /* CurrentVitalsSegmentedViewController.swift */,
 				C4A310A22C09B2300001B733 /* SectionBackgroundView.swift */,
-				C4A431392C0DBF23003616E4 /* Graphs.swift */,
 				C4D656232C098C6D00DC9BA3 /* HeaderCollectionReusabeView.swift */,
 				C4A431372C0DB93D003616E4 /* Cells */,
 			);
@@ -260,26 +259,23 @@
 				05ACBE222BFB2EBE002C58A9 /* ProfileViewController.swift in Sources */,
 				C4CDB3D52C06F13300BF4672 /* HealthViewCollectionViewController.swift in Sources */,
 				C437C0C82C085561003924A4 /* recentReportCell.swift in Sources */,
-				C49D15D02BFCAD6F00D0B4B3 /* HealthViewViewController.swift in Sources */,
 				05ACBE222BFB2EBE002C58A9 /* ProfileViewController.swift in Sources */,
 				052E25522C0DA27900FCBD90 /* DocumentGalleryViewController.swift in Sources */,
 				056CB6C82BFB67B100D96E25 /* MedMinderTableViewController.swift in Sources */,
 				054CAF322BFDEA060041EE24 /* AddVisitTableViewController.swift in Sources */,
-				056494E02BFB491800EB5DE2 /* TimeLineViewController.swift in Sources */,
+				056494E02BFB491800EB5DE2 /* (null) in Sources */,
 				0500A4A72C05EB9400AD2E02 /* Models.swift in Sources */,
+				C48AA2F52C10679100A8CA9D /* Graphs.swift in Sources */,
 				C4E366392C0D93A0003983DE /* CurrentVitalsSegmentedViewController.swift in Sources */,
 				058056122BFB2746006A897D /* AppDelegate.swift in Sources */,
 				C4D656242C098C6D00DC9BA3 /* HeaderCollectionReusabeView.swift in Sources */,
-				C4A4313A2C0DBF23003616E4 /* Graphs.swift in Sources */,
 				059E305D2BFCB39F006A3F52 /* EditMedicationTableViewController.swift in Sources */,
 				C4CDB40E2C07403200BF4672 /* CurrentVitalsCell.swift in Sources */,
 				058056142BFB2746006A897D /* SceneDelegate.swift in Sources */,
 				C437C0C42C0844EE003924A4 /* BloodPressureCell.swift in Sources */,
 				05ACBE1C2BFB2C63002C58A9 /* HealthLogViewController.swift in Sources */,
 				052E25562C0DA8C300FCBD90 /* TimelineViewController.swift in Sources */,
-				059E305F2BFCB9A0006A3F52 /* Medicine.swift in Sources */,
 				05D215A42C098DB30078A10D /* MedicalParameters.swift in Sources */,
-				059E81332C099A4500CEA483 /* TimelineTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
