@@ -14,15 +14,19 @@ class MedicalParameter: Codable {
     private var unitOfMeasure: String
     /// private(set) keyword is used to make properties publicly redable but privately modifiable.
     private(set) var history: [HistoryEntry] = []  // Always initialize as empty array
+    private let maxValue: Double?
+    private let minValue: Double?
 
     struct HistoryEntry: Codable {
         var value: Double
         var date: Date
     }
 
-    init(name: String, initialValue: Double? = nil, unitOfMeasure: String, dateOfMeasurement: Date? = nil) {
+    init(name: String, initialValue: Double? = nil, unitOfMeasure: String, maxValue: Double? = nil, minValue: Double? = nil, dateOfMeasurement: Date? = nil) {
         self.name = name
         self.unitOfMeasure = unitOfMeasure
+        self.maxValue = maxValue
+        self.minValue = minValue
         if let initialValue = initialValue, let dateOfMeasurement = dateOfMeasurement {
             self.history.append(HistoryEntry(value: initialValue,date: dateOfMeasurement))
         }
@@ -74,12 +78,30 @@ class MedicalParameter: Codable {
         }
         return dateObj
     }
+    
+    func getMinValue() -> Double? {
+        guard let minValue = minValue else {
+            print("No minValue defined")
+            return nil
+        }
+        return minValue
+    }
+    
+    func getMaxValue() -> Double? {
+        guard let maxValue = maxValue else {
+            print("No maxValue defined")
+            return nil
+        }
+        return maxValue
+    }
 
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(name, forKey: .name)
         try container.encode(unitOfMeasure, forKey: .unitOfMeasure)
         try container.encode(history, forKey: .history)
+        try container.encode(maxValue, forKey: .maxValue)
+        try container.encode(minValue, forKey: .minValue)
     }
 
     required init(from decoder: Decoder) throws {
@@ -87,10 +109,12 @@ class MedicalParameter: Codable {
         name = try container.decode(String.self, forKey: .name)
         unitOfMeasure = try container.decode(String.self, forKey: .unitOfMeasure)
         history = try container.decode([HistoryEntry].self, forKey: .history)
+        maxValue = try container.decode(Double.self, forKey: .maxValue)
+        minValue = try container.decode(Double.self, forKey: .minValue)
     }
 
     private enum CodingKeys: String, CodingKey {
-        case name, unitOfMeasure, history
+        case name, unitOfMeasure, history, maxValue, minValue
     }
 
     /*
