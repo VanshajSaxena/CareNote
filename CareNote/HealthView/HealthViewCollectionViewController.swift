@@ -9,7 +9,6 @@ import UIKit
 
 class HealthViewCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
-    let dataController = DataController.shared
     //Code to make tab bar icon visible
     required init?(coder: NSCoder)
     {
@@ -23,7 +22,10 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
         
         override func viewDidLoad() {
             super.viewDidLoad()
-            
+            dataController.loadData()
+            print(dataController.getMedicalParameter(name: "Blood Sugar")?.getHistory())
+            print(dataController.getMedicalParameter(name: "Blood Sugar")?.getRecentValue() ?? "nodata")
+
             addGradientBackground()
             
             // Register the XIBs for the cell and header
@@ -212,6 +214,7 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
             if indexPath.item == 0 {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BloodPressureCell", for: indexPath) as! BloodPressureCell
                 let bloodPressureParameter = dataController.getMedicalParameter(name: "Blood Pressure")
+                print(bloodPressureParameter?.getHistory())
                 cell.titleLabel.text = bloodPressureParameter?.getName()
                 cell.value1Label.text = bloodPressureParameter?.getRecentValue()
                 cell.value2Label.text = ""

@@ -7,6 +7,8 @@
 
 import Foundation
 
+let dataController = DataController.shared
+
 class DataController {
 
     private var user: User?
@@ -15,6 +17,7 @@ class DataController {
     private var medicalParameters : [MedicalParameter] = []
     private var medicines: [Medicine] = []
     private var images: [Images] = []
+    private var recordedParameters: [RecordedParameter] = []
 
     private var _parametersDict = ["Blood Pressure": "mmHg", "Blood Sugar": "mg/dL", "Heart Rate": "bpm", "eGFR": "mL/min", "Creatinine": "mg/dL"]
 
@@ -137,8 +140,20 @@ class DataController {
         medicines.removeAll { $0.id == id }
     }
     
+    // MARK: - Images Function
+    
     func getImages() -> [Images] {
         return images
+    }
+    
+    // MARK: - Recorded Parameter Functions
+    
+    func getRecordedParameters() -> [RecordedParameter]{
+        return recordedParameters
+    }
+    
+    func appendRecordedParameter(_ parameter: RecordedParameter) {
+        recordedParameters.append(parameter)
     }
 
     func getRecentParameterValues(name: String, count: Int = 5) -> [String] {
@@ -146,7 +161,7 @@ class DataController {
             print("Parameter list is empty")
             return []
         }
-        return Array(parameter.history.suffix(count).map{ $0.value.formatted() })
+        return Array(parameter.getHistory().suffix(count).map{ $0.value.formatted() })
     }
 
     func getUnitOfParameter(parameterName parameter: String) -> String {
@@ -179,6 +194,9 @@ class DataController {
             
             let imagesData = try encoder.encode(images)
             saveToFile(data: imagesData, fileName: "images.json")
+            
+            let recordedParametersData = try encoder.encode(recordedParameters)
+            saveToFile(data: recordedParametersData, fileName: "recordedParametersData.json")
 
             let medicalParametersData = try encoder.encode(medicalParameters)
             saveToFile(data: medicalParametersData, fileName: "medicalParameters.json")
@@ -227,6 +245,14 @@ class DataController {
         if let imagesDate = loadFromFile(fileName: "images.json") {
             do {
                 images = try decoder.decode([Images].self, from: imagesDate)
+            } catch let error {
+                print("Failed to decode consultations data: \(error.localizedDescription)")
+            }
+        }
+
+        if let recordedParametersData = loadFromFile(fileName: "recordedParametersData.json") {
+            do {
+                recordedParameters = try decoder.decode([RecordedParameter].self, from: recordedParametersData)
             } catch let error {
                 print("Failed to decode consultations data: \(error.localizedDescription)")
             }

@@ -1,6 +1,6 @@
 import SwiftUI
 import Charts
-
+import Foundation
 extension Color {
     init(_ hex: String) {
         let scanner = Scanner(string: hex)
@@ -23,7 +23,7 @@ struct Graph: Identifiable {
 
 struct graphContainerView: View {
     let graphData: [Graph] = [
-        Graph(day: 1, value: 70),
+        Graph(day: 1, value: 23),
         Graph(day: 4, value: 68),
         Graph(day: 7, value: 82),
         Graph(day: 10, value: 79),
