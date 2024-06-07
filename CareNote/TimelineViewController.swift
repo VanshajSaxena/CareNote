@@ -7,14 +7,25 @@
 
 import UIKit
 
-class TimelineViewController: UIViewController {
-
-    @IBOutlet var timelineTableView: UITableView!
+class TimelineViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    let dataController = DataController.shared
+    
+    @IBOutlet var timelineCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        timelineTableView.delegate = self
-        timelineTableView.dataSource = self
+        
+        let nib = UINib(nibName: "TimelineCollectionViewCell", bundle: nil)
+        timelineCollectionView.register(nib, forCellWithReuseIdentifier: "TimelineCollectionViewCell")
+        
+        // Set the data source and delegate
+        timelineCollectionView.dataSource = self
+        timelineCollectionView.delegate = self
+        
+        // Assign the custom layout to the collection view
+        timelineCollectionView.collectionViewLayout = createCompositionalLayout()
+        timelineCollectionView.backgroundColor = UIColor.clear
         
         addGradientBackground()
     }
@@ -32,35 +43,55 @@ class TimelineViewController: UIViewController {
         gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
         
         self.view.layer.insertSublayer(gradientLayer, at: 0)
+        
+        // Register the custom cell
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-}
-
-extension TimelineViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Timeline didSelectRowAt")
-    }
-}
-
-extension TimelineViewController: UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+    // Create the custom compositional layout
+    func createCompositionalLayout() -> UICollectionViewLayout {
+        let layout = UICollectionViewCompositionalLayout { (sectionIndex, environment) -> NSCollectionLayoutSection? in
+            return self.timelineLayout()
+        }
+        
+        // Register the section background view
+        layout.register(SectionBackgroundView.self, forDecorationViewOfKind: "SectionBackgroundView")
+        
+        return layout
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Timeline", for: indexPath)
-        cell.textLabel?.text = "Timeline \(indexPath)"
+    func timelineLayout() -> NSCollectionLayoutSection {
+        let timelineItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(190))
+        let timelineItem = NSCollectionLayoutItem(layoutSize: timelineItemSize)
+        timelineItem.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
+        
+        let timelineGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(400))
+        let timelineGroup = NSCollectionLayoutGroup.vertical(layoutSize: timelineGroupSize, subitem: timelineItem, count: 2)
+        timelineGroup.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+        
+        let timelineSection = NSCollectionLayoutSection(group: timelineGroup)
+        timelineSection.orthogonalScrollingBehavior = .groupPagingCentered
+        
+        let sectionBackground = NSCollectionLayoutDecorationItem.background(elementKind: "SectionBackgroundView")
+        timelineSection.decorationItems = [sectionBackground]
+        
+        return timelineSection
+    }
+    
+    // MARK: - UICollectionViewDataSource
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TimelineCollectionViewCell", for: indexPath) as! TimelineCollectionViewCell
+        
+        // Configure the cell with sample data
+        cell.configureCell(date: "12", month: "May", title: "Dr. Subodh", description: "Pain in Bladder", notes: "Urinary Tract Infection", nextAppointmentDate: "15 June")
+        
+        cell.layer.cornerRadius = 8
+        
         return cell
     }
 }

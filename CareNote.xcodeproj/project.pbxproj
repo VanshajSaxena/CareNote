@@ -32,6 +32,8 @@
 		05ACBE222BFB2EBE002C58A9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05ACBE212BFB2EBE002C58A9 /* ProfileViewController.swift */; };
 		05D215A42C098DB30078A10D /* MedicalParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D215A32C098DB30078A10D /* MedicalParameters.swift */; };
 		05D215A62C09A6300078A10D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 05D215A52C09A6300078A10D /* GoogleService-Info.plist */; };
+		05E7F6782C12C9A4008BF9D9 /* TimelineCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05E7F6772C12C9A4008BF9D9 /* TimelineCollectionViewCell.xib */; };
+		05E7F67A2C12CA1F008BF9D9 /* TimelineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E7F6792C12CA1F008BF9D9 /* TimelineCollectionViewCell.swift */; };
 		C437C0C42C0844EE003924A4 /* BloodPressureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C437C0C32C0844EE003924A4 /* BloodPressureCell.swift */; };
 		C437C0C62C085084003924A4 /* recentReportCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C437C0C52C085084003924A4 /* recentReportCell.xib */; };
 		C437C0C82C085561003924A4 /* recentReportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C437C0C72C085561003924A4 /* recentReportCell.swift */; };
@@ -67,6 +69,8 @@
 		05ACBE212BFB2EBE002C58A9 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		05D215A32C098DB30078A10D /* MedicalParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalParameters.swift; sourceTree = "<group>"; };
 		05D215A52C09A6300078A10D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		05E7F6772C12C9A4008BF9D9 /* TimelineCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimelineCollectionViewCell.xib; sourceTree = "<group>"; };
+		05E7F6792C12CA1F008BF9D9 /* TimelineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineCollectionViewCell.swift; sourceTree = "<group>"; };
 		C437C0C32C0844EE003924A4 /* BloodPressureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodPressureCell.swift; sourceTree = "<group>"; };
 		C437C0C52C085084003924A4 /* recentReportCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = recentReportCell.xib; sourceTree = "<group>"; };
 		C437C0C72C085561003924A4 /* recentReportCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recentReportCell.swift; sourceTree = "<group>"; };
@@ -120,6 +124,8 @@
 				05ACBE172BFB2B9D002C58A9 /* HealthLogStoryboard.storyboard */,
 				05ACBE1B2BFB2C63002C58A9 /* HealthLogViewController.swift */,
 				052E25552C0DA8C300FCBD90 /* TimelineViewController.swift */,
+				05E7F6772C12C9A4008BF9D9 /* TimelineCollectionViewCell.xib */,
+				05E7F6792C12CA1F008BF9D9 /* TimelineCollectionViewCell.swift */,
 				052E25512C0DA27900FCBD90 /* DocumentGalleryViewController.swift */,
 				054CAF312BFDEA060041EE24 /* AddVisitTableViewController.swift */,
 				05ACBE192BFB2BB1002C58A9 /* MedMinderStoryboard.storyboard */,
@@ -239,6 +245,7 @@
 				C4CDB4042C0725B400BF4672 /* CurrentVitalsCell.xib in Resources */,
 				0580561E2BFB2748006A897D /* Base in Resources */,
 				C437C0C62C085084003924A4 /* recentReportCell.xib in Resources */,
+				05E7F6782C12C9A4008BF9D9 /* TimelineCollectionViewCell.xib in Resources */,
 				C4C66D802C083D7C00A1E589 /* BloodPressureCell.xib in Resources */,
 				05ACBE202BFB2EAB002C58A9 /* ProfileStoryboard.storyboard in Resources */,
 				05ACBE182BFB2B9D002C58A9 /* HealthLogStoryboard.storyboard in Resources */,
@@ -256,6 +263,7 @@
 			files = (
 				C4A310A32C09B2300001B733 /* SectionBackgroundView.swift in Sources */,
 				053935E52C0839CD0091E5E9 /* DataController.swift in Sources */,
+				05E7F67A2C12CA1F008BF9D9 /* TimelineCollectionViewCell.swift in Sources */,
 				05ACBE222BFB2EBE002C58A9 /* ProfileViewController.swift in Sources */,
 				C4CDB3D52C06F13300BF4672 /* HealthViewCollectionViewController.swift in Sources */,
 				C437C0C82C085561003924A4 /* recentReportCell.swift in Sources */,

@@ -6,6 +6,7 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -278,19 +279,19 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="765-ow-hw7">
-                                        <rect key="frame" x="0.0" y="386.99999237060547" width="393" height="49.333332061767578"/>
+                                        <rect key="frame" x="0.0" y="386.99999237060547" width="393" height="49"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="765-ow-hw7" id="Q6g-hl-LAu">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="49.333332061767578"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="olp-Lf-MSB">
-                                                    <rect key="frame" x="338.66666666666669" y="10.999999999999998" width="34.333333333333314" height="27.333333333333329"/>
+                                                    <rect key="frame" x="338.66666666666669" y="11" width="34.333333333333314" height="27"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7bs-e9-7ir">
-                                                    <rect key="frame" x="36" y="10.999999999999998" width="57" height="27.333333333333329"/>
+                                                    <rect key="frame" x="36" y="11" width="57" height="27"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -402,7 +403,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BrF-ZZ-yTf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-326" y="663"/>
+            <point key="canvasLocation" x="-335" y="684"/>
         </scene>
         <!--Timeline View Controller-->
         <scene sceneID="md4-Pq-Sx1">
@@ -412,38 +413,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="700"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="I1Z-2Z-wX7">
-                                <rect key="frame" x="16" y="59" width="361" height="607"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Timeline" id="J8r-wQ-poO">
-                                        <rect key="frame" x="0.0" y="50" width="361" height="43.666667938232422"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="J8r-wQ-poO" id="dfz-P8-B4V">
-                                            <rect key="frame" x="0.0" y="0.0" width="361" height="43.666667938232422"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cZP-69-YBd">
+                                <rect key="frame" x="0.0" y="59" width="393" height="607"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="UMj-be-Uaw">
+                                    <size key="itemSize" width="393" height="144"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TimelineCollectionViewCell" id="q7C-cA-XkS">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="187"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="pjd-1w-vYc">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="187"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="393" height="187"/>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xwQ-RO-jwc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="I1Z-2Z-wX7" firstAttribute="top" secondItem="hH8-Pr-5AK" secondAttribute="topMargin" id="56i-BY-5DW"/>
-                            <constraint firstItem="I1Z-2Z-wX7" firstAttribute="leading" secondItem="hH8-Pr-5AK" secondAttribute="leadingMargin" id="KEw-VQ-qBg"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="I1Z-2Z-wX7" secondAttribute="trailing" id="qSc-D6-tIC"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="I1Z-2Z-wX7" secondAttribute="bottom" id="tsg-fd-0sH"/>
+                            <constraint firstItem="cZP-69-YBd" firstAttribute="leading" secondItem="xwQ-RO-jwc" secondAttribute="leading" id="H6h-rK-7d3"/>
+                            <constraint firstItem="xwQ-RO-jwc" firstAttribute="bottom" secondItem="cZP-69-YBd" secondAttribute="bottom" id="MNv-6u-iaX"/>
+                            <constraint firstItem="cZP-69-YBd" firstAttribute="top" secondItem="xwQ-RO-jwc" secondAttribute="top" id="WHI-s6-A0q"/>
+                            <constraint firstItem="xwQ-RO-jwc" firstAttribute="trailing" secondItem="cZP-69-YBd" secondAttribute="trailing" id="nVf-7c-pk7"/>
                         </constraints>
                     </view>
                     <size key="freeformSize" width="393" height="700"/>
                     <connections>
-                        <outlet property="timelineTableView" destination="I1Z-2Z-wX7" id="APf-gK-UT7"/>
+                        <outlet property="timelineCollectionView" destination="cZP-69-YBd" id="8hn-w1-wVr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s47-zi-MX7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="279" y="663"/>
+            <point key="canvasLocation" x="279" y="684"/>
         </scene>
     </scenes>
     <resources>

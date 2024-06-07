@@ -37,15 +37,12 @@ class HealthLogViewController: UIViewController, VNDocumentCameraViewControllerD
         
         self.view.bringSubviewToFront(timelineSegmentView)
         
-        if #available(iOS 17.4, *) {
+//        if #available(iOS 17.4, *) {
 //            filter.datePickerMode = .yearAndMonth
-        } else {
-            // Fallback on earlier versions
-        }
-
+//        } else {
+// Fallback on earlier versions
+//        }
 //        filter.addTarget(self, action: #selector(filter(_:)), for: .valueChanged)
-
-
 //        filter.addTarget(self, action: #selector(filter(_:)), for: .valueChanged)
         addGradientBackground()
     }
