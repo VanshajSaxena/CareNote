@@ -17,24 +17,16 @@ extension Color {
 
 struct Graph: Identifiable {
     var id = UUID()
-    var day: Int
+    var time: Int
     var value: Double
 }
 
-struct graphContainerView: View {
-    let graphData: [Graph] = [
-        Graph(day: 1, value: 23),
-        Graph(day: 4, value: 68),
-        Graph(day: 7, value: 82),
-        Graph(day: 10, value: 79),
-        Graph(day: 13, value: 75),
-        Graph(day: 16, value: 71),
-        Graph(day: 19, value: 87),
-        Graph(day: 22, value: 98),
-        Graph(day: 25, value: 80),
-        Graph(day: 28, value: 74),
-        Graph(day: 31, value: 71)
-    ]
+
+struct GraphContainerView: View {
+    let graphData: [Graph]
+    let xAxisRange: ClosedRange<Int>
+    let xAxisStride: Int
+
     
     var maxValue: Double {
         graphData.map { $0.value }.max() ?? 0
@@ -49,7 +41,7 @@ struct graphContainerView: View {
             Chart {
                 ForEach(graphData) { data in
                     LineMark(
-                        x: .value("Day", data.day),
+                        x: .value("Time", data.time),
                         y: .value("Value", data.value)
                     )
                     .interpolationMethod(.catmullRom)
@@ -57,7 +49,7 @@ struct graphContainerView: View {
                     .lineStyle(StrokeStyle(lineWidth: 2, dash: [5, 5]))
                     
                     PointMark(
-                        x: .value("Day", data.day),
+                        x: .value("Time", data.time),
                         y: .value("Value", data.value)
                     )
                     .foregroundStyle(Color("1432F5"))
@@ -86,13 +78,13 @@ struct graphContainerView: View {
             }
             .frame(height: 300)
             .chartXAxis {
-                AxisMarks(values: Array(stride(from: 1, through: 31, by: 3))) {
+                AxisMarks(values: Array(stride(from: xAxisRange.lowerBound, through: xAxisRange.upperBound, by: xAxisStride))) {
                     AxisGridLine()
                         .foregroundStyle(Color.gray)
                     AxisTick()
                         .foregroundStyle(Color.gray)
                     AxisValueLabel()
-                    .foregroundStyle(Color.black) // Make axis mark numbers black
+                        .foregroundStyle(Color.black) // Make axis mark numbers black
                 }
             }
             .chartYAxis {
@@ -102,10 +94,10 @@ struct graphContainerView: View {
                     AxisTick()
                         .foregroundStyle(Color.gray)
                     AxisValueLabel()
-                    .foregroundStyle(Color.black) // Make axis mark numbers black
+                        .foregroundStyle(Color.black) // Make axis mark numbers black
                 }
             }
-            .chartXScale(domain: 1...31) // Ensure X-axis starts from 1
+            .chartXScale(domain: xAxisRange) // Ensure X-axis starts from lower bound to upper bound
             .chartYScale(domain: 40...140) // Set Y-axis scale to range from 40 to 140
             .chartPlotStyle { plotArea in
                 plotArea
@@ -120,8 +112,8 @@ struct graphContainerView: View {
     }
 }
 
-struct graphContainerView_Previews: PreviewProvider {
+struct GraphContainerView_Previews: PreviewProvider {
     static var previews: some View {
-        graphContainerView()
+        GraphContainerView(graphData: [Graph(time: 1, value: 70)], xAxisRange: 1...31, xAxisStride: 3)
     }
 }
