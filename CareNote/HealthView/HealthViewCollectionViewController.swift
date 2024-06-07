@@ -137,6 +137,7 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
         lastTestGroup.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
         //last test section
         let lastTestSection = NSCollectionLayoutSection(group: lastTestGroup)
+        lastTestSection.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0)
         
         lastTestSection.orthogonalScrollingBehavior = .groupPagingCentered
         
@@ -145,12 +146,12 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
     
     // layout for recent report
     func recentReportLayout() -> NSCollectionLayoutSection {
-        let recentReportItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(150))
+        let recentReportItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(50))
         let recentReportItem = NSCollectionLayoutItem(layoutSize: recentReportItemSize)
         recentReportItem.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
         
-        let recentReportGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(60)) // need change
-        let recentReportGroup = NSCollectionLayoutGroup.vertical(layoutSize: recentReportGroupSize, subitem: recentReportItem, count: 1)
+        let recentReportGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(recentReportItem.layoutSize.heightDimension.dimension * CGFloat(dataController.getMedicalParameters().count)))
+        let recentReportGroup = NSCollectionLayoutGroup.vertical(layoutSize: recentReportGroupSize, subitem: recentReportItem, count: dataController.getMedicalParameters().count)
         recentReportGroup.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
         
         let recentReportSection = NSCollectionLayoutSection(group: recentReportGroup)
@@ -172,7 +173,7 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
         case 1:
             return 2
         case 2:
-            return 1
+            return dataController.getMedicalParameters().count
         default:
             return 0
         }
@@ -182,7 +183,7 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
         if kind == UICollectionView.elementKindSectionHeader {
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderCollectionReusableView", for: indexPath) as! HeaderCollectionReusableView
     
-            // Configure the header with dummy data
+            // Configure the header
                 switch indexPath.section {
                 case 0:
                     header.headerLabel.text = "Current Vitals"
@@ -191,7 +192,9 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
                     header.headerLabel.text = "Last Tests"
                     header.iconButton.isHidden = false
                 case 2:
-                    header.headerLabel.text = "Recent Report"
+                    header.headerLabel.text = "Recent /() Report"  // to be fillleeeeddddddddddd
+                    header.subtitleLabel.text = "10-05-2024" //datttttteeeeeeeeeeeeeeee neeedddd changeeee
+                    header.subtitleLabel.isHidden = false
                     header.iconButton.isHidden = true
                 default:
                     break
@@ -203,7 +206,7 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
         
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        // Configure the cell with dummy data
+        // Configure the cell
         switch indexPath.section {
         case 0:
             if indexPath.item == 0 {

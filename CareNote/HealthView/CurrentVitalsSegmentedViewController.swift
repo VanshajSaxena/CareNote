@@ -82,7 +82,7 @@ class CurrentVitalsSegmentedViewController: UIViewController {
         graphContainer.addSubview(hostingController.view)
         
         hostingController.view.translatesAutoresizingMaskIntoConstraints = false
-        hostingController.view.backgroundColor = UIColor.white.withAlphaComponent(0.2)
+        hostingController.view.backgroundColor = UIColor.white.withAlphaComponent(0.15)
         hostingController.view.layer.cornerRadius = 8
         NSLayoutConstraint.activate([
             hostingController.view.topAnchor.constraint(equalTo: graphContainer.topAnchor),

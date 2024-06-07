@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -150,6 +150,11 @@
             </collectionViewCellContentView>
             <connections>
                 <outlet property="iconImageView" destination="ygK-Pk-WNW" id="QeI-1X-frj"/>
+                <outlet property="recentZone1" destination="Yue-Ej-oW6" id="WxZ-Bc-pii"/>
+                <outlet property="recentZone2" destination="o6W-o3-uda" id="rfC-PH-ipb"/>
+                <outlet property="recentZone3" destination="CJe-A2-vFR" id="zAV-sV-PWv"/>
+                <outlet property="recentZone4" destination="qBL-WL-NCW" id="8Ac-iQ-Yjk"/>
+                <outlet property="recentZone5" destination="KiT-hQ-Q8i" id="rWE-kr-x4r"/>
                 <outlet property="titleLabel" destination="BaA-sj-Lx4" id="vAq-Pa-Fdh"/>
                 <outlet property="unitLabel" destination="nf3-9m-KbA" id="Sw0-3m-2mo"/>
                 <outlet property="value1Label" destination="Tmq-2C-3te" id="EgD-J9-1ZE"/>
