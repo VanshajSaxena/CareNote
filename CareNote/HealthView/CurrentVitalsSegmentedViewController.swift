@@ -40,22 +40,31 @@ class CurrentVitalsSegmentedViewController: UIViewController {
     
     @IBOutlet var graphContainer: UIView!
     
+    var dayData: [Graph] = (1...24).map { Graph(time: $0, value: Double.random(in: 60...100)) }
+    var weekData: [Graph] = (1...7).map { Graph(time: $0, value: Double.random(in: 60...100)) }
+    var monthData: [Graph] = (1...31).map { Graph(time: $0, value: Double.random(in: 60...100)) }
+    var yearData: [Graph] = (1...12).map { Graph(time: $0, value: Double.random(in: 60...100)) }
+
+    var currentGraphData: [Graph] = []
+    var xAxisRange: ClosedRange<Int> = 1...31
+    var xAxisStride: Int = 3
+
     override func viewDidLoad() {
         super.viewDidLoad()
         addGradientBackground()
-          
+
         bpComparisionView.layer.cornerRadius = 8
         comparisionView.layer.cornerRadius = 8
-        
+
         // Set BP as default view
         vitalsSegmentedControl.selectedSegmentIndex = 0
         vitalsSegmentedControl(self.vitalsSegmentedControl)
-        
-        //comparision view's default view
+
+        // Comparision view's default view
         timeSegmentedControl.selectedSegmentIndex = 0
         timeSegmentedControl(self.timeSegmentedControl)
-        
-        currentVitalsGraph()
+
+        setTimeSegmentControl()
     }
       
     //GradientBackground
@@ -74,13 +83,18 @@ class CurrentVitalsSegmentedViewController: UIViewController {
         self.view.layer.insertSublayer(gradientLayer, at: 0)
     }
     
-    func currentVitalsGraph () {
-        let graphView = graphContainerView()
+    func currentVitalsGraph() {
+        // Remove all subviews from graphContainer to avoid overlapping
+        for subview in graphContainer.subviews {
+            subview.removeFromSuperview()
+        }
+        
+        let graphView = GraphContainerView(graphData: currentGraphData, xAxisRange: xAxisRange, xAxisStride: xAxisStride)
         let hostingController = UIHostingController(rootView: graphView)
-                
+
         addChild(hostingController)
         graphContainer.addSubview(hostingController.view)
-        
+
         hostingController.view.translatesAutoresizingMaskIntoConstraints = false
         hostingController.view.backgroundColor = UIColor.white.withAlphaComponent(0.15)
         hostingController.view.layer.cornerRadius = 8
@@ -90,9 +104,10 @@ class CurrentVitalsSegmentedViewController: UIViewController {
             hostingController.view.leadingAnchor.constraint(equalTo: graphContainer.leadingAnchor),
             hostingController.view.trailingAnchor.constraint(equalTo: graphContainer.trailingAnchor)
         ])
-        
+
         hostingController.didMove(toParent: self)
     }
+
 
       @IBAction func vitalsSegmentedControl(_ sender: UISegmentedControl) {
           switch vitalsSegmentedControl.selectedSegmentIndex {
@@ -155,39 +170,65 @@ class CurrentVitalsSegmentedViewController: UIViewController {
       
       func setTimeSegmentControl() {
           if vitalsSegmentedControl.selectedSegmentIndex == 0 {
-              switch timeSegmentedControl.selectedSegmentIndex {
-              case 0:
-                  timeLabel1.text = "Today"
-                  timeLabel2.text = "Yesterday"
-              case 1:
-                  timeLabel1.text = "Current Week"
-                  timeLabel2.text = "Previous Week"
-              case 2:
-                  timeLabel1.text = "Current Month"
-                  timeLabel2.text = "Previous Month"
-              case 3:
-                  timeLabel1.text = "Current Year"
-                  timeLabel2.text = "Previous Year"
-              default:
-                  print("Fatal Error")
+                      switch timeSegmentedControl.selectedSegmentIndex {
+                      case 0:
+                          timeLabel1.text = "Today"
+                          timeLabel2.text = "Yesterday"
+                          currentGraphData = dayData
+                          xAxisRange = 1...24
+                          xAxisStride = 3
+                      case 1:
+                          timeLabel1.text = "Current Week"
+                          timeLabel2.text = "Previous Week"
+                          currentGraphData = weekData
+                          xAxisRange = 1...7
+                          xAxisStride = 1
+                      case 2:
+                          timeLabel1.text = "Current Month"
+                          timeLabel2.text = "Previous Month"
+                          currentGraphData = monthData
+                          xAxisRange = 1...31
+                          xAxisStride = 3
+                      case 3:
+                          timeLabel1.text = "Current Year"
+                          timeLabel2.text = "Previous Year"
+                          currentGraphData = yearData
+                          xAxisRange = 1...12
+                          xAxisStride = 1
+                      default:
+                          print("Fatal Error")
+                      }
+                  } else {
+                      switch timeSegmentedControl.selectedSegmentIndex {
+                      case 0:
+                          soloTimeLabel1.text = "Today"
+                          soloTimeLabel2.text = "Yesterday"
+                          currentGraphData = dayData
+                          xAxisRange = 1...24
+                          xAxisStride = 3
+                      case 1:
+                          soloTimeLabel1.text = "Current Week"
+                          soloTimeLabel2.text = "Previous Week"
+                          currentGraphData = weekData
+                          xAxisRange = 1...7
+                          xAxisStride = 1
+                      case 2:
+                          soloTimeLabel1.text = "Current Month"
+                          soloTimeLabel2.text = "Previous Month"
+                          currentGraphData = monthData
+                          xAxisRange = 1...31
+                          xAxisStride = 3
+                      case 3:
+                          soloTimeLabel1.text = "Current Year"
+                          soloTimeLabel2.text = "Previous Year"
+                          currentGraphData = yearData
+                          xAxisRange = 1...12
+                          xAxisStride = 1
+                      default:
+                          print("Fatal Error")
+                      }
+                  }
+                  
+                  currentVitalsGraph()
               }
-          } else {
-              switch timeSegmentedControl.selectedSegmentIndex {
-              case 0:
-                  soloTimeLabel1.text = "Today"
-                  soloTimeLabel2.text = "Yesterday"
-              case 1:
-                  soloTimeLabel1.text = "Current Week"
-                  soloTimeLabel2.text = "Previous Week"
-              case 2:
-                  soloTimeLabel1.text = "Current Month"
-                  soloTimeLabel2.text = "Previous Month"
-              case 3:
-                  soloTimeLabel1.text = "Current Year"
-                  soloTimeLabel2.text = "Previous Year"
-              default:
-                  print("Fatal Error")
-              }
-          }
-      }
   }
