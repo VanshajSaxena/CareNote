@@ -17,7 +17,15 @@ class BloodPressureCell: UICollectionViewCell {
     @IBOutlet var value1Label: UILabel!
     @IBOutlet var value2Label: UILabel!
     
+    @IBOutlet var recentZone1: UIImageView!
+    @IBOutlet var recentZone2: UIImageView!
+    @IBOutlet var recentZone3: UIImageView!
+    @IBOutlet var recentZone4: UIImageView!
+    @IBOutlet var recentZone5: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
+    
+    
 }

@@ -17,6 +17,22 @@ class DocumentGalleryViewController: UIViewController {
         documentGalleryTableView.dataSource = self
 
         // Do any additional setup after loading the view.
+        addGradientBackground()
+    }
+    
+    func addGradientBackground() {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = self.view.bounds
+        
+        let colour1 = UIColor(red: 0x66 / 255.0, green: 0xFF / 255.0, blue: 0xFF / 255.0, alpha: 1.0)
+        let colour2 = UIColor(red: 0x66 / 255.0, green: 0xCC / 255.0, blue: 0xFF / 255.0, alpha: 1.0)
+        
+        gradientLayer.colors = [colour1.cgColor, colour2.cgColor]
+        
+        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
+        
+        self.view.layer.insertSublayer(gradientLayer, at: 0)
     }
     
 
