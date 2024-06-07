@@ -15,6 +15,7 @@ class DocumentGalleryViewController: UIViewController {
         super.viewDidLoad()
         documentGalleryTableView.delegate = self
         documentGalleryTableView.dataSource = self
+        documentGalleryTableView.layer.cornerRadius = 8
 
         // Do any additional setup after loading the view.
         addGradientBackground()
