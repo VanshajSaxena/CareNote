@@ -10,8 +10,6 @@ import VisionKit
 
 class HealthLogViewController: UIViewController, VNDocumentCameraViewControllerDelegate {
     
-    let dataController = DataController.shared
-    
     required init?(coder: NSCoder)
     {
         super.init(coder: coder)

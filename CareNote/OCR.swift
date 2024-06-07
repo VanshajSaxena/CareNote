@@ -25,29 +25,14 @@ private struct TextInImage: Comparable, CustomStringConvertible {
     
 }
 
-struct RecordedParameter: CustomStringConvertible {
-    var name: String
-    var value: Float
-    
-    var description: String {
-        "\(name) : \(value)"
-    }
-}
-
 // MARK: - Global Variables
 
 private let parameterListSplitted = ["Packed", "Cell", "Volume", "Mean", "Corpuscular", "Volume"]
 private var parametersInImage: [TextInImage] = []
 private var textsInImage: [TextInImage] = []
 private var ySortedTextsInImage: [TextInImage] = []
-private var recordedParameters: [RecordedParameter] = []
-private var neighbours: [TextInImage] = []
 
 // MARK: - Functions
-
-func getRecordedParameters() -> [RecordedParameter] {
-    return recordedParameters
-}
 
 func getText(from image: UIImage) {
     guard let cgImage = image.cgImage else { return }
@@ -86,17 +71,17 @@ private func processObservations(_ observations: [VNRecognizedTextObservation],i
     
     for i in 0..<boundingBoxes.count {
         textsInImage.append(TextInImage(xPosition: Int(boundingBoxes[i].origin.x), yPosition: Int(boundingBoxes[i].origin.y), text: recognizedStrings[i]!))
-        print("Box \(i)")
-        print(boundingBoxes[i])
-        print(boundingBoxes[i].origin.y)
-        print(recognizedStrings[i]!)
+//        print("Box \(i)")
+//        print(boundingBoxes[i])
+//        print(boundingBoxes[i].origin.y)
+//        print(recognizedStrings[i]!)
     }
     
     ySortedTextsInImage = textsInImage.sorted()
     
-    for i in ySortedTextsInImage {
-        print(i)
-    }
+//    for i in ySortedTextsInImage {
+//        print(i)
+//    }
     
     findParameter()
 }
@@ -126,13 +111,16 @@ private func findParameterValue() {
         for i in textsInImage {
             if abs(parameter.yPosition - i.yPosition) <= 10 && parameter.text != i.text {
                 if let value = Float(i.text) {
-                    recordedParameters.append(RecordedParameter(name: parameter.text, value: value))
+                    dataController.appendRecordedParameter(RecordedParameter(name: parameter.text, value: value))
+                    dataController.getMedicalParameter(name: parameter.text)?.addHistoryEntry(Double(value), date: Date())
+                    print(dataController.getMedicalParameter(name: "Heart Rate")?.getHistory() ?? "noDATA")
                 }
             }
         }
     }
     print("\n\n\n")
-    for parameter in recordedParameters {
+    print(dataController.getMedicalParameter(name: "Heart Rate")?.getHistory() ?? "noDATA")
+    for parameter in dataController.getMedicalParameters() {
         print(parameter)
     }
 }
