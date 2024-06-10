@@ -148,7 +148,7 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
     
     // layout for recent report
     func recentReportLayout() -> NSCollectionLayoutSection {
-        let recentReportItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(60))
+        let recentReportItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(50))
         let recentReportItem = NSCollectionLayoutItem(layoutSize: recentReportItemSize)
         recentReportItem.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 2, trailing: 5)
         
@@ -194,7 +194,7 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
                     header.headerLabel.text = "Last Tests"
                     header.iconButton.isHidden = false
                 case 2:
-                    header.headerLabel.text = "Recent /() Report"  // to be fillleeeeddddddddddd
+                    header.headerLabel.text = "Recent Report"  // to be fillleeeeddddddddddd
                     header.subtitleLabel.text = "10-05-2024" //datttttteeeeeeeeeeeeeeee neeedddd changeeee
                     header.subtitleLabel.isHidden = false
                     header.iconButton.isHidden = true
