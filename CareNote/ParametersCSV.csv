@@ -67,26 +67,26 @@ Blood Hgb,Hemoglobin
 Hb Concentration,Hemoglobin
 Hgb Concentration,Hemoglobin
 ,
-RBC,RBC
-Red Blood Cells,RBC
-Red Blood Cell Count,RBC
-RBC Count,RBC
-Erythrocytes,RBC
-Erythrocyte Count,RBC
-Red Cell Count,RBC
-RBCs,RBC
-Red Blood Cell Concentration,RBC
-RBC Level,RBC
-Blood RBC,RBC
-Blood Red Blood Cells,RBC
-Total RBC,RBC
-RBC Measurement,RBC
-Erythrocyte Concentration,RBC
-Erythrocyte Level,RBC
-RBC Test,RBC
-RBC Analysis,RBC
-Red Blood Corpuscles,RBC
-Red Cell Concentration,RBC
+RBC,Red Blood Cells
+Red Blood Cells,Red Blood Cells
+Red Blood Cell Count,Red Blood Cells
+RBC Count,Red Blood Cells
+Erythrocytes,Red Blood Cells
+Erythrocyte Count,Red Blood Cells
+Red Cell Count,Red Blood Cells
+RBCs,Red Blood Cells
+Red Blood Cell Concentration,Red Blood Cells
+RBC Level,Red Blood Cells
+Blood RBC,Red Blood Cells
+Blood Red Blood Cells,Red Blood Cells
+Total RBC,Red Blood Cells
+RBC Measurement,Red Blood Cells
+Erythrocyte Concentration,Red Blood Cells
+Erythrocyte Level,Red Blood Cells
+RBC Test,Red Blood Cells
+RBC Analysis,Red Blood Cells
+Red Blood Corpuscles,Red Blood Cells
+Red Cell Concentration,Red Blood Cells
 ,
 PCV,PCV
 Packed Cell Volume,PCV
@@ -197,27 +197,27 @@ RDW Analysis,RDW
 Red Blood Cell Distribution Width Level,RDW
 
 ,
-WBC,WBC
-White Blood Cells,WBC
-Leukocytes,WBC
-White Cell Count,WBC
-WBC Count,WBC
-WBC Count (TCL),WBC
-White Blood Cell Count,WBC
-White Blood Cell Level,WBC
-WBC Level,WBC
-White Cell Concentration,WBC
-WBC Concentration,WBC
-White Blood Cell Concentration,WBC
-WBC Value,WBC
-White Cell Count Level,WBC
-White Cell Count Value,WBC
-WBC Measurement,WBC
-White Blood Cell Measurement,WBC
-WBC Test,WBC
-White Cell Test,WBC
-Blood WBC,WBC
-White Blood Cell Analysis,WBC
+WBC,White Blood Cells
+White Blood Cells,White Blood Cells
+Leukocytes,White Blood Cells
+White Cell Count,White Blood Cells
+WBC Count,White Blood Cells
+WBC Count (TCL),White Blood Cells
+White Blood Cell Count,White Blood Cells
+White Blood Cell Level,White Blood Cells
+WBC Level,White Blood Cells
+White Cell Concentration,White Blood Cells
+WBC Concentration,White Blood Cells
+White Blood Cell Concentration,White Blood Cells
+WBC Value,White Blood Cells
+White Cell Count Level,White Blood Cells
+White Cell Count Value,White Blood Cells
+WBC Measurement,White Blood Cells
+White Blood Cell Measurement,White Blood Cells
+WBC Test,White Blood Cells
+White Cell Test,White Blood Cells
+Blood WBC,White Blood Cells
+White Blood Cell Analysis,White Blood Cells
 ,
 Neutrophil,Neutrophil
 Neuts,Neutrophil

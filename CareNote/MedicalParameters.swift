@@ -69,7 +69,6 @@ class MedicalParameter: Codable {
 
     func getRecentValue() -> String? {
         guard let stringValue = getValues().first?.formatted() else {
-            print("value does not exists")
             return nil
         }
         return stringValue

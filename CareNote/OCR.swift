@@ -89,7 +89,7 @@ private func findParameter() {
         let subTexts = i.text
 //        print(subTexts)
         if let score = dictionary[subTexts] {
-            dataController.addMedicalParameter(name: score, unitOfMeasure: dataController.getUnitOfParameter(parameterName: score))
+            print(score)
             parametersInImage.append(i)
         } else if parameterListSplitted.contains(String(subTexts).lowercased()) {
             parametersInImage.append(i)
@@ -109,14 +109,15 @@ private func findParameterValue() {
         for i in textsInImage {
             if abs(parameter.yPosition - i.yPosition) <= 10 && parameter.text != i.text {
                 if let value = Double(i.text) {
-                    dataController.recordNewMedicalParameter(name: parameter.text, value: value, date: Date())
+                    dataController.recordNewMedicalParameter(name: dictionary[parameter.text]!, value: value, date: Date())
                 }
             }
         }
     }
     print("\n\n\n")
     for parameter in dataController.getMedicalParameters() {
-        print(parameter.getName()," ",parameter.getRecentValue() ?? "didNotRecord")
+        print(parameter.getRecentValue())
+        //print(parameter.getName()," ",parameter.getRecentValue() ?? "didNotRecord")
     }
 }
 

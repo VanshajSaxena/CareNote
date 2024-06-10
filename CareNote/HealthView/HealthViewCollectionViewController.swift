@@ -23,8 +23,6 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
         override func viewDidLoad() {
             super.viewDidLoad()
             dataController.loadData()
-            print(dataController.getMedicalParameter(name: "Blood Sugar")?.getHistory())
-            print(dataController.getMedicalParameter(name: "Blood Sugar")?.getRecentValue() ?? "nodata")
 
             addGradientBackground()
             
@@ -152,8 +150,8 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
         let recentReportItem = NSCollectionLayoutItem(layoutSize: recentReportItemSize)
         recentReportItem.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 2, trailing: 5)
         
-        let recentReportGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(recentReportItem.layoutSize.heightDimension.dimension * CGFloat(dataController.getMedicalParameters().count)))
-        let recentReportGroup = NSCollectionLayoutGroup.vertical(layoutSize: recentReportGroupSize, subitem: recentReportItem, count: dataController.getMedicalParameters().count)
+        let recentReportGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(recentReportItem.layoutSize.heightDimension.dimension * CGFloat(dataController.getFilteredMedicalParameters().count)))
+        let recentReportGroup = NSCollectionLayoutGroup.vertical(layoutSize: recentReportGroupSize, subitem: recentReportItem, count: dataController.getFilteredMedicalParameters().count)
         recentReportGroup.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
         
         let recentReportSection = NSCollectionLayoutSection(group: recentReportGroup)
@@ -175,7 +173,7 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
         case 1:
             return 2
         case 2:
-            return dataController.getMedicalParameters().count
+            return dataController.getFilteredMedicalParameters().count
         default:
             return 0
         }
@@ -268,12 +266,12 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
         case 2:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recentReportCell", for: indexPath) as! recentReportCell
                 // Check if the index is valid in the array of medical parameters
-                guard indexPath.item < dataController.getMedicalParameters().count else {
+                guard indexPath.item < dataController.getFilteredMedicalParameters().count else {
                     return cell
                 }
                 
                 // Access the parameter at the specific index
-                let parameter = dataController.getMedicalParameters()[indexPath.item]
+                let parameter = dataController.getFilteredMedicalParameters()[indexPath.item]
                 
                 // Configure the cell with the parameter details
                 cell.titleLabel.text = parameter.getName()
