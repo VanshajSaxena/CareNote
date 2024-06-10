@@ -3,8 +3,9 @@ import UIKit
 
 class OnboardingViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
-    @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet var containerView: UIView!
+    @IBOutlet var pageControl: UIPageControl!
+    @IBOutlet var startButton: UIButton!
     
     var pageViewController: UIPageViewController!
     var images: [UIImage] = [
@@ -54,6 +55,14 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDataSource
         
         // Adding gradient background
         addGradientBackground()
+        
+        // Hide the get started button initially
+        startButton.isHidden = true
+    }
+    
+    @IBAction func startButtonTapped(_ sender: UIButton) {
+        // Dismiss the onboarding view controller
+        self.dismiss(animated: true, completion: nil)
     }
     
     func addGradientBackground() {
@@ -120,6 +129,9 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDataSource
             if let viewController = pageViewController.viewControllers?.first as? ContentViewController {
                 currentIndex = viewController.pageIndex
                 pageControl.currentPage = currentIndex
+                
+                // Show the get started button on the last page
+                startButton.isHidden = currentIndex != images.count - 1
             }
         }
     }
