@@ -43,6 +43,8 @@
 		C437C0C82C085561003924A4 /* recentReportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C437C0C72C085561003924A4 /* recentReportCell.swift */; };
 		C48AA2F52C10679100A8CA9D /* Graphs.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48AA2F42C10679100A8CA9D /* Graphs.swift */; };
 		C4A310A32C09B2300001B733 /* SectionBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A310A22C09B2300001B733 /* SectionBackgroundView.swift */; };
+		C4C0DD962C16BA2E00BBF4C5 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C0DD952C16BA2E00BBF4C5 /* OnboardingViewController.swift */; };
+		C4C0DD982C16C92900BBF4C5 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C0DD972C16C92900BBF4C5 /* ContentViewController.swift */; };
 		C4C66D802C083D7C00A1E589 /* BloodPressureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4C66D7F2C083D7C00A1E589 /* BloodPressureCell.xib */; };
 		C4CDB3D52C06F13300BF4672 /* HealthViewCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CDB3D42C06F13300BF4672 /* HealthViewCollectionViewController.swift */; };
 		C4CDB4042C0725B400BF4672 /* CurrentVitalsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4CDB4032C0725B400BF4672 /* CurrentVitalsCell.xib */; };
@@ -84,6 +86,8 @@
 		C437C0C72C085561003924A4 /* recentReportCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recentReportCell.swift; sourceTree = "<group>"; };
 		C48AA2F42C10679100A8CA9D /* Graphs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graphs.swift; sourceTree = "<group>"; };
 		C4A310A22C09B2300001B733 /* SectionBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionBackgroundView.swift; sourceTree = "<group>"; };
+		C4C0DD952C16BA2E00BBF4C5 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		C4C0DD972C16C92900BBF4C5 /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		C4C66D7F2C083D7C00A1E589 /* BloodPressureCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BloodPressureCell.xib; sourceTree = "<group>"; };
 		C4CDB3D42C06F13300BF4672 /* HealthViewCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthViewCollectionViewController.swift; sourceTree = "<group>"; };
 		C4CDB4032C0725B400BF4672 /* CurrentVitalsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrentVitalsCell.xib; sourceTree = "<group>"; };
@@ -184,6 +188,8 @@
 			isa = PBXGroup;
 			children = (
 				058056172BFB2746006A897D /* Main.storyboard */,
+				C4C0DD952C16BA2E00BBF4C5 /* OnboardingViewController.swift */,
+				C4C0DD972C16C92900BBF4C5 /* ContentViewController.swift */,
 				C48AA2F42C10679100A8CA9D /* Graphs.swift */,
 				C4CDB3D42C06F13300BF4672 /* HealthViewCollectionViewController.swift */,
 				C4E366382C0D93A0003983DE /* CurrentVitalsSegmentedViewController.swift */,
@@ -289,6 +295,7 @@
 				05E7F67A2C12CA1F008BF9D9 /* TimelineCollectionViewCell.swift in Sources */,
 				05ACBE222BFB2EBE002C58A9 /* ProfileViewController.swift in Sources */,
 				C4CDB3D52C06F13300BF4672 /* HealthViewCollectionViewController.swift in Sources */,
+				C4C0DD962C16BA2E00BBF4C5 /* OnboardingViewController.swift in Sources */,
 				C437C0C82C085561003924A4 /* recentReportCell.swift in Sources */,
 				05ACBE222BFB2EBE002C58A9 /* ProfileViewController.swift in Sources */,
 				052E25522C0DA27900FCBD90 /* DocumentGalleryViewController.swift in Sources */,
@@ -300,6 +307,7 @@
 				C4E366392C0D93A0003983DE /* CurrentVitalsSegmentedViewController.swift in Sources */,
 				058056122BFB2746006A897D /* AppDelegate.swift in Sources */,
 				C4D656242C098C6D00DC9BA3 /* HeaderCollectionReusabeView.swift in Sources */,
+				C4C0DD982C16C92900BBF4C5 /* ContentViewController.swift in Sources */,
 				059E305D2BFCB39F006A3F52 /* EditMedicationTableViewController.swift in Sources */,
 				05D427F82C1182D0008639F3 /* OCR.swift in Sources */,
 				C4CDB40E2C07403200BF4672 /* CurrentVitalsCell.swift in Sources */,
