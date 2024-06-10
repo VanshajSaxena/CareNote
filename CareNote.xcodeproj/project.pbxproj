@@ -38,6 +38,7 @@
 		05D428012C11B989008639F3 /* ParametersCSV.csv in Resources */ = {isa = PBXBuildFile; fileRef = 05D428002C1190D2008639F3 /* ParametersCSV.csv */; };
 		05E7F6782C12C9A4008BF9D9 /* TimelineCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05E7F6772C12C9A4008BF9D9 /* TimelineCollectionViewCell.xib */; };
 		05E7F67A2C12CA1F008BF9D9 /* TimelineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E7F6792C12CA1F008BF9D9 /* TimelineCollectionViewCell.swift */; };
+		05FA97032C16E03800A93BA2 /* LoginStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05FA97022C16E03800A93BA2 /* LoginStoryboard.storyboard */; };
 		C437C0C42C0844EE003924A4 /* BloodPressureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C437C0C32C0844EE003924A4 /* BloodPressureCell.swift */; };
 		C437C0C62C085084003924A4 /* recentReportCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C437C0C52C085084003924A4 /* recentReportCell.xib */; };
 		C437C0C82C085561003924A4 /* recentReportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C437C0C72C085561003924A4 /* recentReportCell.swift */; };
@@ -81,6 +82,7 @@
 		05D428002C1190D2008639F3 /* ParametersCSV.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = ParametersCSV.csv; sourceTree = "<group>"; };
 		05E7F6772C12C9A4008BF9D9 /* TimelineCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimelineCollectionViewCell.xib; sourceTree = "<group>"; };
 		05E7F6792C12CA1F008BF9D9 /* TimelineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineCollectionViewCell.swift; sourceTree = "<group>"; };
+		05FA97022C16E03800A93BA2 /* LoginStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginStoryboard.storyboard; sourceTree = "<group>"; };
 		C437C0C32C0844EE003924A4 /* BloodPressureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodPressureCell.swift; sourceTree = "<group>"; };
 		C437C0C52C085084003924A4 /* recentReportCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = recentReportCell.xib; sourceTree = "<group>"; };
 		C437C0C72C085561003924A4 /* recentReportCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recentReportCell.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				05D215A32C098DB30078A10D /* MedicalParameters.swift */,
 				058056132BFB2746006A897D /* SceneDelegate.swift */,
 				C4CDB3DA2C06FCD900BF4672 /* HealthView */,
+				05FA97022C16E03800A93BA2 /* LoginStoryboard.storyboard */,
 				05ACBE1F2BFB2EAB002C58A9 /* ProfileStoryboard.storyboard */,
 				05ACBE212BFB2EBE002C58A9 /* ProfileViewController.swift */,
 				0580561A2BFB2748006A897D /* Assets.xcassets */,
@@ -272,6 +275,7 @@
 				0580561B2BFB2748006A897D /* Assets.xcassets in Resources */,
 				05ACBE1A2BFB2BB1002C58A9 /* MedMinderStoryboard.storyboard in Resources */,
 				C4CDB4042C0725B400BF4672 /* CurrentVitalsCell.xib in Resources */,
+				05FA97032C16E03800A93BA2 /* LoginStoryboard.storyboard in Resources */,
 				0580561E2BFB2748006A897D /* Base in Resources */,
 				C437C0C62C085084003924A4 /* recentReportCell.xib in Resources */,
 				05E7F6782C12C9A4008BF9D9 /* TimelineCollectionViewCell.xib in Resources */,
