@@ -28,6 +28,8 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         timelineCollectionView.backgroundColor = UIColor.clear
         
         addGradientBackground()
+        
+        timelineCollectionView.alwaysBounceHorizontal = false
     }
     
     func addGradientBackground() {
@@ -70,7 +72,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         timelineGroup.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
         
         let timelineSection = NSCollectionLayoutSection(group: timelineGroup)
-        timelineSection.orthogonalScrollingBehavior = .groupPagingCentered
+//        timelineSection.orthogonalScrollingBehavior = .groupPaging
         
         let sectionBackground = NSCollectionLayoutDecorationItem.background(elementKind: "SectionBackgroundView")
         timelineSection.decorationItems = [sectionBackground]
@@ -81,7 +83,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
     // MARK: - UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
+        return 4
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
