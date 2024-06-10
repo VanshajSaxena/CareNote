@@ -19,20 +19,20 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wEK-WQ-vMP">
                         <rect key="frame" x="0.0" y="0.0" width="345" height="44"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Parameter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kkB-4r-ygC">
-                                <rect key="frame" x="20" y="11" width="201.66666666666666" height="22"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" misplaced="YES" text="Parameter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kkB-4r-ygC">
+                                <rect key="frame" x="20" y="12" width="240" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ap6-yc-QLh">
-                                <rect key="frame" x="223.66666666666663" y="11" width="68" height="22"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" misplaced="YES" text="Value" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ap6-yc-QLh">
+                                <rect key="frame" x="262.66666666666663" y="12" width="50" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unit" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lvb-8v-zd4">
-                                <rect key="frame" x="293.66666666666669" y="11" width="31.333333333333314" height="22"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Unit" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lvb-8v-zd4">
+                                <rect key="frame" x="314.66666666666669" y="13" width="28.333333333333314" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -40,18 +40,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="lvb-8v-zd4" firstAttribute="top" secondItem="wEK-WQ-vMP" secondAttribute="top" constant="11" id="4p8-3p-OHY"/>
-                            <constraint firstItem="lvb-8v-zd4" firstAttribute="leading" secondItem="wEK-WQ-vMP" secondAttribute="leading" constant="293.67000000000002" id="7XY-Me-GXR"/>
-                            <constraint firstItem="ap6-yc-QLh" firstAttribute="top" secondItem="wEK-WQ-vMP" secondAttribute="top" constant="11" id="CQi-pt-lYd"/>
-                            <constraint firstAttribute="trailing" secondItem="kkB-4r-ygC" secondAttribute="trailing" constant="123.33" id="GKs-h5-wQh"/>
-                            <constraint firstAttribute="bottom" secondItem="lvb-8v-zd4" secondAttribute="bottom" constant="11" id="NqO-5V-7uf"/>
-                            <constraint firstAttribute="bottom" secondItem="ap6-yc-QLh" secondAttribute="bottom" constant="11" id="Sa2-OY-4ut"/>
-                            <constraint firstItem="kkB-4r-ygC" firstAttribute="top" secondItem="wEK-WQ-vMP" secondAttribute="top" constant="11" id="he7-N6-331"/>
-                            <constraint firstItem="kkB-4r-ygC" firstAttribute="leading" secondItem="wEK-WQ-vMP" secondAttribute="leading" constant="20" symbolic="YES" id="i6f-Jb-ruI"/>
-                            <constraint firstAttribute="trailing" secondItem="lvb-8v-zd4" secondAttribute="trailing" constant="20" symbolic="YES" id="itU-Vg-lsU"/>
-                            <constraint firstAttribute="trailing" secondItem="ap6-yc-QLh" secondAttribute="trailing" constant="53.329999999999998" id="km8-Wr-SNz"/>
-                            <constraint firstItem="ap6-yc-QLh" firstAttribute="leading" secondItem="wEK-WQ-vMP" secondAttribute="leading" constant="223.66999999999999" id="oQC-VS-PPR"/>
-                            <constraint firstAttribute="bottom" secondItem="kkB-4r-ygC" secondAttribute="bottom" constant="11" id="vvC-iD-nuS"/>
+                            <constraint firstItem="lvb-8v-zd4" firstAttribute="top" secondItem="wEK-WQ-vMP" secondAttribute="top" constant="13" id="3fW-pH-Byw"/>
+                            <constraint firstItem="lvb-8v-zd4" firstAttribute="centerY" secondItem="ap6-yc-QLh" secondAttribute="centerY" id="AbU-Pj-3TS"/>
+                            <constraint firstAttribute="bottom" secondItem="ap6-yc-QLh" secondAttribute="bottom" constant="12" id="Dd3-VP-WFc"/>
+                            <constraint firstAttribute="bottom" secondItem="lvb-8v-zd4" secondAttribute="bottom" constant="13" id="ElZ-Vm-xMq"/>
+                            <constraint firstAttribute="trailing" secondItem="lvb-8v-zd4" secondAttribute="trailing" constant="2" id="K36-5X-7xF"/>
+                            <constraint firstItem="lvb-8v-zd4" firstAttribute="leading" secondItem="ap6-yc-QLh" secondAttribute="trailing" constant="2" id="ONi-RR-EjF"/>
+                            <constraint firstItem="kkB-4r-ygC" firstAttribute="leading" secondItem="wEK-WQ-vMP" secondAttribute="leading" constant="20" symbolic="YES" id="UfP-DS-9MT"/>
+                            <constraint firstItem="ap6-yc-QLh" firstAttribute="leading" secondItem="kkB-4r-ygC" secondAttribute="trailing" constant="2" id="ZxO-sB-uB8"/>
+                            <constraint firstItem="lvb-8v-zd4" firstAttribute="centerY" secondItem="kkB-4r-ygC" secondAttribute="centerY" id="k3t-PU-6Yd"/>
+                            <constraint firstItem="ap6-yc-QLh" firstAttribute="top" secondItem="wEK-WQ-vMP" secondAttribute="top" constant="12" id="qW2-83-dNJ"/>
+                            <constraint firstAttribute="bottom" secondItem="kkB-4r-ygC" secondAttribute="bottom" constant="12" id="uGZ-bQ-uHs"/>
+                            <constraint firstItem="kkB-4r-ygC" firstAttribute="top" secondItem="wEK-WQ-vMP" secondAttribute="top" constant="12" id="xio-kJ-3DC"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -64,8 +64,8 @@
             </collectionViewCellContentView>
             <connections>
                 <outlet property="titleLabel" destination="kkB-4r-ygC" id="qkS-wh-INa"/>
-                <outlet property="unitLabel" destination="lvb-8v-zd4" id="AeR-hT-3eb"/>
-                <outlet property="valueLabel" destination="ap6-yc-QLh" id="w3R-US-R8s"/>
+                <outlet property="unitLabel" destination="lvb-8v-zd4" id="Oaj-GR-iFe"/>
+                <outlet property="valueLabel" destination="ap6-yc-QLh" id="auP-wc-r8G"/>
             </connections>
             <point key="canvasLocation" x="174.80916030534351" y="-103.52112676056339"/>
         </collectionViewCell>
