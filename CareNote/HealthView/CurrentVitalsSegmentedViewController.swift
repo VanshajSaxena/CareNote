@@ -169,66 +169,57 @@ class CurrentVitalsSegmentedViewController: UIViewController {
       }
       
       func setTimeSegmentControl() {
-          if vitalsSegmentedControl.selectedSegmentIndex == 0 {
-                      switch timeSegmentedControl.selectedSegmentIndex {
-                      case 0:
-                          timeLabel1.text = "Today"
-                          timeLabel2.text = "Yesterday"
-                          currentGraphData = dayData
-                          xAxisRange = 1...24
-                          xAxisStride = 3
-                      case 1:
-                          timeLabel1.text = "Current Week"
-                          timeLabel2.text = "Previous Week"
-                          currentGraphData = weekData
-                          xAxisRange = 1...7
-                          xAxisStride = 1
-                      case 2:
-                          timeLabel1.text = "Current Month"
-                          timeLabel2.text = "Previous Month"
-                          currentGraphData = monthData
-                          xAxisRange = 1...31
-                          xAxisStride = 3
-                      case 3:
-                          timeLabel1.text = "Current Year"
-                          timeLabel2.text = "Previous Year"
-                          currentGraphData = yearData
-                          xAxisRange = 1...12
-                          xAxisStride = 1
-                      default:
-                          print("Fatal Error")
-                      }
-                  } else {
-                      switch timeSegmentedControl.selectedSegmentIndex {
-                      case 0:
-                          soloTimeLabel1.text = "Today"
-                          soloTimeLabel2.text = "Yesterday"
-                          currentGraphData = dayData
-                          xAxisRange = 1...24
-                          xAxisStride = 3
-                      case 1:
-                          soloTimeLabel1.text = "Current Week"
-                          soloTimeLabel2.text = "Previous Week"
-                          currentGraphData = weekData
-                          xAxisRange = 1...7
-                          xAxisStride = 1
-                      case 2:
-                          soloTimeLabel1.text = "Current Month"
-                          soloTimeLabel2.text = "Previous Month"
-                          currentGraphData = monthData
-                          xAxisRange = 1...31
-                          xAxisStride = 3
-                      case 3:
-                          soloTimeLabel1.text = "Current Year"
-                          soloTimeLabel2.text = "Previous Year"
-                          currentGraphData = yearData
-                          xAxisRange = 1...12
-                          xAxisStride = 1
-                      default:
-                          print("Fatal Error")
-                      }
-                  }
-                  
+          switch vitalsSegmentedControl.selectedSegmentIndex {
+          case 0:
+              
+              graphTimeChange()
+          case 1:
+              
+              graphTimeChange()
+          case 2:
+              
+              graphTimeChange()
+          case 3:
+              
+              graphTimeChange()
+          case 4:
+              
+              graphTimeChange()
+          default:
+              graphTimeChange()
+          }
+        
                   currentVitalsGraph()
               }
-  }
+        
+    func graphTimeChange() {
+        switch timeSegmentedControl.selectedSegmentIndex {
+        case 0:
+            timeLabel1.text = "Today"
+            timeLabel2.text = "Yesterday"
+            currentGraphData = dayData
+            xAxisRange = 1...24
+            xAxisStride = 3
+        case 1:
+            timeLabel1.text = "Current Week"
+            timeLabel2.text = "Previous Week"
+            currentGraphData = weekData
+            xAxisRange = 1...7
+            xAxisStride = 1
+        case 2:
+            timeLabel1.text = "Current Month"
+            timeLabel2.text = "Previous Month"
+            currentGraphData = monthData
+            xAxisRange = 1...31
+            xAxisStride = 3
+        case 3:
+            timeLabel1.text = "Current Year"
+            timeLabel2.text = "Previous Year"
+            currentGraphData = yearData
+            xAxisRange = 1...12
+            xAxisStride = 1
+        default:
+            print("Fatal Error")
+        }
+    }
+}
