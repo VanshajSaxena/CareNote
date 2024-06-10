@@ -19,35 +19,101 @@ class DataController {
     private var images: [Images] = []
 
     private var _parametersDict = [
-        "Blood Pressure": "mmHg",
-        "Blood Sugar": "mg/dL",
-        "Heart Rate": "bpm",
-        "eGFR": "mL/min",
-        "Creatinine": "mg/dL",
-        "Packed Cell Volume": "%",
-        "Mean Corpuscular Volume": "fL",
-        "Mean Corpuscular Volume (MCV)": "fL",
-        "Mean Corpuscular Volume (Mean)": "fL",
-        "Packed Cell Volume (Mean)": "%",
-        "Mean Corpuscular Hemoglobin": "pg",
-        "Mean Corpuscular Hemoglobin (MCH)": "pg",
-        "Mean Corpuscular Hemoglobin (Mean)": "pg",
-        "Mean Corpuscular Hemoglobin Concentration": "g/dL",
-        "Mean Corpuscular Hemoglobin Concentration (MCHC)": "g/dL",
-        "Mean Corpuscular Hemoglobin Concentration (Mean)": "g/dL",
-        "Red Blood Cell Distribution Width (RDW)": "%",
-        "Red Blood Cell Distribution Width": "%",
-        "Red Blood Cell Distribution Width (Mean)": "%",
-        "Red Blood Cell Distribution Width (RDW-CV)": "%",
-        "Red Blood Cell Distribution Width (CV)": "%",
-        "Red Blood Cell Distribution Width (RDW-SD)": "fL",
-        "Red Blood Cell Distribution Width (SD)": "fL",
-        "Red Blood Cell Count": "10^12/L",
-        "Red Blood Cell Count (RBC)": "10^12/L",
-        "White Blood Cell Count": "10^9/L",
-        "White Blood Cell Count (WBC)": "10^9/L",
-        "Platelet Count": "10^9/L",
-        "Platelet Count (PLT)": "10^9/L"
+        // Vital Signs
+        "Blood Pressure": "mmHg",            // Blood Pressure
+        "Heart Rate": "bpm",                 // Heart Rate
+        "Respiratory Rate": "breaths/min",   // Respiratory Rate
+        "Body Temperature": "°C",            // Body Temperature
+        "Oxygen Saturation": "%",            // Oxygen Saturation (SpO2)
+        
+        // Blood Glucose and Related
+        "Blood Sugar": "mg/dL",              // Blood Sugar / Glucose
+        "HbA1c": "%",                        // Glycated Hemoglobin (HbA1c)
+        
+        // Blood Cells
+        "White Blood Cells": "10^3/uL",      // White Blood Cells (WBC)
+        "Red Blood Cells": "10^6/uL",        // Red Blood Cells (RBC)
+        "Platelets": "10^3/uL",              // Platelets
+        "Haemoglobin": "g/dL",               // Haemoglobin
+        "Hemoglobin": "g/dL",                // Hemoglobin
+        "Hematocrit": "%",                   // Hematocrit
+        "Mean Corpuscular Volume": "fL",     // Mean Corpuscular Volume (MCV)
+        "Mean Corpuscular Hemoglobin": "pg", // Mean Corpuscular Hemoglobin (MCH)
+        "Mean Corpuscular Hemoglobin Concentration": "g/dL", // Mean Corpuscular Hemoglobin Concentration (MCHC)
+        
+        // Kidney Function
+        "eGFR": "mL/min",                    // Estimated Glomerular Filtration Rate (eGFR)
+        "Creatinine": "mg/dL",               // Creatinine
+        "Blood Urea Nitrogen": "mg/dL",      // Blood Urea Nitrogen (BUN) / Urea
+        "Uric Acid": "mg/dL",                // Uric Acid
+        
+        // Liver Function
+        "Albumin": "g/dL",                   // Albumin
+        "Total Protein": "g/dL",             // Total Protein
+        "Bilirubin": "mg/dL",                // Bilirubin
+        "Alkaline Phosphatase": "U/L",       // Alkaline Phosphatase (ALP)
+        "Aspartate Transaminase (AST)": "U/L", // Aspartate Transaminase (AST)
+        "Alanine Transaminase (ALT)": "U/L", // Alanine Transaminase (ALT)
+        "Gamma-Glutamyl Transferase (GGT)": "U/L", // Gamma-Glutamyl Transferase (GGT)
+        "Lactate Dehydrogenase (LDH)": "U/L", // Lactate Dehydrogenase (LDH)
+        
+        // Lipid Profile
+        "Cholesterol": "mg/dL",              // Total Cholesterol
+        "Triglycerides": "mg/dL",            // Triglycerides
+        "HDL Cholesterol": "mg/dL",          // HDL Cholesterol
+        "LDL Cholesterol": "mg/dL",          // LDL Cholesterol
+        "VLDL Cholesterol": "mg/dL",         // VLDL Cholesterol
+        
+        // Electrolytes
+        "Sodium": "mmol/L",                  // Sodium
+        "Potassium": "mmol/L",               // Potassium
+        "Chloride": "mmol/L",                // Chloride
+        "Calcium": "mg/dL",                  // Calcium
+        "Magnesium": "mg/dL",                // Magnesium
+        "Phosphate": "mg/dL",                // Phosphate
+        
+        // Endocrine
+        "Thyroid Stimulating Hormone (TSH)": "mIU/L", // Thyroid Stimulating Hormone (TSH)
+        "Free T4": "ng/dL",                  // Free T4
+        "Free T3": "pg/mL",                  // Free T3
+        "Cortisol": "µg/dL",                 // Cortisol
+        "Insulin": "µU/mL",                  // Insulin
+        "Parathyroid Hormone (PTH)": "pg/mL", // Parathyroid Hormone (PTH)
+        
+        // Coagulation
+        "Prothrombin Time (PT)": "seconds",  // Prothrombin Time (PT)
+        "Partial Thromboplastin Time (PTT)": "seconds", // Partial Thromboplastin Time (PTT)
+        
+        // Cardiac Markers
+        "Troponin": "ng/mL",                 // Troponin
+        "Creatine Kinase-MB (CK-MB)": "ng/mL", // Creatine Kinase-MB (CK-MB)
+        "B-type Natriuretic Peptide (BNP)": "pg/mL", // B-type Natriuretic Peptide (BNP)
+        
+        // Inflammatory Markers
+        "C-Reactive Protein (CRP)": "mg/L",  // C-Reactive Protein (CRP)
+        "Erythrocyte Sedimentation Rate (ESR)": "mm/hr", // Erythrocyte Sedimentation Rate (ESR)
+        
+        // Other Common Tests
+        "Vitamin D": "ng/mL",                // Vitamin D
+        "Ferritin": "ng/mL",                 // Ferritin
+        "Iron": "µg/dL",                     // Iron
+        "Transferrin": "mg/dL",              // Transferrin
+        "Folate": "ng/mL",                   // Folate
+        "Vitamin B12": "pg/mL",              // Vitamin B12
+        "Amylase": "U/L",                    // Amylase
+        "Lipase": "U/L",                     // Lipase
+        
+        // Urinalysis
+        "Urine Protein": "mg/dL",            // Urine Protein
+        "Urine Glucose": "mg/dL",            // Urine Glucose
+        "Urine Ketones": "mg/dL",            // Urine Ketones
+        
+        // Others
+        "Bilirubin (Total)": "mg/dL",        // Bilirubin (Total)
+        "Bilirubin (Direct)": "mg/dL",       // Bilirubin (Direct)
+        "Bilirubin (Indirect)": "mg/dL",     // Bilirubin (Indirect)
+        "Homocysteine": "µmol/L",            // Homocysteine
+        "C-Peptide": "ng/mL"                 // C-Peptide
     ]
 
 
@@ -135,6 +201,11 @@ class DataController {
     func getMedicalParameters() -> [MedicalParameter] {
         return medicalParameters
     }
+    
+    // Non-nil RecentValue parameters
+    func getFilteredMedicalParameters() -> [MedicalParameter] {
+        return getMedicalParameters().filter { $0.getRecentValue() != nil }
+    }
 
     func addMedicalParameter(name: String, unitOfMeasure: String) {
         let newMedicalParameter = MedicalParameter(name: name, unitOfMeasure: unitOfMeasure)
@@ -142,10 +213,11 @@ class DataController {
     }
 
     func recordNewMedicalParameter(name: String, value: Double, date: Date = Date()) {
-        guard let parameter = getMedicalParameter(name: name) else {
-            print("Medical parameter \(name) does not exists")
+        guard let parameter = dataController.getMedicalParameter(name: name) else {
+            print("Medical parameter \(name) is not available is private _parametersDict.")
             return
         }
+        print("recordNewMedicalParameter with name:\(name), value:\(value), date:\(date)")
         parameter.addHistoryEntry(value, date: date)
     }
 
@@ -187,7 +259,7 @@ class DataController {
     func getUnitOfParameter(parameterName parameter: String) -> String {
         guard let unit = _parametersDict[parameter] else {
             print("\(parameter) does not exists")
-            return ""
+            return "NOUNIT"
         }
         return unit
     }
