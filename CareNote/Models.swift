@@ -130,13 +130,3 @@ struct Images: Codable {
         self.imageData = image?.jpegData(compressionQuality: 1.0)
     }
 }
-
-struct RecordedParameter: CustomStringConvertible, Codable {
-    var name: String
-    var value: Float
-    
-    var description: String {
-        "\(name) : \(value)"
-    }
-}
-

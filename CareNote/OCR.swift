@@ -78,21 +78,19 @@ private func processObservations(_ observations: [VNRecognizedTextObservation],i
     }
     
     ySortedTextsInImage = textsInImage.sorted()
-    
 //    for i in ySortedTextsInImage {
 //        print(i)
 //    }
-    
     findParameter()
 }
 
 private func findParameter() {
     for i in textsInImage {
         let subTexts = i.text
-        print(subTexts)
+//        print(subTexts)
         if let score = dictionary[subTexts] {
+            dataController.addMedicalParameter(name: score, unitOfMeasure: dataController.getUnitOfParameter(parameterName: score))
             parametersInImage.append(i)
-            print(score)
         } else if parameterListSplitted.contains(String(subTexts).lowercased()) {
             parametersInImage.append(i)
             break
@@ -110,18 +108,15 @@ private func findParameterValue() {
     for parameter in parametersInImage {
         for i in textsInImage {
             if abs(parameter.yPosition - i.yPosition) <= 10 && parameter.text != i.text {
-                if let value = Float(i.text) {
-                    dataController.appendRecordedParameter(RecordedParameter(name: parameter.text, value: value))
-                    dataController.getMedicalParameter(name: parameter.text)?.addHistoryEntry(Double(value), date: Date())
-                    print(dataController.getMedicalParameter(name: "Heart Rate")?.getHistory() ?? "noDATA")
+                if let value = Double(i.text) {
+                    dataController.recordNewMedicalParameter(name: parameter.text, value: value, date: Date())
                 }
             }
         }
     }
     print("\n\n\n")
-    print(dataController.getMedicalParameter(name: "Heart Rate")?.getHistory() ?? "noDATA")
     for parameter in dataController.getMedicalParameters() {
-        print(parameter)
+        print(parameter.getName()," ",parameter.getRecentValue() ?? "didNotRecord")
     }
 }
 

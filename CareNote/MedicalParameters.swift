@@ -113,8 +113,8 @@ class MedicalParameter: Codable {
         name = try container.decode(String.self, forKey: .name)
         unitOfMeasure = try container.decode(String.self, forKey: .unitOfMeasure)
         history = try container.decode([HistoryEntry].self, forKey: .history)
-        maxValue = try container.decode(Double.self, forKey: .maxValue)
-        minValue = try container.decode(Double.self, forKey: .minValue)
+        maxValue = try container.decodeIfPresent(Double.self, forKey: .maxValue)
+        minValue = try container.decodeIfPresent(Double.self, forKey: .minValue)
     }
 
     private enum CodingKeys: String, CodingKey {

@@ -17,9 +17,39 @@ class DataController {
     private var medicalParameters : [MedicalParameter] = []
     private var medicines: [Medicine] = []
     private var images: [Images] = []
-    private var recordedParameters: [RecordedParameter] = []
 
-    private var _parametersDict = ["Blood Pressure": "mmHg", "Blood Sugar": "mg/dL", "Heart Rate": "bpm", "eGFR": "mL/min", "Creatinine": "mg/dL"]
+    private var _parametersDict = [
+        "Blood Pressure": "mmHg",
+        "Blood Sugar": "mg/dL",
+        "Heart Rate": "bpm",
+        "eGFR": "mL/min",
+        "Creatinine": "mg/dL",
+        "Packed Cell Volume": "%",
+        "Mean Corpuscular Volume": "fL",
+        "Mean Corpuscular Volume (MCV)": "fL",
+        "Mean Corpuscular Volume (Mean)": "fL",
+        "Packed Cell Volume (Mean)": "%",
+        "Mean Corpuscular Hemoglobin": "pg",
+        "Mean Corpuscular Hemoglobin (MCH)": "pg",
+        "Mean Corpuscular Hemoglobin (Mean)": "pg",
+        "Mean Corpuscular Hemoglobin Concentration": "g/dL",
+        "Mean Corpuscular Hemoglobin Concentration (MCHC)": "g/dL",
+        "Mean Corpuscular Hemoglobin Concentration (Mean)": "g/dL",
+        "Red Blood Cell Distribution Width (RDW)": "%",
+        "Red Blood Cell Distribution Width": "%",
+        "Red Blood Cell Distribution Width (Mean)": "%",
+        "Red Blood Cell Distribution Width (RDW-CV)": "%",
+        "Red Blood Cell Distribution Width (CV)": "%",
+        "Red Blood Cell Distribution Width (RDW-SD)": "fL",
+        "Red Blood Cell Distribution Width (SD)": "fL",
+        "Red Blood Cell Count": "10^12/L",
+        "Red Blood Cell Count (RBC)": "10^12/L",
+        "White Blood Cell Count": "10^9/L",
+        "White Blood Cell Count (WBC)": "10^9/L",
+        "Platelet Count": "10^9/L",
+        "Platelet Count (PLT)": "10^9/L"
+    ]
+
 
     static let shared = DataController()
 
@@ -111,7 +141,7 @@ class DataController {
         medicalParameters.append(newMedicalParameter)
     }
 
-    func recordMedicalParameter(name: String, value: Double, date: Date = Date()) {
+    func recordNewMedicalParameter(name: String, value: Double, date: Date = Date()) {
         guard let parameter = getMedicalParameter(name: name) else {
             print("Medical parameter \(name) does not exists")
             return
@@ -146,16 +176,6 @@ class DataController {
         return images
     }
     
-    // MARK: - Recorded Parameter Functions
-    
-    func getRecordedParameters() -> [RecordedParameter]{
-        return recordedParameters
-    }
-    
-    func appendRecordedParameter(_ parameter: RecordedParameter) {
-        recordedParameters.append(parameter)
-    }
-
     func getRecentParameterValues(name: String, count: Int = 5) -> [String] {
         guard let parameter = getMedicalParameter(name: name) else {
             print("Parameter list is empty")
@@ -165,11 +185,11 @@ class DataController {
     }
 
     func getUnitOfParameter(parameterName parameter: String) -> String {
-        guard let parameter = _parametersDict[parameter] else {
+        guard let unit = _parametersDict[parameter] else {
             print("\(parameter) does not exists")
             return ""
         }
-        return parameter
+        return unit
     }
 
     // MARK: - Persistence Methods
@@ -195,9 +215,6 @@ class DataController {
             let imagesData = try encoder.encode(images)
             saveToFile(data: imagesData, fileName: "images.json")
             
-            let recordedParametersData = try encoder.encode(recordedParameters)
-            saveToFile(data: recordedParametersData, fileName: "recordedParametersData.json")
-
             let medicalParametersData = try encoder.encode(medicalParameters)
             saveToFile(data: medicalParametersData, fileName: "medicalParameters.json")
 
@@ -250,14 +267,6 @@ class DataController {
             }
         }
 
-        if let recordedParametersData = loadFromFile(fileName: "recordedParametersData.json") {
-            do {
-                recordedParameters = try decoder.decode([RecordedParameter].self, from: recordedParametersData)
-            } catch let error {
-                print("Failed to decode consultations data: \(error.localizedDescription)")
-            }
-        }
-
         if let medicalParametersData = loadFromFile(fileName: "medicalParameters.json") {
             do {
                 medicalParameters = try decoder.decode([MedicalParameter].self, from: medicalParametersData)
@@ -283,6 +292,11 @@ class DataController {
 
         do {
             let data = try Data(contentsOf: fileURL)
+            print("Data loaded from \(fileURL): \(String(data: data, encoding: .utf8) ?? "Unable to decode data as UTF-8 string")")
+            if data.isEmpty {
+                print("Data loaded from \(fileURL) is empty.")
+                return nil
+            }
             print("Data successfully loaded from \(fileURL)")
             return data
         } catch let error {

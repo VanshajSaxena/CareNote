@@ -123,8 +123,8 @@ class HealthLogViewController: UIViewController, VNDocumentCameraViewControllerD
                 let scannedImage = scan.imageOfPage(at: pageIndex)
                 var images = dataController.getImages()
                 images.append(Images(id: UUID(), name: "newImage", image: scannedImage))
-                dataController.saveData()
                 getText(from: scannedImage)
+                dataController.saveData()
             }
         controller.dismiss(animated: true)
     }

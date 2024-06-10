@@ -148,9 +148,9 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
     
     // layout for recent report
     func recentReportLayout() -> NSCollectionLayoutSection {
-        let recentReportItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(50))
+        let recentReportItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(60))
         let recentReportItem = NSCollectionLayoutItem(layoutSize: recentReportItemSize)
-        recentReportItem.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
+        recentReportItem.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 2, trailing: 5)
         
         let recentReportGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(recentReportItem.layoutSize.heightDimension.dimension * CGFloat(dataController.getMedicalParameters().count)))
         let recentReportGroup = NSCollectionLayoutGroup.vertical(layoutSize: recentReportGroupSize, subitem: recentReportItem, count: dataController.getMedicalParameters().count)
@@ -214,7 +214,6 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
             if indexPath.item == 0 {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BloodPressureCell", for: indexPath) as! BloodPressureCell
                 let bloodPressureParameter = dataController.getMedicalParameter(name: "Blood Pressure")
-                print(bloodPressureParameter?.getHistory())
                 cell.titleLabel.text = bloodPressureParameter?.getName()
                 cell.value1Label.text = bloodPressureParameter?.getRecentValue()
                 cell.value2Label.text = ""
@@ -268,11 +267,19 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
             }
         case 2:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recentReportCell", for: indexPath) as! recentReportCell
-            let haemoglobin = dataController.getMedicalParameter(name: "Haemoglobin")
-            cell.titleLabel.text = haemoglobin?.getName()
-            cell.valueLabel.text = haemoglobin?.getRecentValue()
-            cell.unitLabel.text = haemoglobin?.getUnitOfMeasure()
-            cell.layer.cornerRadius = 8
+                // Check if the index is valid in the array of medical parameters
+                guard indexPath.item < dataController.getMedicalParameters().count else {
+                    return cell
+                }
+                
+                // Access the parameter at the specific index
+                let parameter = dataController.getMedicalParameters()[indexPath.item]
+                
+                // Configure the cell with the parameter details
+                cell.titleLabel.text = parameter.getName()
+                cell.valueLabel.text = parameter.getRecentValue()
+                cell.unitLabel.text = parameter.getUnitOfMeasure()
+                cell.layer.cornerRadius = 8
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CurrentVitalsCell", for: indexPath) as! CurrentVitalsCell
