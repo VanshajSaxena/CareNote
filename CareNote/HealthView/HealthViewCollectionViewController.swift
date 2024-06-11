@@ -49,6 +49,14 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
             
         }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Call your data reloading method here
+        dataController.loadData()
+        healthViewCollectionView.reloadData()
+    }
+    
     //GradientBackground
     func addGradientBackground() {
         let gradientLayer = CAGradientLayer()
@@ -150,8 +158,8 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
         let recentReportItem = NSCollectionLayoutItem(layoutSize: recentReportItemSize)
         recentReportItem.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 2, trailing: 5)
         
-        let recentReportGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(recentReportItem.layoutSize.heightDimension.dimension * CGFloat(dataController.getFilteredMedicalParameters().count)))
-        let recentReportGroup = NSCollectionLayoutGroup.vertical(layoutSize: recentReportGroupSize, subitem: recentReportItem, count: dataController.getFilteredMedicalParameters().count)
+        let recentReportGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(recentReportItem.layoutSize.heightDimension.dimension * CGFloat(dataController.getMedicalParameters().count)))
+        let recentReportGroup = NSCollectionLayoutGroup.vertical(layoutSize: recentReportGroupSize, subitem: recentReportItem, count: dataController.getMedicalParameters().count )
         recentReportGroup.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
         
         let recentReportSection = NSCollectionLayoutSection(group: recentReportGroup)
@@ -192,8 +200,8 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
                     header.headerLabel.text = "Last Tests"
                     header.iconButton.isHidden = false
                 case 2:
-                    header.headerLabel.text = "Recent Report"  // to be fillleeeeddddddddddd
-                    header.subtitleLabel.text = "10-05-2024" //datttttteeeeeeeeeeeeeeee neeedddd changeeee
+                    header.headerLabel.text = "Recent Report"  // MARK: - update needed
+                    header.subtitleLabel.text = "10-05-2024" // MARK: - update needed
                     header.subtitleLabel.isHidden = false
                     header.iconButton.isHidden = true
                 default:
