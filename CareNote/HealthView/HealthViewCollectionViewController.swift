@@ -221,9 +221,39 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BloodPressureCell", for: indexPath) as! BloodPressureCell
                 let bloodPressureParameter = dataController.getMedicalParameter(name: "Blood Pressure")
                 cell.titleLabel.text = bloodPressureParameter?.getName()
-                cell.value1Label.text = bloodPressureParameter?.getRecentValue()
-                cell.value2Label.text = ""
+                cell.value1Label.text = "-"
+                cell.value1Label.textColor = UIColor.gray
+                cell.value2Label.text = "-"
+                cell.value1Label.textColor = UIColor.gray
+//                cell.value1Label.text = bloodPressureParameter?.getRecentValue()
+//                cell.value2Label.text = ""
                 cell.unitLabel.text = bloodPressureParameter?.getUnitOfMeasure()
+                
+                //Colour
+//                if let recentValue = bloodPressureParameter?.getRecentValue(),
+//                   let maxValue = bloodPressureParameter?.getMaxValue(),
+//                   let minValue = bloodPressureParameter?.getMinValue() {
+//                    
+//                    // Use recentValue, maxValue, and minValue safely
+//                    if Double(recentValue)! < maxValue && Double(recentValue)! > minValue {
+//                        cell.valueLabel1.textColor = UIColor.green
+//                        cell.valueLabel1.text = String(recentValue)
+//                        cell.valueLabel2.textColor = UIColor.green
+//                        cell.valueLabel2.text = String(recentValue)
+//                    } else {
+//                        cell.valueLabel1.textColor = UIColor.red
+//                        cell.valueLabel1.text = String(recentValue)
+//                        cell.valueLabel2.textColor = UIColor.red
+//                        cell.valueLabel2.text = String(recentValue)
+//                    }
+//                } else {
+//                    // Handle the case where any of the values are nil
+//                    cell.valueLabel1.textColor = UIColor.gray
+//                    cell.valueLabel1.text = "-"
+//                    cell.valueLabel2.textColor = UIColor.gray
+//                    cell.valueLabel2.text = "-"
+//                }
+                
                 cell.iconImageView.image = UIImage(systemName: "waveform.path.ecg")
                 cell.iconImageView.tintColor = UIColor.systemBlue
                 cell.layer.cornerRadius = 8
@@ -232,7 +262,25 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CurrentVitalsCell", for: indexPath) as! CurrentVitalsCell
                 let bloodSugarParameter = dataController.getMedicalParameter(name: "Blood Sugar")
                 cell.titleLabel.text = bloodSugarParameter?.getName()
-                cell.valueLabel.text = bloodSugarParameter?.getRecentValue()
+                
+                //Colour
+                if let recentValue = bloodSugarParameter?.getRecentValue(),
+                   let maxValue = bloodSugarParameter?.getMaxValue(),
+                   let minValue = bloodSugarParameter?.getMinValue() {
+                    
+                    // Use recentValue, maxValue, and minValue safely
+                    if Double(recentValue)! < maxValue && Double(recentValue)! > minValue {
+                        cell.valueLabel.textColor = UIColor.green
+                        cell.valueLabel.text = String(recentValue) // Convert Double to String
+                    } else {
+                        cell.valueLabel.textColor = UIColor.red
+                        cell.valueLabel.text = String(recentValue) // Convert Double to String
+                    }
+                } else {
+                    cell.valueLabel.textColor = UIColor.gray
+                    cell.valueLabel.text = "-"
+                }
+                
                 cell.unitLabel.text = bloodSugarParameter?.getUnitOfMeasure()
                 cell.iconImageView.image = UIImage(systemName: "drop")
                 cell.iconImageView.tintColor = UIColor.orange
@@ -242,7 +290,25 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CurrentVitalsCell", for: indexPath) as! CurrentVitalsCell
                 let heartRateParameter = dataController.getMedicalParameter(name: "Heart Rate")
                 cell.titleLabel.text = heartRateParameter?.getName()
-                cell.valueLabel.text = heartRateParameter?.getRecentValue()
+                
+                //Colour
+                if let recentValue = heartRateParameter?.getRecentValue(),
+                   let maxValue = heartRateParameter?.getMaxValue(),
+                   let minValue = heartRateParameter?.getMinValue() {
+                    
+                    // Use recentValue, maxValue, and minValue safely
+                    if Double(recentValue)! < maxValue && Double(recentValue)! > minValue {
+                        cell.valueLabel.textColor = UIColor.green
+                        cell.valueLabel.text = String(recentValue) // Convert Double to String
+                    } else {
+                        cell.valueLabel.textColor = UIColor.red
+                        cell.valueLabel.text = String(recentValue) // Convert Double to String
+                    }
+                } else {
+                    cell.valueLabel.textColor = UIColor.gray
+                    cell.valueLabel.text = "-"
+                }
+                
                 cell.unitLabel.text = heartRateParameter?.getUnitOfMeasure()
                 cell.iconImageView.image = UIImage(systemName: "heart")
                 cell.iconImageView.tintColor = UIColor.red
@@ -254,7 +320,25 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CurrentVitalsCell", for: indexPath) as! CurrentVitalsCell
                 let egfrParameter = dataController.getMedicalParameter(name: "eGFR")
                 cell.titleLabel.text = egfrParameter?.getName()
-                cell.valueLabel.text = egfrParameter?.getRecentValue()
+                
+                //colour
+                if let recentValue = egfrParameter?.getRecentValue(),
+                   let maxValue = egfrParameter?.getMaxValue(),
+                   let minValue = egfrParameter?.getMinValue() {
+                    
+                    // Use recentValue, maxValue, and minValue safely
+                    if Double(recentValue)! < maxValue && Double(recentValue)! > minValue {
+                        cell.valueLabel.textColor = UIColor.green
+                        cell.valueLabel.text = String(recentValue)
+                    } else {
+                        cell.valueLabel.textColor = UIColor.red
+                        cell.valueLabel.text = String(recentValue)
+                    }
+                } else {
+                    cell.valueLabel.textColor = UIColor.gray
+                    cell.valueLabel.text = "-"
+                }
+                
                 cell.unitLabel.text = egfrParameter?.getUnitOfMeasure()
                 cell.iconImageView.image = UIImage(systemName: "chart.bar.doc.horizontal")
                 cell.iconImageView.tintColor = UIColor.systemGreen
@@ -264,7 +348,26 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CurrentVitalsCell", for: indexPath) as! CurrentVitalsCell
                 let creatinine = dataController.getMedicalParameter(name: "Creatinine")
                 cell.titleLabel.text = creatinine?.getName()
-                cell.valueLabel.text = creatinine?.getRecentValue()
+                
+                //colour
+                if let recentValue = creatinine?.getRecentValue(),
+                   let maxValue = creatinine?.getMaxValue(),
+                   let minValue = creatinine?.getMinValue() {
+                    
+                    // Use recentValue, maxValue, and minValue safely
+                    if Double(recentValue)! < maxValue && Double(recentValue)! > minValue {
+                        cell.valueLabel.textColor = UIColor.green
+                        cell.valueLabel.text = String(recentValue)
+                    } else {
+                        cell.valueLabel.textColor = UIColor.red
+                        cell.valueLabel.text = String(recentValue)
+                    }
+                } else {
+                    // Handle the case where any of the values are nil
+                    cell.valueLabel.textColor = UIColor.gray
+                    cell.valueLabel.text = "-"
+                }
+                
                 cell.unitLabel.text = creatinine?.getUnitOfMeasure()
                 cell.iconImageView.image = UIImage(systemName: "cross.vial")
                 cell.iconImageView.tintColor = UIColor.purple
@@ -283,7 +386,26 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
                 
                 // Configure the cell with the parameter details
                 cell.titleLabel.text = parameter.getName()
-                cell.valueLabel.text = parameter.getRecentValue()
+                
+                //Colour
+                if let recentValue = parameter.getRecentValue(),
+                   let maxValue = parameter.getMaxValue(),
+                   let minValue = parameter.getMinValue() {
+                    
+                    // Use recentValue, maxValue, and minValue safely
+                    if Double(recentValue)! < maxValue && Double(recentValue)! > minValue {
+                        cell.valueLabel.textColor = UIColor.green
+                        cell.valueLabel.text = String(recentValue) // Convert Double to String
+                    } else {
+                        cell.valueLabel.textColor = UIColor.red
+                        cell.valueLabel.text = String(recentValue) // Convert Double to String
+                    }
+                } else {
+                    // Handle the case where any of the values are nil
+                    cell.valueLabel.textColor = UIColor.gray
+                    cell.valueLabel.text = "-"
+                }
+            
                 cell.unitLabel.text = parameter.getUnitOfMeasure()
                 cell.layer.cornerRadius = 8
             return cell
