@@ -61,8 +61,7 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDataSource
     }
     
     @IBAction func startButtonTapped(_ sender: UIButton) {
-        // Dismiss the onboarding view controller
-//        self.dismiss(animated: true, completion: nil)
+        performSegue(withIdentifier: "showLoginSegue", sender: nil)
     }
     
     func addGradientBackground() {
@@ -135,4 +134,7 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDataSource
             }
         }
     }
+    
+    
+    
 }
