@@ -127,6 +127,8 @@ class HealthLogViewController: UIViewController, VNDocumentCameraViewControllerD
                 dataController.saveData()
             }
         controller.dismiss(animated: true)
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ImageViewLogViewController") as! ImageViewLogViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 
     @IBAction func addButtonPressed(_ sender: Any) {

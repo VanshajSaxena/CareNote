@@ -6,6 +6,7 @@
 //
 
 import UIKit
+var documentTypeSelected : String = ""
 
 class AddVisitTableViewController: UITableViewController {
     
@@ -13,6 +14,11 @@ class AddVisitTableViewController: UITableViewController {
     @IBOutlet var documnetPopButton: UIButton!
     @IBOutlet var addVisitDateLabel: UILabel!
     @IBOutlet var addVisitDatePicker: UIDatePicker!
+    
+    
+    
+    @IBOutlet var documentNameLabel: UILabel!
+    @IBOutlet var documentDateLabel: UILabel!
     
     var addVisitDateLabelIndexPath = IndexPath(row: 0, section: 0)
     var addVisitDatePickerIndexPath = IndexPath(row: 1, section: 0)
@@ -33,16 +39,20 @@ class AddVisitTableViewController: UITableViewController {
         super.viewDidLoad()
         setDocumentPopButton()
         updateDateView()
+        documentNameLabel.text = "\(documentName).pdf"
 //        loadSavedVisit()
     }
     
     func updateDateView() {
+        documentDateLabel.text=addVisitDatePicker.date.formatted(date: .abbreviated, time: .omitted)
         addVisitDateLabel.text = addVisitDatePicker.date.formatted(date: .abbreviated, time: .omitted)
     }
     
     func setDocumentPopButton(){
         let optionClosure = {(action : UIAction) in
             print(action.title)
+            documentTypeSelected = "\(action.title)"
+            print("Sameer Verma created \(documentTypeSelected)")
         }
         documnetPopButton.menu = UIMenu (children : [
         UIAction(title : "Document Type", state :.on, handler: optionClosure),
