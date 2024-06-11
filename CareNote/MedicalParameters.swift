@@ -14,8 +14,8 @@ class MedicalParameter: Codable {
     private var unitOfMeasure: String
     /// private(set) keyword is used to make properties publicly redable but privately modifiable.
     private var history: [HistoryEntry] = []  // Always initialize as empty array
-    private let maxValue: Double?
-    private let minValue: Double?
+    private var maxValue: Double?
+    private var minValue: Double?
 
     struct HistoryEntry: Codable {
         var value: Double
@@ -88,6 +88,14 @@ class MedicalParameter: Codable {
             return nil
         }
         return minValue
+    }
+    
+    func setMinValue(minValue: Double){
+        self.minValue = minValue
+    }
+    
+    func setMaxValue(maxValue: Double){
+        self.maxValue = maxValue
     }
     
     func getMaxValue() -> Double? {
