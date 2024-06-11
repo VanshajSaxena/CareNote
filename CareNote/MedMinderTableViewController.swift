@@ -70,8 +70,10 @@ class MedMinderTableViewController: UITableViewController {
     
     func addGradientBackground() {
         let gradientLayer = CAGradientLayer()
+
+        // Adjust the frame to cover the entire bounds of the view
         gradientLayer.frame = self.view.bounds
-        
+
         let colour1 = UIColor(red: 0x66 / 255.0, green: 0xFF / 255.0, blue: 0xFF / 255.0, alpha: 1.0)
         let colour2 = UIColor(red: 0x66 / 255.0, green: 0xCC / 255.0, blue: 0xFF / 255.0, alpha: 1.0)
         
@@ -80,8 +82,16 @@ class MedMinderTableViewController: UITableViewController {
         gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
         gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
         
-        self.view.layer.insertSublayer(gradientLayer, at: 0)
+        // Create a UIView to hold the gradient layer
+        let backgroundView = UIView(frame: self.view.bounds)
+        backgroundView.layer.insertSublayer(gradientLayer, at: 0)
+        
+        // Set the background view of the tableView
+        self.tableView.backgroundView = backgroundView
     }
+
+
+
     
     // this is the function which is used to update the Filter Date Label according to the Date Picker
     
