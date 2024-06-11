@@ -79,8 +79,6 @@ struct GraphContainerView: View {
             .frame(height: 300)
             .chartXAxis {
                 AxisMarks(values: Array(stride(from: xAxisRange.lowerBound, through: xAxisRange.upperBound, by: xAxisStride))) {
-                    AxisGridLine()
-                        .foregroundStyle(Color.gray)
                     AxisTick()
                         .foregroundStyle(Color.gray)
                     AxisValueLabel()
@@ -89,8 +87,6 @@ struct GraphContainerView: View {
             }
             .chartYAxis {
                 AxisMarks(position: .leading, values: Array(stride(from: 40, through: 140, by: 20))) {
-                    AxisGridLine()
-                        .foregroundStyle(Color.gray)
                     AxisTick()
                         .foregroundStyle(Color.gray)
                     AxisValueLabel()
