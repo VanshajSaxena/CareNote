@@ -158,8 +158,8 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
         let recentReportItem = NSCollectionLayoutItem(layoutSize: recentReportItemSize)
         recentReportItem.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 2, trailing: 5)
         
-        let recentReportGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(recentReportItem.layoutSize.heightDimension.dimension * CGFloat(dataController.getMedicalParameters().count)))
-        let recentReportGroup = NSCollectionLayoutGroup.vertical(layoutSize: recentReportGroupSize, subitem: recentReportItem, count: dataController.getMedicalParameters().count )
+        let recentReportGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(recentReportItem.layoutSize.heightDimension.dimension * CGFloat(dataController.returnRecentReportGroupSize())))
+        let recentReportGroup = NSCollectionLayoutGroup.vertical(layoutSize: recentReportGroupSize, subitem: recentReportItem, count: dataController.returnRecentReportGroupSize())
         recentReportGroup.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
         
         let recentReportSection = NSCollectionLayoutSection(group: recentReportGroup)

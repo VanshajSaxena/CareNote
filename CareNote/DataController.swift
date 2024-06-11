@@ -202,6 +202,18 @@ class DataController {
         return medicalParameters
     }
     
+    // MARK: - HACK
+    
+    func returnRecentReportGroupSize() -> Int {
+        var int: Int
+        if getFilteredMedicalParameters().count == 0 {
+            int = 1
+        } else {
+            int = getFilteredMedicalParameters().count
+        }
+        return int
+    }
+    
     // Non-nil RecentValue parameters
     func getFilteredMedicalParameters() -> [MedicalParameter] {
         return getMedicalParameters().filter { $0.getRecentValue() != nil }
