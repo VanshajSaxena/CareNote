@@ -6,11 +6,33 @@
 //
 
 import UIKit
+import SwiftUI
 
 class LoginViewController: UIViewController {
+    
+    @IBOutlet var username: UITextField!
+    @IBOutlet var password: UITextField!
+    @IBOutlet var personImage: UIImageView!
+    @IBOutlet var lockImage: UIImageView!
+    @IBOutlet var forgotPassword: UIButton!
+    @IBOutlet var login: UIButton!
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        username.layer.cornerRadius = 10.0
+        username.clipsToBounds = true
+        
+        password.layer.cornerRadius = 10.0
+        password.clipsToBounds = true
+        
+        personImage.layer.cornerRadius = 10.0
+        personImage.clipsToBounds = true
+        
+        lockImage.layer.cornerRadius = 10.0
+        lockImage.clipsToBounds = true
 
         // Do any additional setup after loading the view.
     }
