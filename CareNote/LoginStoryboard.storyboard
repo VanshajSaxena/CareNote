@@ -11,7 +11,7 @@
         <!--Login-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="Y6W-OH-hqX" customClass="LoginViewController" customModule="CareNote" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -124,7 +124,7 @@
         <!--Sign-Up-->
         <scene sceneID="y5M-cV-ETe">
             <objects>
-                <viewController id="cOl-k7-BsA" sceneMemberID="viewController">
+                <viewController id="cOl-k7-BsA" customClass="SignupViewController" customModule="CareNote" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hrm-Vr-ND3">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -237,11 +237,11 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oIg-M7-XSB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1731" y="4"/>
+            <point key="canvasLocation" x="1718" y="4"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="iAv-W2-2Zl"/>
+        <segue reference="Lrd-PQ-0Pj"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Image" width="204" height="204"/>
@@ -251,7 +251,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="tintColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="underPageBackgroundColor">
             <color red="0.70980392156862748" green="0.71764705882352942" blue="0.74117647058823533" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

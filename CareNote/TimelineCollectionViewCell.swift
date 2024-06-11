@@ -16,8 +16,8 @@ class TimelineCollectionViewCell: UICollectionViewCell {
     @IBOutlet var timelineNotesLabel: UILabel!
     @IBOutlet var timelineNextAppointmentLabel: UILabel!
     @IBOutlet var timelineNextAppointmentDateLabel: UILabel!
-    
     @IBOutlet var timelineDateView: UIView!
+    @IBOutlet var consultationview: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,5 +39,35 @@ class TimelineCollectionViewCell: UICollectionViewCell {
         self.timelineNotesLabel.text = notes
         self.timelineNextAppointmentDateLabel.text = nextAppointmentDate
     }
+    
+    var onConsultationPressed: ((UIViewController) -> Void)?
+    
+    @IBAction func consultationChevronPressed(_ sender: UIButton) {
+        // Get a reference to the storyboard
+        let storyboard = UIStoryboard(name: "HealthLogStoryboard", bundle: nil)
+        
+        // Instantiate the view controller from the storyboard
+        let secondViewController = storyboard.instantiateViewController(withIdentifier: "ConsultationViewController")
+        // Present the view controller (choose your preferred presentation style)
+//        self.navigationController?.pushViewController(secondViewController, animated: true)
+        
+        // Call the closure if set, passing the view controller
+            onConsultationPressed?(secondViewController)
+        }
+    
+//    @objc private func consultationview() {
+//        var responder: UIResponder? = self
+//        while let nextResponder = responder?.next {
+//            if let viewController = nextResponder as? UIViewController {
+//                let storyboard = UIStoryboard(name: "HealthLogStoryboard", bundle: nil)
+//                if let currentVitalsVC = storyboard.instantiateViewController(withIdentifier: "ConsultationViewController") as? CurrentVitalsSegmentedViewController {
+//                    viewController.navigationController?.pushViewController(currentVitalsVC, animated: true)
+//                    return
+//                }
+//            }
+//            responder = nextResponder
+//        }
+//    }
+    
     
 }
