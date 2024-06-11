@@ -359,7 +359,6 @@
                                 <buttonConfiguration key="configuration" style="filled" title="Let’s get Started " cornerStyle="dynamic"/>
                                 <connections>
                                     <action selector="startButtonTapped:" destination="o33-0X-zGd" eventType="touchUpInside" id="vY2-Pc-8bn"/>
-                                    <segue destination="sbQ-eu-9hV" kind="show" id="LfR-a4-3uM"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -491,7 +490,7 @@
                     <tabBarItem key="tabBarItem" title="" id="bck-Wr-45G"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="lWm-LH-3UQ">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="108"/>
+                        <rect key="frame" x="0.0" y="59" width="393" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -508,11 +507,11 @@
             <objects>
                 <viewController storyboardIdentifier="HealthViewCollectionViewController" id="s8U-b9-rhC" customClass="HealthViewCollectionViewController" customModule="CareNote" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4Mp-lx-v9j">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5bO-I0-S74">
-                                <rect key="frame" x="0.0" y="56" width="393" height="747"/>
+                                <rect key="frame" x="0.0" y="155" width="393" height="614"/>
                                 <collectionViewLayout key="collectionViewLayout" id="FcX-Yk-Mco"/>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="sTe-Mi-qua">
