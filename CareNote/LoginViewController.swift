@@ -16,14 +16,19 @@ class LoginViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func unwindToLogin(segue: UIStoryboardSegue) {
+        
     }
-    */
+    
+    @IBAction func onLogin(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+         let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainTabController")
+         
 
+         if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
+             print("got here")
+             sceneDelegate.window?.rootViewController = mainViewController
+         }
+    }
+    
 }
