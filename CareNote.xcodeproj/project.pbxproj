@@ -11,6 +11,9 @@
 		052E25522C0DA27900FCBD90 /* DocumentGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052E25512C0DA27900FCBD90 /* DocumentGalleryViewController.swift */; };
 		052E25562C0DA8C300FCBD90 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052E25552C0DA8C300FCBD90 /* TimelineViewController.swift */; };
 		053935E52C0839CD0091E5E9 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053935E42C0839CD0091E5E9 /* DataController.swift */; };
+		0544A0F02C180C3800954CED /* ConsultationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0544A0EF2C180C3800954CED /* ConsultationViewController.swift */; };
+		0544A0F22C180F2B00954CED /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0544A0F12C180F2B00954CED /* LoginViewController.swift */; };
+		0544A0F42C180F4E00954CED /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0544A0F32C180F4E00954CED /* SignupViewController.swift */; };
 		054CAF322BFDEA060041EE24 /* AddVisitTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054CAF312BFDEA060041EE24 /* AddVisitTableViewController.swift */; };
 		0556F0382C0896A7000B21B2 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0556F0372C0896A7000B21B2 /* FirebaseAnalytics */; };
 		0556F03A2C0896A7000B21B2 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 0556F0392C0896A7000B21B2 /* FirebaseAnalyticsOnDeviceConversion */; };
@@ -59,6 +62,9 @@
 		052E25512C0DA27900FCBD90 /* DocumentGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentGalleryViewController.swift; sourceTree = "<group>"; };
 		052E25552C0DA8C300FCBD90 /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		053935E42C0839CD0091E5E9 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		0544A0EF2C180C3800954CED /* ConsultationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultationViewController.swift; sourceTree = "<group>"; };
+		0544A0F12C180F2B00954CED /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		0544A0F32C180F4E00954CED /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		054CAF312BFDEA060041EE24 /* AddVisitTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVisitTableViewController.swift; sourceTree = "<group>"; };
 		056CB6C72BFB67B100D96E25 /* MedMinderTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedMinderTableViewController.swift; sourceTree = "<group>"; };
 		0580560E2BFB2746006A897D /* CareNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CareNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,6 +147,7 @@
 				05ACBE172BFB2B9D002C58A9 /* HealthLogStoryboard.storyboard */,
 				05ACBE1B2BFB2C63002C58A9 /* HealthLogViewController.swift */,
 				052E25552C0DA8C300FCBD90 /* TimelineViewController.swift */,
+				0544A0EF2C180C3800954CED /* ConsultationViewController.swift */,
 				05E7F6772C12C9A4008BF9D9 /* TimelineCollectionViewCell.xib */,
 				05E7F6792C12CA1F008BF9D9 /* TimelineCollectionViewCell.swift */,
 				052E25512C0DA27900FCBD90 /* DocumentGalleryViewController.swift */,
@@ -156,6 +163,8 @@
 				058056132BFB2746006A897D /* SceneDelegate.swift */,
 				C4CDB3DA2C06FCD900BF4672 /* HealthView */,
 				05FA97022C16E03800A93BA2 /* LoginStoryboard.storyboard */,
+				0544A0F32C180F4E00954CED /* SignupViewController.swift */,
+				0544A0F12C180F2B00954CED /* LoginViewController.swift */,
 				05ACBE1F2BFB2EAB002C58A9 /* ProfileStoryboard.storyboard */,
 				05ACBE212BFB2EBE002C58A9 /* ProfileViewController.swift */,
 				0580561A2BFB2748006A897D /* Assets.xcassets */,
@@ -294,6 +303,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0544A0F22C180F2B00954CED /* LoginViewController.swift in Sources */,
 				C4A310A32C09B2300001B733 /* SectionBackgroundView.swift in Sources */,
 				053935E52C0839CD0091E5E9 /* DataController.swift in Sources */,
 				05E7F67A2C12CA1F008BF9D9 /* TimelineCollectionViewCell.swift in Sources */,
@@ -306,6 +316,7 @@
 				056CB6C82BFB67B100D96E25 /* MedMinderTableViewController.swift in Sources */,
 				054CAF322BFDEA060041EE24 /* AddVisitTableViewController.swift in Sources */,
 				056494E02BFB491800EB5DE2 /* (null) in Sources */,
+				0544A0F02C180C3800954CED /* ConsultationViewController.swift in Sources */,
 				0500A4A72C05EB9400AD2E02 /* Models.swift in Sources */,
 				C48AA2F52C10679100A8CA9D /* Graphs.swift in Sources */,
 				C4E366392C0D93A0003983DE /* CurrentVitalsSegmentedViewController.swift in Sources */,
@@ -319,6 +330,7 @@
 				C437C0C42C0844EE003924A4 /* BloodPressureCell.swift in Sources */,
 				05ACBE1C2BFB2C63002C58A9 /* HealthLogViewController.swift in Sources */,
 				052E25562C0DA8C300FCBD90 /* TimelineViewController.swift in Sources */,
+				0544A0F42C180F4E00954CED /* SignupViewController.swift in Sources */,
 				05D215A42C098DB30078A10D /* MedicalParameters.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
