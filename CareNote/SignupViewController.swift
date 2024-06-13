@@ -15,25 +15,36 @@ class SignupViewController: UIViewController {
     @IBOutlet var passwordConfirm: UITextField!
     @IBOutlet var lockImageSignup: UIImageView!
     @IBOutlet var signupButton: UIButton!
+    @IBOutlet var backgroundSignup: UITextField!
+    @IBOutlet var backgroundPassSignup: UITextField!
+    @IBOutlet var backgroundPass2Signup: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        usernameSignup.layer.cornerRadius = 10.0
+        usernameSignup.layer.cornerRadius = 8.0
         usernameSignup.clipsToBounds = true
         
-        personImageSignup.layer.cornerRadius = 10.0
+        personImageSignup.layer.cornerRadius = 8.0
         personImageSignup.clipsToBounds = true
         
-        passwordSignup.layer.cornerRadius = 10.0
+        passwordSignup.layer.cornerRadius = 8.0
         passwordSignup.clipsToBounds = true
         
-        passwordConfirm.layer.cornerRadius = 10.0
+        passwordConfirm.layer.cornerRadius = 8.0
         passwordConfirm.clipsToBounds = true
         
-        lockImageSignup.layer.cornerRadius = 10.0
+        lockImageSignup.layer.cornerRadius = 8.0
         lockImageSignup.clipsToBounds = true
         
+        backgroundSignup.layer.cornerRadius = 8.0
+        backgroundSignup.clipsToBounds = true
+        
+        backgroundPassSignup.layer.cornerRadius = 8.0
+        backgroundPassSignup.clipsToBounds = true
+        
+        backgroundPass2Signup.layer.cornerRadius = 8.0
+        backgroundPass2Signup.clipsToBounds = true
 
         // Do any additional setup after loading the view.
     }
