@@ -10,7 +10,18 @@ import Charts
 import SwiftUI
 
 class CurrentVitalsSegmentedViewController: UIViewController {
+    
+    var bloodPressure: MedicalParameter!
+    var heartRate: MedicalParameter!
+    var eGFR: MedicalParameter!
+    var creatinine: MedicalParameter!
+    var bloodSugar: MedicalParameter!
 
+    var currentParameter: MedicalParameter?
+    
+    // The currently selected time segment
+    var selectedTimeSegment: TimeSegment = .day
+    
     //segmented outlet
     @IBOutlet var vitalsSegmentedControl: UISegmentedControl!
     @IBOutlet var timeSegmentedControl: UISegmentedControl!
@@ -40,18 +51,25 @@ class CurrentVitalsSegmentedViewController: UIViewController {
     
     @IBOutlet var graphContainer: UIView!
     
-    var dayData: [Graph] = (1...24).map { Graph(time: $0, value: Double.random(in: 60...100)) }
-    var weekData: [Graph] = (1...7).map { Graph(time: $0, value: Double.random(in: 60...100)) }
-    var monthData: [Graph] = (1...31).map { Graph(time: $0, value: Double.random(in: 60...100)) }
-    var yearData: [Graph] = (1...12).map { Graph(time: $0, value: Double.random(in: 60...100)) }
+    var dayData: [Graph] = []
+    var weekData: [Graph] = []
+    var monthData: [Graph] = []
+    var yearData: [Graph] = []
 
     var currentGraphData: [Graph] = []
     var xAxisRange: ClosedRange<Int> = 1...31
     var xAxisStride: Int = 3
+    var yAxisRange: ClosedRange<Int> = 0...200
+    var yAxisStride: Int = 2
 
     override func viewDidLoad() {
         super.viewDidLoad()
         addGradientBackground()
+        
+        initializeMedicalParameter()
+        // Set BP as default parameter
+        currentParameter = bloodPressure
+        updateGraphData(for: bloodPressure, timeSegment: selectedTimeSegment)
 
         bpComparisionView.layer.cornerRadius = 8
         comparisionView.layer.cornerRadius = 8
@@ -65,6 +83,47 @@ class CurrentVitalsSegmentedViewController: UIViewController {
         timeSegmentedControl(self.timeSegmentedControl)
 
         setTimeSegmentControl()
+    }
+    
+    func initializeMedicalParameter() {
+        bloodPressure = dataController.getMedicalParameter(name: "Blood Pressure")
+        heartRate = dataController.getMedicalParameter(name: "Heart Rate")
+        eGFR = dataController.getMedicalParameter(name: "eGFR")
+        creatinine = dataController.getMedicalParameter(name: "Creatinine")
+        bloodSugar = dataController.getMedicalParameter(name: "Blood Sugar")
+        
+        // Check for nil parameters and handle accordingly
+        if bloodPressure == nil {
+            print("Blood Pressure parameter not found!")
+        }
+        if heartRate == nil {
+            print("Heart Rate parameter not found!")
+        }
+        if eGFR == nil {
+            print("eGFR parameter not found!")
+        }
+        if creatinine == nil {
+            print("Creatinine parameter not found!")
+        }
+        if bloodSugar == nil {
+            print("Blood Sugar parameter not found!")
+        }
+    }
+    
+    func updateGraphData(for parameter: MedicalParameter, timeSegment: TimeSegment) {
+        currentGraphData = parameter.getGraphData(for: timeSegment)
+        // Now use `currentGraphData` to update your graph view
+        // For example:
+        updateGraphView(with: currentGraphData)
+    }
+    
+    func updateGraphView(with data: [Graph]) {
+        // This is where you would update your graph view with the new data
+        // For example, you might have a line chart or bar chart that you update here
+        // This is a placeholder implementation
+        for graphPoint in data {
+            print("Time: \(graphPoint.time), Value: \(graphPoint.value)")
+        }
     }
       
     //GradientBackground
@@ -89,7 +148,7 @@ class CurrentVitalsSegmentedViewController: UIViewController {
             subview.removeFromSuperview()
         }
         
-        let graphView = GraphContainerView(graphData: currentGraphData, xAxisRange: xAxisRange, xAxisStride: xAxisStride)
+        let graphView = GraphContainerView(graphData: currentGraphData, xAxisRange: xAxisRange,yAxisRange: yAxisRange, xAxisStride: xAxisStride, yAxisStride: yAxisStride)
         let hostingController = UIHostingController(rootView: graphView)
 
         addChild(hostingController)
@@ -110,8 +169,9 @@ class CurrentVitalsSegmentedViewController: UIViewController {
 
 
       @IBAction func vitalsSegmentedControl(_ sender: UISegmentedControl) {
-          switch vitalsSegmentedControl.selectedSegmentIndex {
+          switch sender.selectedSegmentIndex {
           case 0:
+                currentParameter = bloodPressure
               parameterNameLabel.text = "Blood Pressure"
               subParaName1.text = "Systolic"
               subParaValue1.text = "127-152"
@@ -119,42 +179,56 @@ class CurrentVitalsSegmentedViewController: UIViewController {
               subParaValue2.text = "84-89"
               subParameter1Label.text = "Systolic"
               subParameter2Label.text = "Diastolic"
+              yAxisRange = 60...160
+              yAxisStride = 10
               subParaName2.isHidden = false
               subParaValue2.isHidden = false
               bpComparisionView.isHidden = false
               comparisionView.isHidden = true
           case 1:
+                  currentParameter = heartRate
               parameterNameLabel.text = "Heart Rate"
               subParaName1.text = "Heart Rate"
               subParaValue1.text = "79-98"
               subParameterLabel.text = "Heart Rate"
+              yAxisRange = 10...120
+              yAxisStride = 10
               subParaName2.isHidden = true
               subParaValue2.isHidden = true
               bpComparisionView.isHidden = true
               comparisionView.isHidden = false
           case 2:
+                  currentParameter = eGFR
               parameterNameLabel.text = "eGFR"
               subParaName1.text = "eGFR"
               subParaValue1.text = "45-83"
               subParameterLabel.text = "eGFR"
+                  yAxisRange = 40...120
+              yAxisStride = 10
               subParaName2.isHidden = true
               subParaValue2.isHidden = true
               bpComparisionView.isHidden = true
               comparisionView.isHidden = false
           case 3:
+                  currentParameter = creatinine
               parameterNameLabel.text = "Creatinine"
               subParaName1.text = "Creatinine"
               subParaValue1.text = "1.1-2.8"
               subParameterLabel.text = "Creatinine"
+              yAxisRange = 0...5
+              yAxisStride = 1
               subParaName2.isHidden = true
               subParaValue2.isHidden = true
               bpComparisionView.isHidden = true
               comparisionView.isHidden = false
           case 4:
+                  currentParameter = bloodSugar
               parameterNameLabel.text = "Sugar"
               subParaName1.text = "Blood Sugar"
               subParaValue1.text = "65-98"
               subParameterLabel.text = "Sugar"
+              yAxisRange = 40...140
+              yAxisStride = 10
               subParaName2.isHidden = true
               subParaValue2.isHidden = true
               bpComparisionView.isHidden = true
@@ -170,61 +244,52 @@ class CurrentVitalsSegmentedViewController: UIViewController {
       
       func setTimeSegmentControl() {
           switch vitalsSegmentedControl.selectedSegmentIndex {
-          case 0:
-              
-              graphTimeChange()
-          case 1:
-              
-              graphTimeChange()
-          case 2:
-              
-              graphTimeChange()
-          case 3:
-              
-              graphTimeChange()
-          case 4:
-              
+          case 0, 1, 2, 3, 4:
               graphTimeChange()
           default:
               graphTimeChange()
           }
-        
-                  currentVitalsGraph()
-              }
+          currentVitalsGraph()
+      }
         
     func graphTimeChange() {
+        guard let parameter = currentParameter else { return }
+        
         switch timeSegmentedControl.selectedSegmentIndex {
         case 0:
             timeLabel1.text = "Today"
             soloTimeLabel1.text = "Today"
             timeLabel2.text = "Yesterday"
             soloTimeLabel2.text = "Yesterday"
-            currentGraphData = dayData
-            xAxisRange = 1...24
+                currentGraphData = parameter.getGraphData(for: .day)
+            xAxisRange = 0...24
             xAxisStride = 3
         case 1:
             timeLabel1.text = "Current Week"
             soloTimeLabel1.text = "Current Week"
             timeLabel2.text = "Previous Week"
             soloTimeLabel2.text = "Previous Week"
+                currentGraphData = parameter.getGraphData(for: .week)
             currentGraphData = weekData
-            xAxisRange = 1...7
+            xAxisRange = 0...7
             xAxisStride = 1
         case 2:
             timeLabel1.text = "Current Month"
             soloTimeLabel1.text = "Current Month"
             timeLabel2.text = "Previous Month"
             soloTimeLabel2.text = "Previous Month"
+                currentGraphData = parameter.getGraphData(for: .month)
             currentGraphData = monthData
-            xAxisRange = 1...31
+            xAxisRange = 0...31
             xAxisStride = 3
         case 3:
             timeLabel1.text = "Current Year"
             soloTimeLabel1.text = "Current Year"
             timeLabel2.text = "Previous Year"
             soloTimeLabel2.text = "Previous Year"
+                currentGraphData = parameter.getGraphData(for: .year)
             currentGraphData = yearData
-            xAxisRange = 1...12
+            xAxisRange = 0...12
             xAxisStride = 1
         default:
             print("Fatal Error")

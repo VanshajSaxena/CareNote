@@ -127,6 +127,25 @@ class MedicalParameter: Codable {
     private enum CodingKeys: String, CodingKey {
         case name, unitOfMeasure, history, maxValue, minValue
     }
+    
+    func getGraphData(for timeSegment: TimeSegment) -> [Graph] {
+        let calendar = Calendar.current
+        let now = Date()
+        var filteredEntries: [HistoryEntry] = []
+        
+        switch timeSegment {
+            case .day:
+                filteredEntries = history.filter { calendar.isDate($0.date, inSameDayAs: now) }
+            case .week:
+                filteredEntries = history.filter { calendar.isDate($0.date, equalTo: now, toGranularity: .weekOfYear) }
+            case .month:
+                filteredEntries = history.filter { calendar.isDate($0.date, equalTo: now, toGranularity: .month) }
+            case .year:
+                filteredEntries = history.filter { calendar.isDate($0.date, equalTo: now, toGranularity: .year) }
+        }
+        
+        return filteredEntries.map { Graph(time: calendar.component(.day, from: $0.date), value: $0.value) }
+    }
 
     /*
 

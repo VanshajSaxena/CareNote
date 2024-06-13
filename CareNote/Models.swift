@@ -130,3 +130,8 @@ struct Images: Codable {
         self.imageData = image?.jpegData(compressionQuality: 1.0)
     }
 }
+
+enum TimeSegment {
+    case day, week, month, year
+}
+

@@ -25,7 +25,9 @@ struct Graph: Identifiable {
 struct GraphContainerView: View {
     let graphData: [Graph]
     let xAxisRange: ClosedRange<Int>
+    let yAxisRange: ClosedRange<Int>
     let xAxisStride: Int
+    let yAxisStride: Int
 
     
     var maxValue: Double {
@@ -86,7 +88,7 @@ struct GraphContainerView: View {
                 }
             }
             .chartYAxis {
-                AxisMarks(position: .leading, values: Array(stride(from: 40, through: 140, by: 20))) {
+                AxisMarks(position: .leading, values: Array(stride(from: yAxisRange.lowerBound, through: yAxisRange.upperBound, by: yAxisStride))) {
                     AxisTick()
                         .foregroundStyle(Color.gray)
                     AxisValueLabel()
@@ -94,7 +96,7 @@ struct GraphContainerView: View {
                 }
             }
             .chartXScale(domain: xAxisRange) // Ensure X-axis starts from lower bound to upper bound
-            .chartYScale(domain: 40...140) // Set Y-axis scale to range from 40 to 140
+            .chartYScale(domain: yAxisRange) // Set Y-axis scale to range from 40 to 140
             .chartPlotStyle { plotArea in
                 plotArea
                     .background(Color.clear)
@@ -110,6 +112,6 @@ struct GraphContainerView: View {
 
 struct GraphContainerView_Previews: PreviewProvider {
     static var previews: some View {
-        GraphContainerView(graphData: [Graph(time: 1, value: 70)], xAxisRange: 1...31, xAxisStride: 3)
+        GraphContainerView(graphData: [Graph(time: 1, value: 70)], xAxisRange: 1...31, yAxisRange: 0...100, xAxisStride: 3, yAxisStride: 2)
     }
 }
