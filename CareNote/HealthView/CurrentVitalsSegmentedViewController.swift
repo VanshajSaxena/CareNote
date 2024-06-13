@@ -62,6 +62,8 @@ class CurrentVitalsSegmentedViewController: UIViewController {
     var xAxisStride: Int = 3
     var yAxisRange: ClosedRange<Int> = 0...200
     var yAxisStride: Int = 2
+    var maxValue: Int = 100
+    var minValue: Int = 60
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -152,7 +154,7 @@ class CurrentVitalsSegmentedViewController: UIViewController {
             subview.removeFromSuperview()
         }
         
-        let graphView = GraphContainerView(graphData: currentGraphData, xAxisRange: xAxisRange,yAxisRange: yAxisRange, xAxisStride: xAxisStride, yAxisStride: yAxisStride)
+        let graphView = GraphContainerView(graphData: currentGraphData, xAxisRange: xAxisRange,yAxisRange: yAxisRange, xAxisStride: xAxisStride, yAxisStride: yAxisStride, maxValue: maxValue)
         let hostingController = UIHostingController(rootView: graphView)
 
         addChild(hostingController)
@@ -184,6 +186,8 @@ class CurrentVitalsSegmentedViewController: UIViewController {
               subParameter2Label.text = "Diastolic"
               yAxisRange = 60...160
               yAxisStride = 10
+              maxValue = 140
+              minValue = 90
               subParaName2.isHidden = false
               subParaValue2.isHidden = false
               bpComparisionView.isHidden = false
