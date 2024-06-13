@@ -154,8 +154,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Login" id="aVE-SJ-ccc"/>
                     <connections>
-                        <outlet property="background1" destination="609-C0-LqD" id="Fmq-RN-HKk"/>
-                        <outlet property="background2" destination="Q7f-Tj-gNK" id="Y3G-Ur-gfP"/>
+                        <outlet property="backgroundPassword" destination="Q7f-Tj-gNK" id="Qdt-yI-esD"/>
+                        <outlet property="backgroundUsername" destination="609-C0-LqD" id="gtK-7s-BSZ"/>
                         <outlet property="forgotPassword" destination="AJG-7C-peX" id="t0K-pN-i4f"/>
                         <outlet property="lockImage" destination="Kjf-01-rZb" id="5JQ-IG-oqB"/>
                         <outlet property="login" destination="bNG-az-w0I" id="kzh-gB-Wkm"/>
@@ -303,11 +303,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="Sign-Up" id="8ew-65-rkm"/>
                     <connections>
-                        <outlet property="backgroundConfPasswordSignup" destination="rAU-pu-zUf" id="9h7-6K-wG5"/>
-                        <outlet property="backgroundPasswordSignup" destination="nnZ-yl-pfx" id="Pva-IO-Gjz"/>
-                        <outlet property="backgroundUsernameSignup" destination="eg2-Na-QpX" id="ug5-kq-QbN"/>
+                        <outlet property="backgroundPass2Signup" destination="rAU-pu-zUf" id="GyZ-uo-QRU"/>
+                        <outlet property="backgroundPassSignup" destination="nnZ-yl-pfx" id="Ryr-GL-l0S"/>
+                        <outlet property="backgroundSignup" destination="eg2-Na-QpX" id="hNH-0K-a6i"/>
                         <outlet property="lockImageSignup" destination="zRC-fi-q3T" id="gbc-WD-aRe"/>
-                        <outlet property="lockImageSignup2" destination="xdn-U7-ymd" id="Ovb-i6-w1P"/>
                         <outlet property="passwordConfirm" destination="o56-5Q-fN1" id="f4Z-xu-O26"/>
                         <outlet property="passwordSignup" destination="j5N-eG-ZwA" id="27g-B9-KFa"/>
                         <outlet property="personImageSignup" destination="Ja4-mC-Ys5" id="gMi-q0-j5o"/>
