@@ -49,6 +49,7 @@ class CurrentVitalsSegmentedViewController: UIViewController {
     @IBOutlet var bpComparisionView: UIView!
     @IBOutlet var comparisionView: UIView!
     
+    @IBOutlet var graphDateLabel: UILabel!
     @IBOutlet var graphContainer: UIView!
     
     var dayData: [Graph] = []
@@ -83,6 +84,9 @@ class CurrentVitalsSegmentedViewController: UIViewController {
         timeSegmentedControl(self.timeSegmentedControl)
 
         setTimeSegmentControl()
+        
+        // Update the subtitle label based on the graph stride
+        updateSubtitleLabel(for: .currentDate)
     }
     
     func initializeMedicalParameter() {
@@ -163,7 +167,6 @@ class CurrentVitalsSegmentedViewController: UIViewController {
             hostingController.view.leadingAnchor.constraint(equalTo: graphContainer.leadingAnchor),
             hostingController.view.trailingAnchor.constraint(equalTo: graphContainer.trailingAnchor)
         ])
-
         hostingController.didMove(toParent: self)
     }
 
@@ -264,6 +267,7 @@ class CurrentVitalsSegmentedViewController: UIViewController {
                 currentGraphData = parameter.getGraphData(for: .day)
             xAxisRange = 0...24
             xAxisStride = 3
+            updateSubtitleLabel(for: .currentDate)
         case 1:
             timeLabel1.text = "Current Week"
             soloTimeLabel1.text = "Current Week"
@@ -273,6 +277,7 @@ class CurrentVitalsSegmentedViewController: UIViewController {
             currentGraphData = weekData
             xAxisRange = 0...7
             xAxisStride = 1
+            updateSubtitleLabel(for: .week)
         case 2:
             timeLabel1.text = "Current Month"
             soloTimeLabel1.text = "Current Month"
@@ -282,6 +287,7 @@ class CurrentVitalsSegmentedViewController: UIViewController {
             currentGraphData = monthData
             xAxisRange = 0...31
             xAxisStride = 3
+            updateSubtitleLabel(for: .month)
         case 3:
             timeLabel1.text = "Current Year"
             soloTimeLabel1.text = "Current Year"
@@ -291,8 +297,72 @@ class CurrentVitalsSegmentedViewController: UIViewController {
             currentGraphData = yearData
             xAxisRange = 0...12
             xAxisStride = 1
+            updateSubtitleLabel(for: .year)
         default:
             print("Fatal Error")
         }
+    }
+
+    enum DateRangeType {
+        case currentDate
+        case week
+        case month
+        case year
+    }
+
+    func updateSubtitleLabel(for rangeType: DateRangeType) {
+        let formattedDate: String
+        
+        switch rangeType {
+        case .currentDate:
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd-MM-yyyy"
+            formattedDate = dateFormatter.string(from: Date())
+        
+        case .week:
+            let calendar = Calendar.current
+            let today = Date()
+            guard let weekStart = calendar.dateInterval(of: .weekOfYear, for: today)?.start else { return }
+            let weekEnd = calendar.date(byAdding: .day, value: 6, to: weekStart)!
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "d"
+            let startDay = dateFormatter.string(from: weekStart)
+            let endDay = dateFormatter.string(from: weekEnd)
+            
+            dateFormatter.dateFormat = "MMMM, yyyy"
+            let monthYear = dateFormatter.string(from: today)
+            
+            formattedDate = "\(startDay)-\(endDay) \(monthYear)"
+        
+        case .month:
+            let calendar = Calendar.current
+            let today = Date()
+            let components = calendar.dateComponents([.year, .month], from: today)
+            guard let startOfMonth = calendar.date(from: components) else { return }
+            let range = calendar.range(of: .day, in: .month, for: startOfMonth)!
+            let endOfMonth = calendar.date(byAdding: .day, value: range.count - 1, to: startOfMonth)!
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MMMM"
+            let month = dateFormatter.string(from: today)
+            
+            dateFormatter.dateFormat = "yyyy"
+            let year = dateFormatter.string(from: today)
+            
+            formattedDate = "1-\(range.count) \(month), \(year)"
+            
+        case .year:
+                   let dateFormatter = DateFormatter()
+                   dateFormatter.dateFormat = "MMM"
+                   let startMonth = dateFormatter.string(from: Calendar.current.date(from: DateComponents(month: 1))!)
+                   let endMonth = dateFormatter.string(from: Calendar.current.date(from: DateComponents(month: 12))!)
+                   
+                   dateFormatter.dateFormat = "yyyy"
+                   let year = dateFormatter.string(from: Date())
+                   
+                   formattedDate = "\(startMonth)-\(endMonth), \(year)"
+        }
+        graphDateLabel.text = formattedDate
     }
 }

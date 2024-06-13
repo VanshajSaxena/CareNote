@@ -313,6 +313,7 @@
                         <outlet property="bpComparisionView" destination="ygY-PH-6ZA" id="Rb1-tS-cLY"/>
                         <outlet property="comparisionView" destination="w8h-TO-R2t" id="i7P-yr-ZiW"/>
                         <outlet property="graphContainer" destination="Hon-5v-3wl" id="aLQ-RR-3be"/>
+                        <outlet property="graphDateLabel" destination="Jc0-hG-UV5" id="18e-H7-1iy"/>
                         <outlet property="parameterNameLabel" destination="Dhc-aj-jjq" id="Yi1-2M-o8p"/>
                         <outlet property="soloTimeLabel1" destination="kpr-Do-lLB" id="7lL-vv-VAg"/>
                         <outlet property="soloTimeLabel2" destination="JCV-iB-ZJ3" id="Vlp-9b-3HF"/>
@@ -536,8 +537,15 @@
                             <constraint firstItem="LcN-xx-OdD" firstAttribute="bottom" secondItem="5bO-I0-S74" secondAttribute="bottom" id="k6k-Oy-Utn"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="HealthView" largeTitleDisplayMode="always" id="kSp-PM-IHg"/>
+                    <navigationItem key="navigationItem" title="HealthView" largeTitleDisplayMode="always" id="kSp-PM-IHg">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="6lL-rT-Zm4">
+                            <connections>
+                                <action selector="addButtonPressed:" destination="s8U-b9-rhC" id="WvX-Jg-0pS"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="addButton" destination="6lL-rT-Zm4" id="GG1-QZ-meY"/>
                         <outlet property="healthViewCollectionView" destination="5bO-I0-S74" id="XZg-4m-uB7"/>
                     </connections>
                 </viewController>

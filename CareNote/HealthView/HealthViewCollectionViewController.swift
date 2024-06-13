@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import VisionKit
 
-class HealthViewCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class HealthViewCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, VNDocumentCameraViewControllerDelegate {
     
     //Code to make tab bar icon visible
     required init?(coder: NSCoder)
@@ -19,7 +20,8 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
     }
     
     @IBOutlet var healthViewCollectionView: UICollectionView!
-        
+    @IBOutlet var addButton: UIBarButtonItem!
+    
         override func viewDidLoad() {
             super.viewDidLoad()
             dataController.loadData()
@@ -156,7 +158,7 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
     func recentReportLayout() -> NSCollectionLayoutSection {
         let recentReportItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(50))
         let recentReportItem = NSCollectionLayoutItem(layoutSize: recentReportItemSize)
-        recentReportItem.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 2, trailing: 5)
+        recentReportItem.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 0, trailing: 5)
         
         let recentReportGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(recentReportItem.layoutSize.heightDimension.dimension * CGFloat(dataController.returnRecentReportGroupSize())))
         let recentReportGroup = NSCollectionLayoutGroup.vertical(layoutSize: recentReportGroupSize, subitem: recentReportItem, count: dataController.returnRecentReportGroupSize())
@@ -200,8 +202,16 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
                     header.headerLabel.text = "Last Tests"
                     header.iconButton.isHidden = false
                 case 2:
-                    header.headerLabel.text = "Recent Report"  // MARK: - update needed
-                    header.subtitleLabel.text = "13-06-2024" // MARK: - update needed
+                    header.headerLabel.text = "Recent Report"
+                    
+                    // Create a DateFormatter
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "dd-MM-yyyy"
+                    
+                    // Get the current date and format it
+                    let currentDate = Date()
+                    let formattedDate = dateFormatter.string(from: currentDate)
+                    header.subtitleLabel.text = formattedDate
                     header.subtitleLabel.isHidden = false
                     header.iconButton.isHidden = true
                 default:
@@ -245,10 +255,10 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
                     // Use recentValue, maxValue, and minValue safely
                     if Double(recentValue)! < maxValue && Double(recentValue)! > minValue {
                         cell.valueLabel.textColor = UIColor.green
-                        cell.valueLabel.text = String(recentValue) // Convert Double to String
+                        cell.valueLabel.text = String(recentValue)
                     } else {
                         cell.valueLabel.textColor = UIColor.red
-                        cell.valueLabel.text = String(recentValue) // Convert Double to String
+                        cell.valueLabel.text = String(recentValue)
                     }
                 } else {
                     cell.valueLabel.textColor = UIColor.gray
@@ -372,6 +382,41 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CurrentVitalsCell", for: indexPath) as! CurrentVitalsCell
             return cell
         }
+    }
+    
+    func documentCameraViewControllerDidCancel(_ controller: VNDocumentCameraViewController) {
+        // Handle the cancellation here
+        controller.dismiss(animated: true)
+    }
+
+    func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFailWithError error: Error) {
+        // Handle the failure here
+        print(error.localizedDescription)
+        controller.dismiss(animated: true)
+    }
+    
+    func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
+            // Handle the scanned documents here
+            copyCSVToDocuments(fileName: "ParametersCSV")
+            processCSVFile()
+            for pageIndex in 0..<scan.pageCount {
+                let scannedImage = scan.imageOfPage(at: pageIndex)
+                var images = dataController.getImages()
+                images.append(Images(id: UUID(), name: "newImage", image: scannedImage))
+                getText(from: scannedImage)
+                dataController.saveData()
+            }
+        controller.dismiss(animated: true)
+    }
+    
+    func presentDocumentScanner() {
+        let scannerViewController = VNDocumentCameraViewController()
+        scannerViewController.delegate = self
+        present(scannerViewController, animated: true)
+    }
+    
+    @IBAction func addButtonPressed(_ sender: Any) {
+        presentDocumentScanner()
     }
 }
 
