@@ -32,6 +32,13 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         timelineCollectionView.alwaysBounceHorizontal = false
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        timelineCollectionView.reloadData()
+    }
+
+    
     func addGradientBackground() {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = self.view.bounds
@@ -83,14 +90,30 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
     // MARK: - UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataController.getDoctorVisitData().count //getConsultations changed
+        return dataController.getDoctorVisitData().count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TimelineCollectionViewCell", for: indexPath) as! TimelineCollectionViewCell
         
+        
+        guard indexPath.item < dataController.getDoctorVisitData().count else {
+            return cell
+        }
+        
+        // Access the parameter at the specific index
+        let visit = dataController.getDoctorVisitData()[indexPath.item]
+        
+        // Configure the cell with the parameter details
+        
+        cell.timelineVisitToDoctorLabel.text = visit.nameOfDoctor
+        cell.timelineDescriptionLabel.text = visit.adviceByDoctor
+        cell.timelineNotesLabel.text = visit.reasonOfVisit
+        cell.timelineNextAppointmentLabel.text = visit.nextAppointmentDate
+        cell.layer.cornerRadius = 8
+
         // Configure the cell with sample data
-        cell.configureCell(date: "12", month: "May", title: "Dr. Subodh", description: "Pain in Bladder", notes: "Urinary Tract Infection", nextAppointmentDate: "15 June")
+//        cell.configureCell(date: "12", month: "May", title: "Dr. Subodh", description: "Pain in Bladder", notes: "Urinary Tract Infection", nextAppointmentDate: "15 June")
         
         cell.layer.cornerRadius = 8
         

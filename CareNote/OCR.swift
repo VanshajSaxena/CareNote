@@ -7,6 +7,7 @@
 import UIKit
 import Vision
 import VisionKit
+
 var DoctorName : String = ""
 var DateVisit : String = ""
 var MedicineName : String = ""
@@ -87,16 +88,20 @@ private func processObservations(_ observations: [VNRecognizedTextObservation],i
     
     for i in 0..<boundingBoxes.count {
         textsInImage.append(TextInImage(xPosition: Int(boundingBoxes[i].origin.x), yPosition: Int(boundingBoxes[i].origin.y), text: recognizedStrings[i]!))
-//        print("Box \(i)")
-//        print(boundingBoxes[i])
-//        print(boundingBoxes[i].origin.y)
-//        print(recognizedStrings[i]!)
+        /*
+        print("Box \(i)")
+        print(boundingBoxes[i])
+        print(boundingBoxes[i].origin.y)
+        print(recognizedStrings[i]!)
+        */
     }
     
     ySortedTextsInImage = textsInImage.sorted()
-//    for i in ySortedTextsInImage {
-//        print(i)
-//    }
+    /*
+    for i in ySortedTextsInImage {
+        print(i)
+    }
+    */
     if documentTypeSelected == "Doctor Visit" {
         print("Doc selected")
         doctorVisitScan()
@@ -110,7 +115,7 @@ private func processObservations(_ observations: [VNRecognizedTextObservation],i
         print("Document type Not Selected")
     }
     
-//    findParameter()
+    //findParameter()
 }
 
 var subTexts : String = ""
@@ -121,36 +126,39 @@ func doctorVisitScan() {
         count = count + 1
         print("\(count) + \(subTexts)")// by sameer
 
-//        if let value = dictionary[subTexts] {
-//        parametersInImage.append(i)
-//        } else if parameterListSplitted.contains(String(subTexts).lowercased()) {
-//        parametersInImage.append(i)
-//        break
-//        }
+        /*
+        if let value = dictionary[subTexts] {
+        parametersInImage.append(i)
+        } else if parameterListSplitted.contains(String(subTexts).lowercased()) {
+        parametersInImage.append(i)
+        break
+        }
+        */
+         
         if let doctorName = detectStringStartingWith(subTexts, phrase: "Dr."  ){
             DoctorName = doctorName
-            print(doctorName ?? "error")
+            print(doctorName)
         }
 
         if let date = detectStringStartingWith(subTexts, phrase: "Date:"){
             DateVisit = date
-            print(date ?? "error")
+            print(date)
         }
         if let medcineName = detectStringStartingWith(subTexts, phrase: "TAB."){
             MedicineName = medcineName
-            print(medcineName ?? "error")
+            print(medcineName)
         }
         
         
         if let diago = detectStringStartingWith(i.text, phrase: "Diagnosis:"){
             let nextpart = count
             Diago = textsInImage[nextpart].text
-            print(Diago ?? "error")
+            print(Diago)
         }
         if let nextappointmentdate = detectStringStartingWith(i.text, phrase: "Follow Up:"){
             
             Nextappoint = nextappointmentdate
-            print(nextappointmentdate ?? "error")
+            print(nextappointmentdate)
         }
 
     }
@@ -161,7 +169,7 @@ func doctorVisitScan() {
 private func findParameter() {
     for i in textsInImage {
         let subTexts = i.text
-//        print(subTexts)
+        //print(subTexts)
         if let score = dictionary[subTexts] {
             print(score)
             parametersInImage.append(i)
@@ -209,7 +217,6 @@ private func findParameterValue() {
     print("\n\n\n")
     for parameter in dataController.getMedicalParameters() {
         print(parameter.getRecentValue())
-        //print(parameter.getName()," ",parameter.getRecentValue() ?? "didNotRecord")
     }
 }
 
