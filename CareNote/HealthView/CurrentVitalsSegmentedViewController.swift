@@ -154,7 +154,7 @@ class CurrentVitalsSegmentedViewController: UIViewController {
             subview.removeFromSuperview()
         }
         
-        let graphView = GraphContainerView(graphData: currentGraphData, xAxisRange: xAxisRange,yAxisRange: yAxisRange, xAxisStride: xAxisStride, yAxisStride: yAxisStride, maxValue: maxValue)
+        let graphView = GraphContainerView(graphData: currentGraphData, xAxisRange: xAxisRange,yAxisRange: yAxisRange, xAxisStride: xAxisStride, yAxisStride: yAxisStride, maxValue: maxValue, minValue: minValue)
         let hostingController = UIHostingController(rootView: graphView)
 
         addChild(hostingController)
@@ -200,6 +200,8 @@ class CurrentVitalsSegmentedViewController: UIViewController {
               subParameterLabel.text = "Heart Rate"
               yAxisRange = 10...120
               yAxisStride = 10
+              maxValue = 100
+              minValue = 60
               subParaName2.isHidden = true
               subParaValue2.isHidden = true
               bpComparisionView.isHidden = true
@@ -212,6 +214,8 @@ class CurrentVitalsSegmentedViewController: UIViewController {
               subParameterLabel.text = "eGFR"
                   yAxisRange = 40...120
               yAxisStride = 10
+              maxValue = 90
+              minValue = 20
               subParaName2.isHidden = true
               subParaValue2.isHidden = true
               bpComparisionView.isHidden = true
@@ -224,6 +228,8 @@ class CurrentVitalsSegmentedViewController: UIViewController {
               subParameterLabel.text = "Creatinine"
               yAxisRange = 0...5
               yAxisStride = 1
+              maxValue = 3
+              minValue = 1
               subParaName2.isHidden = true
               subParaValue2.isHidden = true
               bpComparisionView.isHidden = true
@@ -236,6 +242,8 @@ class CurrentVitalsSegmentedViewController: UIViewController {
               subParameterLabel.text = "Sugar"
               yAxisRange = 40...140
               yAxisStride = 10
+              maxValue = 100
+              minValue = 60
               subParaName2.isHidden = true
               subParaValue2.isHidden = true
               bpComparisionView.isHidden = true
