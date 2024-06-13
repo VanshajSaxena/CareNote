@@ -185,7 +185,7 @@ class DataController {
     }
     
     
-    //get function
+    // get function
     func getDoctorVisitData() -> [DoctorVisitDetailsDataStore] {
         return doctorVisitDetailsDataStore
     }

@@ -201,7 +201,7 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
                     header.iconButton.isHidden = false
                 case 2:
                     header.headerLabel.text = "Recent Report"  // MARK: - update needed
-                    header.subtitleLabel.text = "10-05-2024" // MARK: - update needed
+                    header.subtitleLabel.text = "13-06-2024" // MARK: - update needed
                     header.subtitleLabel.isHidden = false
                     header.iconButton.isHidden = true
                 default:
@@ -225,35 +225,7 @@ class HealthViewCollectionViewController: UIViewController, UICollectionViewData
                 cell.value1Label.textColor = UIColor.gray
                 cell.value2Label.text = "-"
                 cell.value1Label.textColor = UIColor.gray
-//                cell.value1Label.text = bloodPressureParameter?.getRecentValue()
-//                cell.value2Label.text = ""
                 cell.unitLabel.text = bloodPressureParameter?.getUnitOfMeasure()
-                
-                //Colour
-//                if let recentValue = bloodPressureParameter?.getRecentValue(),
-//                   let maxValue = bloodPressureParameter?.getMaxValue(),
-//                   let minValue = bloodPressureParameter?.getMinValue() {
-//                    
-//                    // Use recentValue, maxValue, and minValue safely
-//                    if Double(recentValue)! < maxValue && Double(recentValue)! > minValue {
-//                        cell.valueLabel1.textColor = UIColor.green
-//                        cell.valueLabel1.text = String(recentValue)
-//                        cell.valueLabel2.textColor = UIColor.green
-//                        cell.valueLabel2.text = String(recentValue)
-//                    } else {
-//                        cell.valueLabel1.textColor = UIColor.red
-//                        cell.valueLabel1.text = String(recentValue)
-//                        cell.valueLabel2.textColor = UIColor.red
-//                        cell.valueLabel2.text = String(recentValue)
-//                    }
-//                } else {
-//                    // Handle the case where any of the values are nil
-//                    cell.valueLabel1.textColor = UIColor.gray
-//                    cell.valueLabel1.text = "-"
-//                    cell.valueLabel2.textColor = UIColor.gray
-//                    cell.valueLabel2.text = "-"
-//                }
-                
                 cell.iconImageView.image = UIImage(systemName: "waveform.path.ecg")
                 cell.iconImageView.tintColor = UIColor.systemBlue
                 cell.layer.cornerRadius = 8
