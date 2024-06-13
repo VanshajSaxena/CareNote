@@ -30,13 +30,9 @@ struct GraphContainerView: View {
     let yAxisStride: Int
 
     
-    var maxValue: Double {
-        graphData.map { $0.value }.max() ?? 0
-    }
+    let maxValue: Int
+    let minValue: Int
     
-    var minValue: Double {
-        graphData.map { $0.value }.min() ?? 0
-    }
 
     var body: some View {
         VStack {
@@ -59,7 +55,7 @@ struct GraphContainerView: View {
                 }
                 
                 // Add a red reference line for the maximum value
-                RuleMark(y: .value("Max Value", 100))
+                RuleMark(y: .value("Max Value", maxValue))
                     .lineStyle(StrokeStyle(lineWidth: 1))
                     .foregroundStyle(Color.red)
                     .annotation(position: .topTrailing) {
@@ -69,7 +65,7 @@ struct GraphContainerView: View {
                     }
                 
                 // Add a green reference line for the minimum value
-                RuleMark(y: .value("Min Value", 60))
+                RuleMark(y: .value("Min Value", minValue))
                     .lineStyle(StrokeStyle(lineWidth: 1))
                     .foregroundStyle(Color.green)
                     .annotation(position: .bottomTrailing) {
@@ -112,6 +108,6 @@ struct GraphContainerView: View {
 
 struct GraphContainerView_Previews: PreviewProvider {
     static var previews: some View {
-        GraphContainerView(graphData: [Graph(time: 1, value: 70)], xAxisRange: 1...31, yAxisRange: 0...100, xAxisStride: 3, yAxisStride: 2)
+        GraphContainerView(graphData: [Graph(time: 1, value: 70)], xAxisRange: 1...31, yAxisRange: 0...100, xAxisStride: 3, yAxisStride: 2, maxValue: 100, minValue: 60)
     }
 }
