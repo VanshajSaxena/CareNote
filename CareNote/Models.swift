@@ -76,6 +76,7 @@ class Consultation: Codable {
 // Documents after a doctor visit
 struct ConsultationDocument: Codable {
     var title: String
+    var dateOfVisit : Date   // variable date of visit added by Sameer Verma to display and save the visit date of the patient.
     var documentType: String
     var content: String?
     var note: String?
@@ -135,3 +136,20 @@ enum TimeSegment {
     case day, week, month, year
 }
 
+// sameer verma created the data models
+struct DoctorVisitDetailsDataStore{
+    var dateOfVisit : String
+    var nameOfDoctor : String
+//    var hospitalName : String
+    var reasonOfVisit : String
+    var nextAppointmentDate : String
+    var adviceByDoctor : String?
+    
+    init(dateOfVisit: String, nameOfDoctor: String, reasonOfVisit: String, nextAppointmentDate: String, adviceByDoctor: String? = nil) {
+        self.dateOfVisit = dateOfVisit
+        self.nameOfDoctor = nameOfDoctor
+        self.reasonOfVisit = reasonOfVisit
+        self.nextAppointmentDate = nextAppointmentDate
+        self.adviceByDoctor = adviceByDoctor
+    }
+}

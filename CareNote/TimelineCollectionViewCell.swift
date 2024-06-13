@@ -32,8 +32,9 @@ class TimelineCollectionViewCell: UICollectionViewCell {
     }
     
     func configureCell(date: String, month: String, title: String, description: String, notes: String, nextAppointmentDate: String) {
-        self.timelineMonthLabel.text = month
+        
         self.timelineDateLabel.text = date
+        self.timelineMonthLabel.text = month
         self.timelineVisitToDoctorLabel.text = "Visit to \(title)"
         self.timelineDescriptionLabel.text = description
         self.timelineNotesLabel.text = notes

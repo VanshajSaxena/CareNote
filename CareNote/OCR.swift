@@ -7,6 +7,22 @@
 import UIKit
 import Vision
 import VisionKit
+var DoctorName : String = ""
+var DateVisit : String = ""
+var MedicineName : String = ""
+var Diago : String = ""
+
+var docParameters: [docParameter] = []
+struct docParameter: CustomStringConvertible {
+    var name: String
+    var value: Float
+    
+    var description: String {
+        "\(name) \(value)"
+    }
+}
+
+var Nextappoint : String = ""
 
 // MARK: - Struct and Enums
 
@@ -81,7 +97,65 @@ private func processObservations(_ observations: [VNRecognizedTextObservation],i
 //    for i in ySortedTextsInImage {
 //        print(i)
 //    }
-    findParameter()
+    if documentTypeSelected == "Doctor Visit" {
+        print("Doc selected")
+        doctorVisitScan()
+        
+    }
+    else if documentTypeSelected == "Lab Report" {
+        print("Lab Report")
+        findParameter()
+    }
+    else{
+        print("Document type Not Selected")
+    }
+    
+//    findParameter()
+}
+
+var subTexts : String = ""
+var count = 0
+func doctorVisitScan() {
+    for i in textsInImage {
+        subTexts = i.text
+        count = count + 1
+        print("\(count) + \(subTexts)")// by sameer
+
+//        if let value = dictionary[subTexts] {
+//        parametersInImage.append(i)
+//        } else if parameterListSplitted.contains(String(subTexts).lowercased()) {
+//        parametersInImage.append(i)
+//        break
+//        }
+        if let doctorName = detectStringStartingWith(subTexts, phrase: "Dr."  ){
+            DoctorName = doctorName
+            print(doctorName ?? "error")
+        }
+
+        if let date = detectStringStartingWith(subTexts, phrase: "Date:"){
+            DateVisit = date
+            print(date ?? "error")
+        }
+        if let medcineName = detectStringStartingWith(subTexts, phrase: "TAB."){
+            MedicineName = medcineName
+            print(medcineName ?? "error")
+        }
+        
+        
+        if let diago = detectStringStartingWith(i.text, phrase: "Diagnosis:"){
+            let nextpart = count
+            Diago = textsInImage[nextpart].text
+            print(Diago ?? "error")
+        }
+        if let nextappointmentdate = detectStringStartingWith(i.text, phrase: "Follow Up:"){
+            
+            Nextappoint = nextappointmentdate
+            print(nextappointmentdate ?? "error")
+        }
+
+    }
+    print("\n\n\n")
+    doctorVisitValue()
 }
 
 private func findParameter() {
@@ -102,6 +176,24 @@ private func findParameter() {
         print(parameter)
     }
     findParameterValue()
+}
+
+//Doctor Visit Saving Function calling
+func doctorVisitValue() {
+    for parameter in parametersInImage {
+        for i in textsInImage {
+            if abs(parameter.yPosition - i.yPosition) <= 10 && parameter.text != i.text {
+                if let value = Float(i.text) {
+                    docParameters.append(docParameter(name: parameter.text, value: value))
+                }
+            }
+        }
+    }
+    
+    print("\n\n\n")
+    for parameter in docParameters {
+        print(parameter)
+    }
 }
 
 private func findParameterValue() {
@@ -181,6 +273,11 @@ func csvToDictionary(csvContent: String) -> [String: String] {
     return dictionary
 }
 
+func detectStringStartingWith(_ string: String, phrase: String) -> String? {
+            let phraseWords = phrase.lowercased().split(separator: " ")
+            let stringWords = string.lowercased().split(separator: " ")
+            return stringWords.starts(with: phraseWords) ? string : nil
+        }
 // Function to read CSV and convert to dictionary, then print it
 func processCSVFile() {
     if let csvContent = readCSV(fileName: "ParametersCSV") {
