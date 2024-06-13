@@ -6,9 +6,10 @@
 //
 
 import UIKit
+import VisionKit
 var documentTypeSelected : String = ""
 
-class AddVisitTableViewController: UITableViewController {
+class AddVisitTableViewController: UITableViewController,VNDocumentCameraViewControllerDelegate {
     
     
     @IBOutlet var documnetPopButton: UIButton!
@@ -16,9 +17,9 @@ class AddVisitTableViewController: UITableViewController {
     @IBOutlet var addVisitDatePicker: UIDatePicker!
     
     
-    
-    @IBOutlet var documentNameLabel: UILabel!
-    @IBOutlet var documentDateLabel: UILabel!
+    //commented as it is not necessary in the file currently
+//    @IBOutlet var documentNameLabel: UILabel!
+//    @IBOutlet var documentDateLabel: UILabel!
     
     var addVisitDateLabelIndexPath = IndexPath(row: 0, section: 0)
     var addVisitDatePickerIndexPath = IndexPath(row: 1, section: 0)
@@ -39,12 +40,12 @@ class AddVisitTableViewController: UITableViewController {
         super.viewDidLoad()
         setDocumentPopButton()
         updateDateView()
-        documentNameLabel.text = "\(documentName).pdf"
+//        documentNameLabel.text = "\(documentName).pdf"
 //        loadSavedVisit()
     }
     
     func updateDateView() {
-        documentDateLabel.text=addVisitDatePicker.date.formatted(date: .abbreviated, time: .omitted)
+//        documentDateLabel.text=addVisitDatePicker.date.formatted(date: .abbreviated, time: .omitted)
         addVisitDateLabel.text = addVisitDatePicker.date.formatted(date: .abbreviated, time: .omitted)
     }
     
@@ -88,5 +89,45 @@ class AddVisitTableViewController: UITableViewController {
     
     @IBAction func addVisitDateSelected(_ sender: UIDatePicker) {
         updateDateView()
+    }
+    
+//MARK: - Scanning and Camera open and closing Coding From below
+    
+    
+    @IBAction func openCameraButton(_ sender: UIBarButtonItem) {
+        
+        presentDocumentScanner()
+    }
+    func presentDocumentScanner() {
+        let scannerViewController = VNDocumentCameraViewController()
+        scannerViewController.delegate = self
+        present(scannerViewController, animated: true)
+    }
+    
+    func documentCameraViewControllerDidCancel(_ controller: VNDocumentCameraViewController) {
+        // Handle the cancellation here
+        controller.dismiss(animated: true)
+    }
+    
+    func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFailWithError error: Error) {
+        // Handle the failure here
+        print(error.localizedDescription)
+        controller.dismiss(animated: true)
+    }
+    
+    func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
+            // Handle the scanned documents here
+            copyCSVToDocuments(fileName: "ParametersCSV")
+            processCSVFile()
+            for pageIndex in 0..<scan.pageCount {
+                let scannedImage = scan.imageOfPage(at: pageIndex)
+                var images = dataController.getImages()
+                images.append(Images(id: UUID(), name: "newImage", image: scannedImage))
+                getText(from: scannedImage)
+                dataController.saveData()
+            }
+        controller.dismiss(animated: true)
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ImageViewLogViewController") as! ImageViewLogViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

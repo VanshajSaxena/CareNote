@@ -6,8 +6,11 @@
 //
 
 import UIKit
+
+
 var imageDoc: UIImage = UIImage()
 var documentName : String = ""
+
 class ImageViewLogViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet var documentImageScanned: UIImageView!
@@ -16,9 +19,9 @@ class ImageViewLogViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let image = UIImage(named: "image4") else { return }
-        imageDoc = image
-        documentImageScanned.image = image
+        guard let image = dataController.getImages().first else { return }
+        imageDoc = image.image!
+        documentImageScanned.image = image.image!
 
         // Do any additional setup after loading the view.
         documentSaveAs.delegate = self
@@ -30,6 +33,19 @@ class ImageViewLogViewController: UIViewController, UITextFieldDelegate {
         }
     @IBAction func SaveButtonClicked(_ sender: UIButton) {
         documentName = documentSaveAs.text ?? "No Name"
+        if documentTypeSelected == "Doctor Visit"{
+            print("Doctor Name \(DoctorName) \nDate of Visit \(DateVisit) \(Diago) and \nMedicine Name \(MedicineName) \(Nextappoint)")
+        }
+        else if documentTypeSelected == "Lab Report"{
+            print("Lab report")
+        }
+        else{
+            print("None")
+        }
+//        DataController.addConsultation(title: title ?? <#default value#>, dateOfConsultation: DateVisit, user: user, doctor: DoctorName, consultationDocuments: consultationDocuments)
+        
+        dataController.addDoctorVisitDetailsDataStore(dateOfVisit: DateVisit, nameOfDoctor: DoctorName, reasonOfVisit: Diago, nextAppointmentDate: Nextappoint, adviceByDoctor: "")
+//        TimelineCollectionViewCell().configureCell(date: DateVisit, month: DateVisit, title: DoctorName, description: Diago, notes: "nil ", nextAppointmentDate: Nextappoint)
     }
     
     

@@ -83,7 +83,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
     // MARK: - UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataController.getConsultations().count
+        return dataController.getDoctorVisitData().count //getConsultations changed
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

@@ -17,6 +17,7 @@ class DataController {
     private var medicalParameters : [MedicalParameter] = []
     private var medicines: [Medicine] = []
     private var images: [Images] = []
+     var doctorVisitDetailsDataStore : [DoctorVisitDetailsDataStore] = []
 
     private var _parametersDict = [
         // Vital Signs
@@ -182,6 +183,20 @@ class DataController {
         let newConsultation = Consultation(id: UUID(), dateOfConsultation: dateOfConsultation, title: title, user: user, doctor: doctor, consultationDocuments: consultationDocuments)
         consultations.append(newConsultation)
     }
+    
+    
+    //get function
+    func getDoctorVisitData() -> [DoctorVisitDetailsDataStore] {
+        return doctorVisitDetailsDataStore
+    }
+     
+    
+    // function created by Sameer Verma
+    func addDoctorVisitDetailsDataStore(dateOfVisit: String, nameOfDoctor: String, reasonOfVisit: String, nextAppointmentDate: String, adviceByDoctor: String){
+        let newdata = DoctorVisitDetailsDataStore(dateOfVisit: dateOfVisit, nameOfDoctor: nameOfDoctor, reasonOfVisit: reasonOfVisit, nextAppointmentDate: nextAppointmentDate, adviceByDoctor: adviceByDoctor)
+        doctorVisitDetailsDataStore.append(newdata)
+    }
+    
 
     func updateConsultation(id: UUID, newConsultation: Consultation) {
         if let index = consultations.firstIndex(where: { $0.id == id }) {

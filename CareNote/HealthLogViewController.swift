@@ -31,6 +31,7 @@ class HealthLogViewController: UIViewController, VNDocumentCameraViewControllerD
         super.viewDidLoad()
         
         self.view.bringSubviewToFront(timelineSegmentView)
+        print("Doctor Name \(DoctorName) \nDate of Visit \(DateVisit) \(Diago) and \nMedicine Name \(MedicineName) \(Nextappoint)")
         
 //        if #available(iOS 17.4, *) {
 //            filter.datePickerMode = .yearAndMonth
@@ -82,16 +83,16 @@ class HealthLogViewController: UIViewController, VNDocumentCameraViewControllerD
     }
     
 
-    func presentDocumentScanner() {
-        let scannerViewController = VNDocumentCameraViewController()
-        scannerViewController.delegate = self
-        present(scannerViewController, animated: true)
-    }
-    
-    func documentCameraViewControllerDidCancel(_ controller: VNDocumentCameraViewController) {
-        // Handle the cancellation here
-        controller.dismiss(animated: true)
-    }
+//    func presentDocumentScanner() {
+//        let scannerViewController = VNDocumentCameraViewController()
+//        scannerViewController.delegate = self
+//        present(scannerViewController, animated: true)
+//    }
+//    
+//    func documentCameraViewControllerDidCancel(_ controller: VNDocumentCameraViewController) {
+//        // Handle the cancellation here
+//        controller.dismiss(animated: true)
+//    }
 
     
     
@@ -109,31 +110,31 @@ class HealthLogViewController: UIViewController, VNDocumentCameraViewControllerD
     
 
 
-    func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFailWithError error: Error) {
-        // Handle the failure here
-        print(error.localizedDescription)
-        controller.dismiss(animated: true)
-    }
-    
-    func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
-            // Handle the scanned documents here
-            copyCSVToDocuments(fileName: "ParametersCSV")
-            processCSVFile()
-            for pageIndex in 0..<scan.pageCount {
-                let scannedImage = scan.imageOfPage(at: pageIndex)
-                var images = dataController.getImages()
-                images.append(Images(id: UUID(), name: "newImage", image: scannedImage))
-                getText(from: scannedImage)
-                dataController.saveData()
-            }
-        controller.dismiss(animated: true)
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ImageViewLogViewController") as! ImageViewLogViewController
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
+//    func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFailWithError error: Error) {
+//        // Handle the failure here
+//        print(error.localizedDescription)
+//        controller.dismiss(animated: true)
+//    }
+//    
+//    func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
+//            // Handle the scanned documents here
+//            copyCSVToDocuments(fileName: "ParametersCSV")
+//            processCSVFile()
+//            for pageIndex in 0..<scan.pageCount {
+//                let scannedImage = scan.imageOfPage(at: pageIndex)
+//                var images = dataController.getImages()
+//                images.append(Images(id: UUID(), name: "newImage", image: scannedImage))
+//                getText(from: scannedImage)
+//                dataController.saveData()
+//            }
+//        controller.dismiss(animated: true)
+//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ImageViewLogViewController") as! ImageViewLogViewController
+//        self.navigationController?.pushViewController(vc, animated: true)
+//    }
 
-    @IBAction func addButtonPressed(_ sender: Any) {
-        presentDocumentScanner()
-    }
+//    @IBAction func addButtonPressed(_ sender: Any) {
+//        presentDocumentScanner()
+//    }
     /*
     // MARK: - Navigation
 
@@ -143,5 +144,12 @@ class HealthLogViewController: UIViewController, VNDocumentCameraViewControllerD
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    @IBAction func unwindSegueHealthLog(_ sender: UIStoryboardSegue){
+        print("Your data is save")
+        print(dataController.doctorVisitDetailsDataStore)
+    }
+    
+    
+   
 }
